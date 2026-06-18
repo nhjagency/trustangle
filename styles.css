@@ -125,11 +125,11 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .link-mono:hover{gap:12px;color:var(--teal)}
 
 /* Section scaffolding */
-.section{padding:104px 0}
+.section{padding:clamp(48px,6vh,80px) 0}
 .section--alt{background:var(--bg-alt)}
 .center{text-align:center;max-width:720px;margin:0 auto}
-.center .h2{margin:18px auto}
-.h2{font-size:clamp(30px,4vw,48px)}
+.center .h2{margin:14px auto}
+.h2{font-size:clamp(28px,3.2vw,36px)}
 .eyebrow-wrap{display:flex;justify-content:center}
 .sub{font-size:18px;color:var(--ink-mut)}
 
@@ -178,7 +178,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   transform:translateX(-50%) translateY(6px);
   background:#fff;border:1px solid var(--line);border-radius:14px;
   box-shadow:0 30px 60px -28px rgba(15,30,35,.38);
-  padding:18px 20px;min-width:380px;z-index:60;
+  padding:14px 18px;min-width:380px;z-index:60;
   opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .2s ease, transform .2s ease;
 }
@@ -187,15 +187,15 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .nav-item:hover .dropdown,
 .nav-item:focus-within .dropdown,
 .dropdown.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.dd-title{font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--gray);margin:0 8px 13px}
-.dd-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 24px}
-.dd-cols.three{grid-template-columns:repeat(3,1fr)}
-.dd-sectors{gap:11px 16px}
-.dd-link{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:9px;font-size:13.5px;font-weight:400;color:var(--ink);white-space:nowrap}
-.dd-link svg{color:var(--teal);flex:none}
+.dd-title{font-family:var(--disp);font-weight:700;font-size:11px;line-height:1;letter-spacing:.09em;text-transform:uppercase;color:var(--gray);margin:2px 8px 10px}
+.dd-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 24px}
+.dd-cols-3{grid-template-columns:repeat(3,1fr)}
+.dd-sectors{gap:3px 16px}
+.dd-link{display:flex;align-items:center;gap:9px;padding:4px 8px;line-height:1.2;border-radius:9px;font-size:13.5px;font-weight:400;color:var(--ink);white-space:nowrap}
+.dd-link svg{width:17px;height:17px;color:var(--teal);flex:none;transition:color .15s ease}
 .dd-link:hover{background:var(--tint);color:var(--teal-dk)}
 .dd-link:hover svg{color:var(--teal-dk)}
-.dd-foot{display:block;margin:14px 0 0;padding:13px 8px 2px;border-top:1px solid var(--line);font-family:var(--disp);font-weight:500;font-size:13px;color:var(--teal-dk)}
+.dd-foot{display:block;margin:10px 0 0;padding:11px 8px 1px;border-top:1px solid var(--line);font-family:var(--disp);font-weight:500;font-size:13px;color:var(--teal-dk)}
 
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px}
 .burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
@@ -204,26 +204,26 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ---------- Hero (V3: left text + framed visual right, LIGHT) ---------- */
-.hero{position:relative;overflow:hidden;padding:40px 0 88px;background:var(--bg)}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero{position:relative;overflow:hidden;padding:clamp(20px,3vh,40px) 0 clamp(48px,6vh,80px);background:var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center}
 .hero-copy{max-width:600px}
 .hero h1{
-  font-size:clamp(40px,6.2vw,76px);font-weight:800;letter-spacing:-.035em;
-  margin:24px 0 22px;
+  font-size:clamp(40px,5.2vw,68px);font-weight:800;letter-spacing:-.035em;line-height:1.06;
+  margin:18px 0 18px;
 }
 .hero h1 .em{color:var(--teal)}
-.hero .sub{font-size:19px;color:var(--ink-mut);max-width:520px;margin-bottom:32px}
+.hero .sub{font-size:18.5px;color:var(--ink-mut);max-width:520px;margin-bottom:26px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero .micro{margin-top:24px;font-size:13.5px;color:var(--gray)}
+.hero .micro{margin-top:18px;font-size:13.5px;color:var(--gray)}
 
 /* Hero visual — clean native bordered "method" card (not a UI/terminal) */
 .hero-visual{display:flex;align-items:center;justify-content:center}
 .method-card{
   width:100%;background:#fff;border:1px solid var(--line);
-  border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:14px 32px;
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:8px 28px;
 }
 .method-list{list-style:none}
-.mstep{display:flex;gap:16px;align-items:flex-start;padding:20px 2px;border-bottom:1px solid var(--line)}
+.mstep{display:flex;gap:16px;align-items:flex-start;padding:13px 2px;border-bottom:1px solid var(--line)}
 .mstep:last-child{border-bottom:0}
 .mstep .ang{margin-top:8px;width:11px;height:11px}
 .mstep .mtext{flex:1}
@@ -248,14 +248,14 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   position:relative;overflow:hidden;
   background:linear-gradient(180deg,#f3fafb 0%, #eaf5f6 100%);
   border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:72px 56px;
+  padding:clamp(36px,4.5vh,56px) clamp(28px,4vw,52px);
 }
 .panel .dots{top:30px;right:30px;width:220px;height:150px;
   -webkit-mask-image:linear-gradient(225deg,#000,transparent);mask-image:linear-gradient(225deg,#000,transparent)}
 .panel .center,.panel .three{position:relative;z-index:1}
 
 /* 3-card positioning row */
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
 .tcard{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:box-shadow .2s ease,transform .2s ease}
 .tcard:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
 .tcard .ic{width:46px;height:46px;border-radius:12px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
@@ -263,7 +263,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .tcard p{font-size:15px;color:var(--ink-mut)}
 
 /* ---------- Dual feature cards ---------- */
-.dual{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:54px}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:38px}
 .dcard{position:relative;overflow:hidden;padding:42px;border-radius:var(--radius-lg);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:box-shadow .2s ease,transform .2s ease}
 .dcard:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
 .dcard .ic{width:54px;height:54px;border-radius:14px;background:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
@@ -272,7 +272,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .dcard p{color:var(--ink-mut);font-size:15.5px;margin-bottom:22px}
 
 /* ---------- Industries grid (easy to add/trim) ---------- */
-.grid-ind{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
+.grid-ind{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
 .icard{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
 .icard:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:var(--shadow)}
 .icard .chip-ic{width:38px;height:38px;border-radius:10px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
@@ -281,7 +281,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .ind-cta{text-align:center;margin-top:44px}
 
 /* ---------- Technologies pill cloud ---------- */
-.chips{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:44px}
+.chips{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:30px}
 .chip{
   font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--ink);
   background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);
@@ -292,7 +292,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .chip .ang{width:7px;height:7px}
 
 /* ---------- Method steps ---------- */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:38px}
 .step{text-align:left}
 .step .sn{
   width:56px;height:56px;border-radius:16px;background:var(--teal);color:#fff;
@@ -304,7 +304,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .step p{font-size:14.5px;color:var(--ink-mut)}
 
 /* ---------- Outcomes (dashed placeholders — DO NOT fill) ---------- */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
 .scard{
   padding:40px 26px;border:1.5px dashed rgba(0,153,168,.5);border-radius:var(--radius);
   background:var(--teal-lt);text-align:center;
@@ -314,7 +314,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .scard .note{font-size:10.5px;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;margin-top:14px;font-weight:600}
 
 /* ---------- Insights cards ---------- */
-.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
 .acard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
 .acard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .acard .thumb{height:150px;background:linear-gradient(135deg,#0099a8,#16c9b0);position:relative;overflow:hidden}
@@ -331,31 +331,31 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .vpanel{
   position:relative;overflow:hidden;border-radius:var(--radius-lg);
   background:linear-gradient(125deg,#063c43 0%, #0099a8 100%);
-  padding:64px 56px;color:#fff;
+  padding:clamp(40px,5vh,56px) clamp(28px,4vw,52px);color:#fff;
   display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
 }
 .vpanel .dots{top:0;right:0;width:280px;height:200px;color:rgba(255,255,255,.18);
   -webkit-mask-image:linear-gradient(225deg,#000,transparent);mask-image:linear-gradient(225deg,#000,transparent)}
 .vpanel .pill{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:none}
 .vpanel .pill .ang{border-color:#fff}
-.vpanel h2{color:#fff;font-size:clamp(26px,3vw,38px);margin-top:16px;position:relative;z-index:1}
+.vpanel h2{color:#fff;font-size:clamp(24px,2.6vw,32px);margin-top:14px;position:relative;z-index:1}
 .vpanel p{color:rgba(255,255,255,.92);font-size:16.5px;position:relative;z-index:1}
 
 /* ---------- Final CTA panel (V3 dark gradient + dots) ---------- */
-.final{padding:0 0 104px}
+.final{padding:0 0 clamp(48px,6vh,80px)}
 .ctapanel{
   position:relative;overflow:hidden;border-radius:var(--radius-lg);
   background:radial-gradient(ellipse 70% 120% at 50% 120%, rgba(0,153,168,.55), transparent 60%),
              linear-gradient(160deg,#0b181c 0%, #0f1e23 50%, #07343a 100%);
-  padding:84px 40px;text-align:center;
+  padding:clamp(48px,6vh,68px) 40px;text-align:center;
 }
 .ctapanel .dots{top:34px;left:34px;width:200px;height:150px;color:rgba(255,255,255,.12)}
 .ctapanel .dots.r{left:auto;right:34px;
   -webkit-mask-image:linear-gradient(225deg,#000,transparent);mask-image:linear-gradient(225deg,#000,transparent)}
 .ctapanel .inner{position:relative;z-index:1}
 .ctapanel .pill{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff;box-shadow:none}
-.ctapanel h2{color:#fff;font-size:clamp(32px,4.6vw,56px);max-width:18ch;margin:18px auto}
-.ctapanel p{color:rgba(255,255,255,.80);font-size:18px;max-width:540px;margin:0 auto 34px}
+.ctapanel h2{color:#fff;font-size:clamp(28px,3.6vw,40px);max-width:20ch;margin:14px auto}
+.ctapanel p{color:rgba(255,255,255,.80);font-size:17px;max-width:540px;margin:0 auto 28px}
 
 /* ---------- Footer ---------- */
 .footer{background:var(--bg-alt);padding:70px 0 34px;border-top:1px solid var(--line)}
@@ -400,7 +400,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .dropdown.open{transform:none}
   .dropdown.open{display:block}
   .dropdown::before{display:none}
-  .dd-cols,.dd-cols.three{grid-template-columns:1fr;gap:0}
+  .dd-cols,.dd-cols-3{grid-template-columns:1fr;gap:0}
   .dd-title{margin:8px 28px 2px}
   .nav-links .dropdown .dd-link{padding:11px 28px 11px 40px;font-size:15px}
   .dd-foot{margin:8px 0 4px;padding:12px 28px 4px}
