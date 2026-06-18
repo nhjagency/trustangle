@@ -1,0 +1,371 @@
+/* ============================================================
+   trustangle — Home page
+   AgentFlow "Home V3" re-skin · Tropical Green palette
+   Tokens are locked to BUILD-BRIEF.md §4.
+   ============================================================ */
+
+:root{
+  /* Brand (locked) */
+  --teal:      #0099a8;          /* Tropical Green — primary accent */
+  --teal-dk:   #067d89;          /* accessible teal for text on light */
+  --teal-lt:   #e6f4f5;          /* tint for badges / icon chips */
+  --teal-glow: rgba(0,153,168,.16);
+  --gray:      #7a7c81;          /* Cool Gray — captions, muted labels */
+
+  /* Neutrals (light theme) */
+  --ink:       #0f1e23;          /* headings / primary text */
+  --ink-mut:   #5a6a6f;          /* body / secondary text */
+  --bg:        #ffffff;
+  --bg-alt:    #f6f8f8;          /* alternating section background */
+  --line:      #e6ecec;          /* borders */
+
+  --radius:    16px;             /* cards */
+  --radius-lg: 24px;             /* panels */
+  --shadow:    0 18px 44px -26px rgba(15,30,35,.30);
+  --wrap:      1140px;           /* max content width */
+
+  --disp: "Plus Jakarta Sans", system-ui, sans-serif;  /* display */
+  --body: "Inter", system-ui, sans-serif;              /* body */
+}
+
+/* ---------- Reset & base ---------- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img,svg{display:block;max-width:100%}
+
+h1,h2,h3,h4{
+  font-family:var(--disp);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+/* Accessibility: visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+.chip:focus-visible{
+  outline:3px solid var(--teal);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--ink);color:#fff;padding:12px 18px;border-radius:0 0 10px 0;
+  font-family:var(--disp);font-weight:600;
+}
+.skip-link:focus{left:0}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ---------- Shared components ---------- */
+
+/* Pill eyebrow (BRIX signature) */
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--teal-lt);color:var(--teal-dk);
+  font-family:var(--disp);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+  padding:7px 14px;border-radius:999px;
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex:none}
+
+/* "angle" glyph — the one decorative motif (nods to the logo) */
+.ang{
+  width:9px;height:9px;
+  border-right:2px solid var(--teal);
+  border-top:2px solid var(--teal);
+  transform:rotate(45deg);
+  display:inline-block;flex:none;
+}
+
+/* Buttons */
+.btn{
+  font-family:var(--disp);font-weight:600;font-size:15px;
+  padding:13px 24px;border-radius:10px;
+  display:inline-flex;align-items:center;gap:9px;
+  transition:background .2s ease, transform .2s ease, border-color .2s ease, color .2s ease;
+  cursor:pointer;border:1px solid transparent;
+}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 22px -12px rgba(0,153,168,.7)}
+.btn-primary:hover{background:var(--teal-dk);transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dk)}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white:hover{background:var(--teal);color:#fff;transform:translateY(-1px)}
+.btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+.btn-outline-light:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* Text-arrow link */
+.link-mono{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--teal-dk);
+  transition:gap .2s ease;
+}
+.link-mono:hover{gap:12px;color:var(--teal)}
+
+/* Section scaffolding */
+.section{padding:96px 0}
+.section--alt{background:var(--bg-alt)}
+.center{text-align:center;max-width:680px;margin:0 auto}
+.center .h2{margin:16px auto}
+.h2{font-size:clamp(28px,3.8vw,44px)}
+.sub{font-size:18px;color:var(--ink-mut)}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Notification bar ---------- */
+.topbar{
+  background:var(--ink);color:#cfe0e2;text-align:center;
+  font-size:13.5px;padding:9px 20px;
+}
+.topbar a{color:#fff;font-weight:600;border-bottom:1px solid var(--teal)}
+.topbar a:hover{border-bottom-color:#fff}
+
+/* ---------- Nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:var(--disp);font-weight:800;font-size:23px;letter-spacing:-.02em;color:var(--ink)}
+.logo .a{color:var(--teal)}
+.nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--ink-mut);font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-right .link{font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--ink)}
+.nav-right .link:hover{color:var(--teal-dk)}
+
+.burger{
+  display:none;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:0;padding:6px;
+}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- Hero (AgentFlow V3 — bolder, dark) ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 900px 560px at 50% -8%, rgba(0,153,168,.45), transparent 60%),
+    linear-gradient(165deg,#0b181c 0%, #0f1e23 45%, #08363c 100%);
+  color:#fff;
+  padding:96px 0 110px;
+  text-align:center;
+}
+.hero::after{           /* faint grid texture, very subtle */
+  content:"";position:absolute;inset:0;opacity:.4;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000,transparent 75%);
+          mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000,transparent 75%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero .pill{background:rgba(255,255,255,.10);color:#d8eef0}
+.hero .pill .dot{background:var(--teal)}
+.hero h1{
+  color:#fff;font-weight:800;
+  font-size:clamp(38px,6vw,68px);letter-spacing:-.03em;
+  max-width:17ch;margin:22px auto;
+}
+.hero h1 .em{color:#37c7d4}
+.hero .sub{max-width:620px;margin:0 auto 32px;color:rgba(232,244,245,.86);font-size:18px}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .micro{margin-top:24px;font-size:13.5px;color:rgba(207,224,226,.75)}
+
+/* Hero visual — method flow inside a "glass" frame */
+.frame{
+  max-width:940px;margin:60px auto 0;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.7);
+  overflow:hidden;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.frame-bar{
+  display:flex;align-items:center;gap:7px;padding:13px 16px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+}
+.frame-bar i{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-block}
+.frame-bar .url{margin-left:14px;font-size:12px;color:rgba(207,224,226,.6);font-family:var(--body)}
+.frame-body{padding:42px 36px}
+.flow{display:flex;align-items:flex-start;justify-content:space-between;position:relative;gap:0}
+.flow .node{flex:1;text-align:center;padding:0 10px;position:relative}
+.flow .node .b{
+  width:46px;height:46px;border-radius:12px;
+  background:rgba(0,153,168,.22);color:#5fd6e1;
+  border:1px solid rgba(55,199,212,.4);
+  font-family:var(--disp);font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+}
+.flow .node .nt{display:block;font-family:var(--disp);font-size:15px;font-weight:700;margin-bottom:6px;color:#fff}
+.flow .node p{font-size:12px;color:rgba(207,224,226,.72);line-height:1.45}
+.flow .node:not(:last-child)::after{
+  content:"";position:absolute;top:23px;right:-8px;width:16px;height:2px;background:rgba(255,255,255,.18);
+}
+
+/* ---------- Partner / ecosystem strip ---------- */
+.partners{padding:56px 0}
+.pl{text-align:center;font-size:12.5px;letter-spacing:.04em;color:var(--gray);margin-bottom:24px;font-weight:500}
+.pmarks{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 42px;align-items:center}
+.pmarks span{font-family:var(--disp);font-weight:600;font-size:18px;color:#9aa6a8;transition:color .2s ease}
+.pmarks span:hover{color:var(--ink)}
+.consent-note{text-align:center;font-size:11.5px;color:var(--gray);margin-top:22px;font-style:italic}
+
+/* ---------- 3-card positioning row ---------- */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
+.tcard{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:box-shadow .2s ease,transform .2s ease}
+.tcard:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.tcard .ic{width:44px;height:44px;border-radius:11px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.tcard h3{font-size:19px;margin-bottom:9px}
+.tcard p{font-size:15px;color:var(--ink-mut)}
+
+/* ---------- Dual feature cards ---------- */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:54px}
+.dcard{padding:40px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);transition:box-shadow .2s ease}
+.dcard:hover{box-shadow:var(--shadow)}
+.dcard .tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--teal-dk);margin-bottom:16px}
+.dcard h3{font-size:25px;margin-bottom:14px}
+.dcard p{color:var(--ink-mut);font-size:15.5px;margin-bottom:22px}
+
+/* ---------- Industries grid (easy to add/trim) ---------- */
+.grid-ind{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
+.icard{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.icard:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:var(--shadow)}
+.icard .ang{margin-bottom:16px}
+.icard h3{font-size:17px;margin-bottom:8px}
+.icard p{font-size:13.5px;color:var(--ink-mut);line-height:1.5}
+.ind-cta{text-align:center;margin-top:42px}
+
+/* ---------- Technologies chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:42px}
+.chip{
+  font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--ink);
+  background:#fff;border:1px solid var(--line);padding:12px 20px;border-radius:999px;
+  transition:border-color .2s ease,color .2s ease;
+}
+.chip:hover{border-color:var(--teal);color:var(--teal-dk)}
+
+/* ---------- Method steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px}
+.step{text-align:center}
+.step .sn{
+  width:52px;height:52px;border-radius:14px;background:var(--teal);color:#fff;
+  font-family:var(--disp);font-weight:700;font-size:19px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+}
+.step h3{font-size:19px;margin-bottom:10px}
+.step p{font-size:14.5px;color:var(--ink-mut)}
+
+/* ---------- Outcomes (dashed placeholders — DO NOT fill) ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+.scard{
+  padding:38px 26px;border:1.5px dashed rgba(0,153,168,.5);border-radius:var(--radius);
+  background:var(--teal-lt);text-align:center;
+}
+.scard .ph{font-family:var(--disp);font-size:34px;color:var(--teal-dk);font-weight:800;margin-bottom:12px}
+.scard p{font-size:13.5px;color:var(--ink-mut)}
+.scard .note{font-size:10.5px;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;margin-top:14px;font-weight:600}
+
+/* ---------- Insights cards ---------- */
+.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+.acard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
+.acard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.acard .thumb{height:140px;background:linear-gradient(135deg,#0099a8,#16c9b0)}
+.acard:nth-child(2) .thumb{background:linear-gradient(135deg,#067d89,#1fc4cf)}
+.acard:nth-child(3) .thumb{background:linear-gradient(135deg,#0f1e23,#0099a8)}
+.acard .acard-body{padding:24px}
+.acard .cat{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dk);margin-bottom:12px}
+.acard h3{font-size:18px;line-height:1.3;margin-bottom:14px}
+.acard .rt{font-size:12.5px;color:#9aa6a8}
+.ins-cta{text-align:center;margin-top:42px}
+
+/* ---------- Vision 2030 panel ---------- */
+.vpanel{
+  background:linear-gradient(120deg,#063c43,#0099a8);
+  border-radius:var(--radius-lg);padding:64px 56px;color:#fff;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.vpanel::before{content:"";position:absolute;right:-60px;bottom:-80px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.07)}
+.vpanel .pill{background:rgba(255,255,255,.16);color:#fff}
+.vpanel .pill .dot{background:#fff}
+.vpanel h2{color:#fff;font-size:clamp(26px,3vw,36px);margin-top:14px}
+.vpanel p{color:rgba(255,255,255,.9);font-size:16.5px;position:relative}
+
+/* ---------- Final CTA panel ---------- */
+.final{padding:0 0 96px}
+.ctapanel{
+  background:var(--ink);border-radius:var(--radius-lg);padding:72px 40px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.ctapanel::before{content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:480px;background:radial-gradient(ellipse,rgba(0,153,168,.4),transparent 65%)}
+.ctapanel .inner{position:relative}
+.ctapanel .pill{background:rgba(255,255,255,.12);color:#fff}
+.ctapanel .pill .dot{background:var(--teal)}
+.ctapanel h2{color:#fff;font-size:clamp(30px,4.4vw,52px);max-width:16ch;margin:16px auto}
+.ctapanel p{color:rgba(255,255,255,.78);font-size:18px;max-width:520px;margin:0 auto 32px}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--bg-alt);padding:66px 0 34px;border-top:1px solid var(--line)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
+.fgrid .logo{margin-bottom:14px}
+.fgrid p{color:var(--ink-mut);font-size:14px;max-width:240px}
+.fgrid .fcol{font-family:var(--disp);font-weight:700;font-size:14px;margin-bottom:16px}
+.fgrid li{margin-bottom:11px;font-size:14px}
+.fgrid a{color:var(--ink-mut)}
+.fgrid a:hover{color:var(--ink)}
+.fbar{margin-top:46px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12.5px;color:var(--gray)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:880px){
+  .nav-links{
+    display:none;position:absolute;top:76px;left:0;right:0;
+    flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);
+    padding:8px 0;box-shadow:var(--shadow);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 28px;font-size:16px}
+  .nav-right .link{display:none}
+  .burger{display:flex}
+  .three,.grid-ind,.steps,.stats,.acards,.dual,.vpanel,.fgrid{grid-template-columns:1fr}
+  .flow{flex-direction:column;gap:22px}
+  .flow .node:not(:last-child)::after{display:none}
+  .section{padding:66px 0}
+  .vpanel,.ctapanel{padding:44px 26px}
+  .fbar{flex-direction:column;gap:8px}
+}
+
+@media(max-width:560px){
+  .grid-ind{grid-template-columns:1fr 1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.tcard,.icard,.acard{transition:none}
+}
