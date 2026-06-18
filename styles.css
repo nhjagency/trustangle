@@ -335,7 +335,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---------- Footer ---------- */
 .footer{background:var(--bg-alt);padding:70px 0 34px;border-top:1px solid var(--line)}
-.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
+.fgrid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.25fr 1fr;gap:30px}
 .fgrid .logo{margin-bottom:14px}
 .fgrid p{color:var(--ink-mut);font-size:14px;max-width:250px}
 .fgrid .fcol{font-family:var(--disp);font-weight:700;font-size:14px;margin-bottom:16px}
@@ -350,6 +350,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .hero-copy{max-width:none}
   .grid-ind{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .fgrid>div:first-child{grid-column:1/-1}
 }
 @media(max-width:880px){
   .nav-links{
