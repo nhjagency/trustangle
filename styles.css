@@ -279,15 +279,17 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .references .center{margin-bottom:8px}
 .tmarquee{
   margin-top:40px;overflow:hidden;
+  display:flex;flex-direction:column;gap:22px;   /* two stacked rows */
   /* same edge fade as the partners strip */
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
 .tmarquee-track{
   display:flex;width:max-content;gap:22px;align-items:stretch;
-  padding:6px 28px;
+  padding:0 28px;
   animation:tmarquee 80s linear infinite;
 }
+.tmarquee-track--rev{animation-direction:reverse}   /* second row drifts the other way */
 /* pause when a user hovers or tabs into the rail */
 .tmarquee:hover .tmarquee-track,
 .tmarquee:focus-within .tmarquee-track{animation-play-state:paused}
@@ -306,8 +308,12 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   border-right:2px solid var(--teal);border-top:2px solid var(--teal);
   transform:rotate(45deg);
 }
-.rcard-quote{font-family:var(--disp);font-weight:600;font-size:18px;line-height:1.4;color:var(--ink)}
+.rcard-quote{
+  font-family:var(--disp);font-weight:600;font-size:16px;line-height:1.45;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; /* max 2 lines */
+}
 .rcard-attr{font-size:13px;color:var(--gray);line-height:1.4}
+.rcard-name{font-family:var(--disp);font-weight:700;color:var(--ink)}
 
 /* no auto-scroll under reduced motion — static, swipeable row */
 @media(prefers-reduced-motion:reduce){

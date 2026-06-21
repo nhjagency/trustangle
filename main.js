@@ -87,14 +87,15 @@
     });
   }
 
-  /* ---------- Testimonials marquee: duplicate cards for a seamless loop ---------- */
-  var tTrack = document.querySelector(".tmarquee-track");
-  if (tTrack && !prefersReduced) {
-    Array.prototype.slice.call(tTrack.children).forEach(function (card) {
-      var clone = card.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.setAttribute("tabindex", "-1");   // clones are decorative, not tab stops
-      tTrack.appendChild(clone);
+  /* ---------- References marquee: duplicate each row for a seamless loop ---------- */
+  if (!prefersReduced) {
+    document.querySelectorAll(".tmarquee-track").forEach(function (track) {
+      Array.prototype.slice.call(track.children).forEach(function (card) {
+        var clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.setAttribute("tabindex", "-1");   // clones are decorative, not tab stops
+        track.appendChild(clone);
+      });
     });
   }
 })();
