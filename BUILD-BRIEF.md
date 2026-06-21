@@ -251,7 +251,7 @@ white / `--bg-alt`. Section intros (eyebrow + H2 + sub) are centred, BRIX-style.
 This run evolved the home from "advisory partner" toward **consultancy + the ecosystem that
 delivers**, per `REPOSITIONPROMPT.md`. Updated section order (two sections added):
 
-1. Hero — now includes an **advisory router** ("Where do you want to start?" path chips).
+1. Hero — eyebrow badge, headline, subhead, primary + secondary CTAs, micro-line.
 2. Partner strip (text-only).
 3. Positioning — adds the **consultancy wedge** sub-line.
 4. **POV — "A point of view"** *(NEW)* — framed PLACEHOLDER video + pull-quote position line +

@@ -86,24 +86,6 @@
       if (e.key === "Escape") closeDropdowns(null);
     });
   }
-
-  /* ---------- Hero advisory router ----------
-     Chips are real anchors (work with JS off). Here we only add a brief
-     highlight to the target section. Smooth scroll is handled by CSS. */
-  document.querySelectorAll(".rchip").forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var href = chip.getAttribute("href");
-      if (!href || href.charAt(0) !== "#") return;
-      var target = document.querySelector(href);
-      if (!target) return;
-      var section = target.closest("section") || target;
-      if (prefersReduced) return;            // no motion highlight
-      section.classList.remove("flash");
-      void section.offsetWidth;              // restart animation
-      section.classList.add("flash");
-      setTimeout(function () { section.classList.remove("flash"); }, 1600);
-    });
-  });
 })();
 
 /* ============================================================

@@ -165,22 +165,6 @@ h1{ font-family:var(--font-display); }
   font-size:var(--fs-micro); color:var(--muted);
 }
 
-/* router chips */
-.router{ margin-top:var(--space-lg); }
-.router-label{
-  display:block; font-size:13px; font-weight:600;
-  color:var(--muted); margin-bottom:var(--space-sm);
-}
-.router-chips{ display:flex; flex-wrap:wrap; gap:var(--space-xs) var(--space-sm); }
-.rchip{
-  font-size:14px; font-weight:500; color:var(--navy);
-  background:var(--teal-tint);
-  border:1px solid var(--border);
-  padding:8px 14px; border-radius:var(--radius-pill);
-  transition:border-color .15s ease, color .15s ease;
-}
-.rchip:hover{ border-color:var(--teal); color:var(--teal-dark); }
-
 /* ---------- Hero visual: dot-grid + method card ---------- */
 .hero-visual{ position:relative; }
 .dots{
