@@ -209,9 +209,20 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .hero{position:relative;overflow:hidden;padding:clamp(20px,3vh,40px) 0 clamp(48px,6vh,80px);background:var(--bg)}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center}
 .hero-copy{max-width:600px}
+/* Hero eyebrow — "soft teal chip" (square corners, no border/shadow, no icon) */
+.hero-badge{
+  display:inline-block;
+  background:#e3f1ee;            /* soft teal tint */
+  color:#0b6157;                 /* deep teal — AA on #e3f1ee (~6.3:1) */
+  font-family:var(--body);
+  font-size:13px;font-weight:500;line-height:1.4;letter-spacing:normal;
+  padding:6px 14px;
+  border-radius:6px;
+  margin:0 0 20px;               /* 20px before the H1 */
+}
 .hero h1{
   font-size:clamp(40px,5.2vw,68px);font-weight:800;letter-spacing:-.035em;line-height:1.06;
-  margin:18px 0 18px;
+  margin:0 0 18px;              /* top margin removed so badge gap stays exactly 20px */
 }
 .hero h1 .em{color:var(--teal)}
 .hero .sub{font-size:18.5px;color:var(--ink-mut);max-width:520px;margin-bottom:26px}
