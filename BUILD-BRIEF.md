@@ -243,3 +243,27 @@ white / `--bg-alt`. Section intros (eyebrow + H2 + sub) are centred, BRIX-style.
 ```
 
 *Arabic (RTL) parity version is a separate deliverable — build the English page first.*
+
+---
+
+## Repositioning addendum (consultancy + ecosystem run)
+
+This run evolved the home from "advisory partner" toward **consultancy + the ecosystem that
+delivers**, per `REPOSITIONPROMPT.md`. Updated section order (two sections added):
+
+1. Hero — now includes an **advisory router** ("Where do you want to start?" path chips).
+2. Partner strip (text-only).
+3. Positioning — adds the **consultancy wedge** sub-line.
+4. **POV — "A point of view"** *(NEW)* — framed PLACEHOLDER video + pull-quote position line +
+   PLACEHOLDER speaker/transcript. No autoplay, no overlay CTA.
+5. What we do.
+6. Industries — each card now reveals **"the decision we help with"** on hover/focus (always on mobile);
+   cards deep-link to `/industries/*` spokes.
+7. Technologies — chips deep-link to `/technologies/*` spokes.
+8. **Ecosystem — "The ecosystem behind the advice"** *(NEW, `#ecosystem`)* — six capability cards
+   (Business-Unit categories). No company names, no logos, no counts.
+9. Method · Outcomes (placeholders) · Insights · Vision 2030.
+10. Final CTA — adds the **paid-diagnostic** "how a consultation works" block (fee = PLACEHOLDER).
+
+SEO: `Organization` + `ProfessionalService` JSON-LD, hreflang (en/ar/x-default), Open Graph + Twitter
+(og:image PLACEHOLDER), hub-and-spoke internal links. QA: `node qa/brand-lint.mjs` must exit 0.
