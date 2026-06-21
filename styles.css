@@ -190,6 +190,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .dd-title{font-family:var(--disp);font-weight:700;font-size:11px;line-height:1;letter-spacing:.09em;text-transform:uppercase;color:var(--gray);margin:2px 8px 10px}
 .dd-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 24px}
 .dd-cols-3{grid-template-columns:repeat(3,1fr)}
+.dd-stack{grid-template-columns:1fr}            /* short lists: stack vertically */
+.dropdown.dd-narrow{min-width:220px}
 .dd-sectors{gap:3px 16px}
 .dd-link{display:flex;align-items:center;gap:9px;padding:4px 8px;line-height:1.2;border-radius:9px;font-size:13.5px;font-weight:400;color:var(--ink);white-space:nowrap}
 .dd-link svg{width:17px;height:17px;color:var(--teal);flex:none;transition:color .15s ease}
