@@ -209,22 +209,17 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .hero{position:relative;overflow:hidden;padding:clamp(20px,3vh,40px) 0 clamp(48px,6vh,80px);background:var(--bg)}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center}
 .hero-copy{max-width:600px}
-/* Hero eyebrow — "outlined pill" (white capsule, light border, teal chevron) */
+/* Hero eyebrow — "arrow prefix + slash" (no box, text on the page) */
 .hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#ffffff;
-  border:1px solid #d4ddd9;      /* light gray-green */
-  border-radius:999px;           /* full capsule */
-  color:#15292e;                 /* dark navy — AA on #fff (~14:1) */
+  display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;
   font-family:var(--body);
-  font-size:14px;font-weight:500;line-height:1.4;letter-spacing:normal;
-  padding:7px 16px;
+  font-size:14px;line-height:1.4;letter-spacing:normal;
   margin:0 0 20px;               /* 20px before the H1 */
 }
-.hero-badge-ico{
-  flex:0 0 auto;width:15px;height:15px;
-  color:#0e9488;                 /* teal chevron */
-}
+.hero-badge-arrow{color:#0e9488;font-size:15px;font-weight:500;}   /* teal arrow */
+.hero-badge-primary{color:#15292e;font-weight:500;}                /* dark navy — AA on #fff */
+.hero-badge-slash{color:#c2ccce;font-weight:400;}                  /* light gray separator */
+.hero-badge-secondary{color:#8a9799;font-weight:400;}             /* muted gray */
 .hero h1{
   font-size:clamp(40px,5.2vw,68px);font-weight:800;letter-spacing:-.035em;line-height:1.06;
   margin:0 0 18px;              /* top margin removed so badge gap stays exactly 20px */
