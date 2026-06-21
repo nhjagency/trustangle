@@ -275,6 +275,44 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 }
 .consent-note{text-align:center;font-size:11.5px;color:var(--gray);margin-top:26px;font-style:italic}
 
+/* ---------- Testimonials — single-line marquee ---------- */
+.testimonials .center{margin-bottom:8px}
+.tmarquee{
+  margin-top:40px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+}
+.tmarquee-track{
+  display:flex;width:max-content;gap:22px;align-items:stretch;
+  padding:6px 28px;
+  animation:tmarquee 90s linear infinite;
+}
+.tmarquee:hover .tmarquee-track{animation-play-state:paused}
+@keyframes tmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tcard{
+  flex:0 0 360px;width:360px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:22px 24px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.tcard-top{display:flex;align-items:flex-start;gap:12px}
+.tavatar{
+  flex:none;width:42px;height:42px;border-radius:50%;
+  background:var(--teal-lt);color:var(--teal-dk);
+  font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.02em;
+  display:flex;align-items:center;justify-content:center;
+}
+.tmeta{display:flex;flex-direction:column;min-width:0;flex:1}
+.tname{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);line-height:1.2}
+.trole{font-size:12.5px;color:var(--gray);line-height:1.3;margin-top:2px}
+.tmark{font-family:var(--disp);font-weight:800;font-size:34px;color:var(--teal);line-height:1}
+.tquote{font-size:14.5px;line-height:1.55;color:var(--ink-mut)}
+@media(prefers-reduced-motion:reduce){
+  .tmarquee{overflow-x:auto}
+  .tmarquee-track{animation:none}
+}
+@media(max-width:560px){ .tcard{flex-basis:300px;width:300px} }
+
 /* ---------- Big tinted panel (V3 "Features" motif) ---------- */
 .panel{
   position:relative;overflow:hidden;

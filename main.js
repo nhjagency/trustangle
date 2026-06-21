@@ -86,6 +86,16 @@
       if (e.key === "Escape") closeDropdowns(null);
     });
   }
+
+  /* ---------- Testimonials marquee: duplicate cards for a seamless loop ---------- */
+  var tTrack = document.querySelector(".tmarquee-track");
+  if (tTrack && !prefersReduced) {
+    Array.prototype.slice.call(tTrack.children).forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      tTrack.appendChild(clone);
+    });
+  }
 })();
 
 /* ============================================================
