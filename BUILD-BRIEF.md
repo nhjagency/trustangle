@@ -174,6 +174,21 @@ white / `--bg-alt`. Section intros (eyebrow + H2 + sub) are centred, BRIX-style.
   from a real engagement”, small note “to be sourced & approved”.
 - ⚠ **Do not fill these with numbers.** Real, approved metrics only, phrased directionally.
 
+### 7.8b References  *(horizontal placeholder strip — NO invented testimonials)*
+- **Eyebrow:** References  ·  **H2:** The work, in our clients’ words.
+- **Sub:** Reference quotes from senior teams we have worked with — anonymised by role and sector
+  until each client approves attribution.
+- A single horizontal **row of wide, short (landscape) cards** that drifts left in a slow,
+  continuous marquee; the card set is duplicated once for a seamless loop. **Pause on hover/focus.**
+- Each card (placeholder, brand-honest): a small **teal angle glyph** (the only marker — no avatar,
+  no @handle, no X/social icon, no name), a quote line **“Approved client reference — to be sourced.”**,
+  and a `--gray` attribution **“[ Role · sector, Kingdom — shown on the client’s approval ]”**.
+- White bg, `--radius-lg`, **0.5px solid `--line`** border (clean, not dashed), comfortable padding.
+- **Accessibility:** cards are tabbable with visible focus; `prefers-reduced-motion` disables the
+  auto-scroll (static, swipeable row); ≤880px becomes a one-and-a-bit swipeable scroller.
+- ⚠ A real quote drops straight in later: quote text → anonymised attribution, **no layout change,
+  and never** add an avatar, @handle, or platform logo.
+
 ### 7.9 Insights  *(3 article cards)*
 - **Eyebrow:** Insights  ·  **H2:** How we think, in writing.
 - **Sub:** Our perspective on advisory, sector reality, and delivering technology in the Kingdom —
@@ -262,7 +277,8 @@ delivers**, per `REPOSITIONPROMPT.md`. Updated section order (two sections added
 7. Technologies — chips deep-link to `/technologies/*` spokes.
 8. **Ecosystem — "The ecosystem behind the advice"** *(NEW, `#ecosystem`)* — six capability cards
    (Business-Unit categories). No company names, no logos, no counts.
-9. Method · Outcomes (placeholders) · Insights · Vision 2030.
+9. Method · Outcomes (placeholders) · **References — horizontal placeholder strip, no invented
+   testimonials/names/avatars** · Insights · Vision 2030.
 10. Final CTA — adds the **paid-diagnostic** "how a consultation works" block (fee = PLACEHOLDER).
 
 SEO: `Organization` + `ProfessionalService` JSON-LD, hreflang (en/ar/x-default), Open Graph + Twitter

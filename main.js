@@ -93,6 +93,7 @@
     Array.prototype.slice.call(tTrack.children).forEach(function (card) {
       var clone = card.cloneNode(true);
       clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("tabindex", "-1");   // clones are decorative, not tab stops
       tTrack.appendChild(clone);
     });
   }
