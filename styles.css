@@ -216,11 +216,20 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero .micro{margin-top:18px;font-size:13.5px;color:var(--gray)}
 
-/* Hero visual — clean native bordered "method" card (not a UI/terminal) */
-.hero-visual{display:flex;align-items:center;justify-content:center}
+/* Hero visual — V3 framed treatment: light dot-grid panel framing a clean
+   method card (no terminal chrome / fake UI) */
+.hero-visual{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(155deg,#f3fafb 0%, #e8f3f4 100%);
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:34px;
+}
+.hero-visual .dots{top:22px;left:22px;width:160px;height:120px;
+  -webkit-mask-image:linear-gradient(135deg,#000,transparent);mask-image:linear-gradient(135deg,#000,transparent)}
 .method-card{
-  width:100%;background:#fff;border:1px solid var(--line);
-  border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:8px 28px;
+  position:relative;z-index:1;width:100%;background:#fff;border:1px solid var(--line);
+  border-radius:20px;box-shadow:var(--shadow);padding:8px 28px;
 }
 .method-list{list-style:none}
 .mstep{display:flex;gap:16px;align-items:flex-start;padding:13px 2px;border-bottom:1px solid var(--line)}
