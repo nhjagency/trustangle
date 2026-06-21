@@ -257,12 +257,22 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .partners{padding:40px 0 8px}
 .pl{text-align:center;font-size:13px;letter-spacing:.02em;color:var(--gray);margin-bottom:26px;font-weight:600}
 .pmarks{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:18px 46px;align-items:center;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-          mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
-.pmarks span{font-family:var(--disp);font-weight:700;font-size:19px;color:#aab4b6;transition:color .2s ease}
+.pmarks-track{
+  display:flex;width:max-content;align-items:center;gap:56px;
+  animation:pmarquee 38s linear infinite;
+}
+.pmarks:hover .pmarks-track{animation-play-state:paused}
+.pmarks span{font-family:var(--disp);font-weight:700;font-size:19px;color:#aab4b6;white-space:nowrap;transition:color .2s ease}
 .pmarks span:hover{color:var(--ink)}
+@keyframes pmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){
+  .pmarks-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:18px 46px}
+  .pmarks-track span[aria-hidden]{display:none}
+}
 .consent-note{text-align:center;font-size:11.5px;color:var(--gray);margin-top:26px;font-style:italic}
 
 /* ---------- Big tinted panel (V3 "Features" motif) ---------- */
