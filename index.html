@@ -39,8 +39,19 @@
       <a href="#" class="logo" aria-label="trustangle — Technology Shifting, home"><img src="assets/trustangle-logo.png" alt="trustangle — Technology Shifting"></a>
 
       <div class="nav-links" id="nav-links">
-        <a href="#what-we-do">Advisory &amp; Consulting</a>
-        <a href="#what-we-do">Implementation &amp; Delivery</a>
+        <div class="nav-item has-dropdown">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-wwd">
+            What We Do <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown" id="dd-wwd" aria-label="What we do">
+            <p class="dd-title">What we do</p>
+            <div class="dd-cols">
+              <a class="dd-link" href="#what-we-do">Technology Consulting</a>
+              <a class="dd-link" href="#what-we-do">Technology Solutions</a>
+            </div>
+            <a class="dd-foot" href="#what-we-do">Explore what we do &rarr;</a>
+          </div>
+        </div>
 
         <div class="nav-item has-dropdown">
           <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-industries">
@@ -66,10 +77,10 @@
         </div>
 
         <div class="nav-item has-dropdown">
-          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-tech">
-            Technologies <span class="caret" aria-hidden="true"></span>
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-bu">
+            Business Units <span class="caret" aria-hidden="true"></span>
           </button>
-          <div class="dropdown" id="dd-tech" aria-label="Technologies">
+          <div class="dropdown" id="dd-bu" aria-label="Business Units">
             <p class="dd-title">Business units</p>
             <div class="dd-cols">
               <a class="dd-link" href="#technologies">ERP</a>
@@ -78,12 +89,30 @@
               <a class="dd-link" href="#technologies">Field Automation</a>
               <a class="dd-link" href="#technologies">Digital Omnichannel</a>
               <a class="dd-link" href="#technologies">Integration</a>
+              <a class="dd-link" href="#technologies">Consultancy &amp; Development</a>
             </div>
-            <a class="dd-foot link-mono" href="#technologies">See all technologies &rarr;</a>
+            <a class="dd-foot" href="#technologies">See all technologies &rarr;</a>
           </div>
         </div>
 
-        <a href="#insights">Insights</a>
+        <div class="nav-item has-dropdown">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-insights">
+            Insights <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown" id="dd-insights" aria-label="Insights">
+            <p class="dd-title">Company</p>
+            <div class="dd-cols">
+              <a class="dd-link" href="#">Our Story</a>
+              <a class="dd-link" href="#">Our Team</a>
+              <a class="dd-link" href="#">Ecosystem</a>
+              <a class="dd-link" href="#">Newsroom</a>
+              <a class="dd-link" href="#">Careers</a>
+              <a class="dd-link" href="#contact">Contact</a>
+            </div>
+            <a class="dd-foot" href="#insights">Read our Insights &rarr;</a>
+          </div>
+        </div>
+
         <a href="#contact" class="btn btn-primary nav-cta-mobile">Request a Consultation</a>
       </div>
 
