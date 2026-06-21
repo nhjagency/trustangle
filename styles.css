@@ -383,19 +383,46 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .scard p{font-size:13.5px;color:var(--ink-mut)}
 .scard .note{font-size:10.5px;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;margin-top:14px;font-weight:600}
 
-/* ---------- Insights cards ---------- */
-.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
-.acard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
-.acard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.acard .thumb{height:150px;background:linear-gradient(135deg,#0099a8,#16c9b0);position:relative;overflow:hidden}
-.acard:nth-child(2) .thumb{background:linear-gradient(135deg,#067d89,#1fc4cf)}
-.acard:nth-child(3) .thumb{background:linear-gradient(135deg,#0f1e23,#0099a8)}
-.acard .thumb .dots{top:14px;left:14px;width:90px;height:70px;color:rgba(255,255,255,.35)}
-.acard .acard-body{padding:24px}
-.acard .cat{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dk);margin-bottom:12px}
-.acard h3{font-size:18px;line-height:1.3;margin-bottom:14px}
-.acard .rt{font-size:12.5px;color:#9aa6a8}
-.ins-cta{text-align:center;margin-top:44px}
+/* ---------- Insights — blog layout (featured · list · newsletter) ---------- */
+.blog-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.blog-head .eyebrow-wrap{justify-content:flex-start}
+.blog-head .h2{margin:14px 0 0}
+.blog-head .sub{margin-top:12px;max-width:52ch}
+.blog-browse{flex:none}
+.blog-divider{border:0;border-top:1px solid var(--line);margin:30px 0 36px}
+.blog-grid{display:grid;grid-template-columns:1.12fr 1fr .92fr;gap:36px;align-items:start}
+
+/* featured */
+.bmedia{
+  display:block;position:relative;aspect-ratio:1/.84;margin-bottom:20px;overflow:hidden;
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:radial-gradient(var(--line) 1.4px,transparent 1.4px) 0 0/16px 16px, var(--tint);
+}
+.bmedia-ang{position:absolute;left:50%;top:50%;width:34px;height:34px;
+  transform:translate(-50%,-50%) rotate(45deg);
+  border-right:3px solid var(--teal);border-top:3px solid var(--teal);opacity:.55}
+.bmeta{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.bmeta .cat{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dk)}
+.bmeta .rt{font-size:12.5px;color:var(--gray)}
+.bfeat h3{font-size:22px;line-height:1.25}
+.bfeat h3 a:hover,.bitem h3 a:hover{color:var(--teal-dk)}
+
+/* list */
+.blist{display:flex;flex-direction:column}
+.bitem{padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.bitem:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.bitem h3{font-size:18px;line-height:1.3}
+
+/* newsletter card */
+.bnews{background:linear-gradient(160deg,var(--ink-2),var(--ink));color:#fff;border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column;gap:14px}
+.bnews-ico{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;color:#fff}
+.bnews-ico svg{width:22px;height:22px}
+.bnews h3{font-family:var(--disp);font-weight:700;font-size:22px;line-height:1.18}
+.bnews p{font-size:14px;color:#c5d3d5;line-height:1.55}
+.bnews-form{display:flex;gap:6px;margin-top:8px;background:#fff;border-radius:999px;padding:5px}
+.bnews-form input{flex:1;min-width:0;border:0;background:transparent;padding:9px 14px;font:inherit;font-size:14px;color:var(--ink);outline:none}
+.bnews-form input::placeholder{color:#9aa6a8}
+.bnews-form .btn{flex:none;padding:10px 18px}
 
 /* ---------- Vision 2030 panel ---------- */
 .vpanel{
@@ -474,7 +501,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .dd-title{margin:8px 28px 2px}
   .nav-links .dropdown .dd-link{padding:11px 28px 11px 40px;font-size:15px}
   .dd-foot{margin:8px 0 4px;padding:12px 28px 4px}
-  .three,.dual,.acards,.vpanel,.fgrid{grid-template-columns:1fr}
+  .three,.dual,.blog-grid,.vpanel,.fgrid{grid-template-columns:1fr}
   .section{padding:72px 0}
   .panel,.vpanel{padding:44px 26px}
   .ctapanel{padding:56px 26px}
@@ -487,7 +514,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none;transition:none}
-  .btn,.tcard,.icard,.acard,.dcard,.chip{transition:none}
+  .btn,.tcard,.icard,.dcard,.chip{transition:none}
 }
 
 /* ============================================================
