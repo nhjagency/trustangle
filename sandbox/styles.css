@@ -132,17 +132,6 @@ h1{ font-family:var(--font-display); }
   align-items:center;
 }
 
-/* eyebrow badge — "arrow prefix + slash" */
-.hero-badge{
-  display:inline-flex; align-items:center; gap:9px; flex-wrap:wrap;
-  font-family:var(--font-body); font-size:var(--fs-badge);
-  letter-spacing:normal; margin-bottom:var(--space-md);
-}
-.hero-badge-arrow{ color:var(--teal); font-size:15px; font-weight:500; }
-.hero-badge-primary{ color:var(--navy); font-weight:500; }
-.hero-badge-slash{ color:var(--faint); font-weight:400; }
-.hero-badge-secondary{ color:var(--muted); font-weight:400; }
-
 .hero h1{
   font-size:var(--fs-h1); font-weight:800;
   letter-spacing:-.035em; line-height:var(--lh-tight);
