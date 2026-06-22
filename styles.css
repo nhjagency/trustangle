@@ -367,10 +367,10 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---------- Industries — segmented sector pill bar (scrollable) + case card ---------- */
 .ind-tabs{
-  display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;
-  margin:30px auto 0;padding:6px;width:max-content;max-width:100%;
+  display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;
+  margin:30px auto 0;padding:8px 12px;width:max-content;max-width:100%;
   background:#fff;border:1px solid var(--line);border-radius:999px;
-  scrollbar-width:none;scroll-snap-type:x proximity;
+  scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding-inline:12px;
 }
 .ind-tabs::-webkit-scrollbar{display:none}
 .ind-tab{
@@ -379,11 +379,10 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   font-family:var(--disp);font-weight:600;font-size:14px;color:var(--ink-mut);
   padding:10px 16px;border-radius:999px;transition:background .15s ease,color .15s ease;
 }
-.ind-tab .ang{flex:none}
-.ind-tab-ic{display:none}
+.ind-tab-ic{width:18px;height:18px;flex:none;color:var(--teal)}
 .ind-tab:hover{color:var(--ink)}
 .ind-tab.is-active{background:var(--teal-dk);color:#fff}
-.ind-tab.is-active .ang{border-color:#fff}
+.ind-tab.is-active .ind-tab-ic{color:#fff}
 .ind-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 
 .ind-card{
@@ -391,8 +390,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   background:#fff;border:0.5px solid var(--line);border-radius:20px;padding:clamp(24px,3vw,38px);
 }
 .ind-left{display:flex;flex-direction:column;align-items:flex-start}
-.ind-tile{width:54px;height:54px;border-radius:14px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.ind-tile svg{width:26px;height:26px}
 .ind-name{font-family:var(--disp);font-weight:700;font-size:24px;color:var(--ink);margin-bottom:12px}
 .ind-brief{font-size:15px;color:var(--ink-mut);line-height:1.6;margin-bottom:22px}
 .ind-explore{margin-top:auto}

@@ -133,7 +133,6 @@
   var indTabs = Array.prototype.slice.call(document.querySelectorAll(".ind-tab"));
   var indCard = document.getElementById("ind-card");
   if (indTabs.length && indCard) {
-    var indTile = indCard.querySelector(".ind-tile");
     var indName = indCard.querySelector(".ind-name");
     var indBrief = indCard.querySelector(".ind-brief");
     var indExplore = indCard.querySelector(".ind-explore");
@@ -154,13 +153,6 @@
       indExplore.setAttribute("href", tab.getAttribute("data-href"));
       indExplore.innerHTML = "Explore " + name + " &rarr;";
       indSector.textContent = plain;
-      var icon = tab.querySelector(".ind-tab-ic");
-      if (icon) {
-        var ic = icon.cloneNode(true);
-        ic.removeAttribute("class");   // inherit the tile's white, not the tab's teal
-        indTile.innerHTML = "";
-        indTile.appendChild(ic);
-      }
       // restrained fade on swap
       indCard.classList.remove("is-swapping");
       void indCard.offsetWidth;
