@@ -254,10 +254,11 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .pmarks:hover .pmarks-track{animation-play-state:paused}
 .pmarks span{font-family:var(--disp);font-weight:700;font-size:19px;color:#aab4b6;white-space:nowrap;transition:color .2s ease}
 .pmarks span:hover{color:var(--ink)}
+.pmark-logo{height:30px;width:auto;flex:none;object-fit:contain;display:block}
 @keyframes pmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){
   .pmarks-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:18px 46px}
-  .pmarks-track span[aria-hidden]{display:none}
+  .pmarks-track span[aria-hidden],.pmarks-track img[aria-hidden]{display:none}
 }
 /* ---------- Testimonials — quote-led placeholder marquee ---------- */
 .testimonials .center{margin-bottom:8px}
