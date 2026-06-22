@@ -174,21 +174,20 @@ white / `--bg-alt`. Section intros (eyebrow + H2 + sub) are centred, BRIX-style.
   from a real engagement”, small note “to be sourced & approved”.
 - ⚠ **Do not fill these with numbers.** Real, approved metrics only, phrased directionally.
 
-### 7.8b References  *(two-row horizontal marquee — real, client-provided quotes)*
-- **Eyebrow:** References  ·  **H2:** The work, in our clients’ words.
-- **Sub:** Reference quotes from senior teams we have worked with across the Kingdom — in
+### 7.8b Testimonials  *(single-line marquee — real, client-provided quotes)*
+- **Eyebrow:** Testimonials  ·  **H2:** In our customers’ words.
+- **Sub:** References from teams we’ve delivered for across the Kingdom and the region — in
   hospitality, food and beverage, retail, and logistics.
-- **Two stacked rows** of wide, short (landscape) cards drifting slowly in **opposite** directions;
-  each row’s card set is duplicated once for a seamless loop. **Pause on hover/focus.**
-- Each card: a small **teal angle glyph** (the only marker — still **no avatar, no @handle, no
-  X/social icon, no logo**), a quote **clamped to 2 lines**, and a `--gray` attribution
-  **name · role, company**.
-- Quotes are faithful **excerpts** of the client-provided testimonials, trimmed to fit two lines
-  and to respect the forbidden-vocabulary rule (no *transform/revolutionize/disrupt/seamless*).
-- White bg, `--radius-lg`, **0.5px solid `--line`** border (clean, not dashed), comfortable padding.
-- **Accessibility:** cards are tabbable with visible focus; `prefers-reduced-motion` disables the
-  auto-scroll (static, swipeable rows); ≤880px becomes a one-and-a-bit swipeable scroller.
-- ⚠ Attribution is shown only with client approval; the Arabic testimonial is held for the RTL build.
+- A single horizontal **row of cards** drifting left in a slow, continuous marquee; the card set is
+  duplicated once for a seamless loop. **Pause on hover/focus.**
+- Each card: a teal **initials avatar** (monogram — no photo), name + role, a teal quote mark, the
+  quote, and the **client name as a text wordmark** (`.tlogo`) standing in for the logo.
+- ⚠ **Client logos are text wordmarks only** until each client gives written consent and supplies a
+  real logo file — same rule as the partner strip. A `--gray` consent note sits under the strip.
+- Quotes are faithful **excerpts** of the client-provided testimonials, trimmed to respect the
+  forbidden-vocabulary rule (no *transform/revolutionize/disrupt/seamless*).
+- **Accessibility:** `prefers-reduced-motion` disables the auto-scroll (static, swipeable row);
+  ≤560px narrows the cards. The Arabic testimonial is held for the RTL build.
 
 ### 7.9 Insights  *(3 article cards)*
 - **Eyebrow:** Insights  ·  **H2:** How we think, in writing.
@@ -278,8 +277,9 @@ delivers**, per `REPOSITIONPROMPT.md`. Updated section order (two sections added
 7. Technologies — chips deep-link to `/technologies/*` spokes.
 8. **Ecosystem — "The ecosystem behind the advice"** *(NEW, `#ecosystem`)* — six capability cards
    (Business-Unit categories). No company names, no logos, no counts.
-9. Method · Outcomes (placeholders) · **References — two-row marquee of client quotes, attributed
-   name · role · company, no avatars/@handles/logos** · Insights · Vision 2030.
+9. Method · Outcomes (placeholders) · **Testimonials — single-row marquee of client quotes (initials
+   avatar, name · role, client name as a text wordmark; real logos only with written consent)** ·
+   Insights · Vision 2030.
 10. Final CTA — adds the **paid-diagnostic** "how a consultation works" block (fee = PLACEHOLDER).
 
 SEO: `Organization` + `ProfessionalService` JSON-LD, hreflang (en/ar/x-default), Open Graph + Twitter

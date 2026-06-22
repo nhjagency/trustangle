@@ -275,57 +275,52 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 }
 .consent-note{text-align:center;font-size:11.5px;color:var(--gray);margin-top:26px;font-style:italic}
 
-/* ---------- References — horizontal placeholder strip (marquee) ---------- */
-.references .center{margin-bottom:8px}
+/* ---------- Testimonials — single-line marquee (avatar cards) ---------- */
+.testimonials .center{margin-bottom:8px}
 .tmarquee{
   margin-top:40px;overflow:hidden;
-  display:flex;flex-direction:column;gap:22px;   /* two stacked rows */
   /* same edge fade as the partners strip */
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
 .tmarquee-track{
   display:flex;width:max-content;gap:22px;align-items:stretch;
-  padding:0 28px;
-  animation:tmarquee 80s linear infinite;
+  padding:6px 28px;
+  animation:tmarquee 90s linear infinite;
 }
-.tmarquee-track--rev{animation-direction:reverse}   /* second row drifts the other way */
 /* pause when a user hovers or tabs into the rail */
 .tmarquee:hover .tmarquee-track,
 .tmarquee:focus-within .tmarquee-track{animation-play-state:paused}
 @keyframes tmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* wide, short, clean-bordered placeholder card */
-.rcard{
-  flex:0 0 420px;width:420px;
-  background:#fff;border:0.5px solid var(--line);border-radius:var(--radius-lg);
-  padding:28px 30px;
+.tmcard{
+  flex:0 0 360px;width:360px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:22px 24px;
   display:flex;flex-direction:column;gap:14px;
 }
-.rcard:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
-.rcard-ang{
-  width:14px;height:14px;flex:none;
-  border-right:2px solid var(--teal);border-top:2px solid var(--teal);
-  transform:rotate(45deg);
+.tcard-top{display:flex;align-items:flex-start;gap:12px}
+.tavatar{
+  flex:none;width:42px;height:42px;border-radius:50%;
+  background:var(--teal-lt);color:var(--teal-dk);
+  font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.02em;
+  display:flex;align-items:center;justify-content:center;
 }
-.rcard-quote{
-  font-family:var(--disp);font-weight:600;font-size:16px;line-height:1.45;color:var(--ink);
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; /* max 2 lines */
+.tmeta{display:flex;flex-direction:column;min-width:0;flex:1}
+.tname{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);line-height:1.2}
+.trole{font-size:12.5px;color:var(--gray);line-height:1.3;margin-top:2px}
+.tmark{font-family:var(--disp);font-weight:800;font-size:34px;color:var(--teal);line-height:1}
+.tquote{font-size:14.5px;line-height:1.55;color:var(--ink-mut)}
+/* client logo — text wordmark stand-in until real logos + written consent */
+.tlogo{
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--line);
+  font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.01em;color:var(--ink);
 }
-.rcard-attr{font-size:13px;color:var(--gray);line-height:1.4}
-.rcard-name{font-family:var(--disp);font-weight:700;color:var(--ink)}
-
-/* no auto-scroll under reduced motion — static, swipeable row */
+.references-note{margin-top:26px}
 @media(prefers-reduced-motion:reduce){
   .tmarquee{overflow-x:auto}
   .tmarquee-track{animation:none}
 }
-/* ≤880px: swipeable, one-and-a-bit cards visible */
-@media(max-width:880px){
-  .tmarquee{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
-  .tmarquee-track{animation:none}
-  .rcard{flex-basis:78vw;width:78vw;max-width:420px;scroll-snap-align:start}
-}
+@media(max-width:560px){ .tmcard{flex-basis:300px;width:300px} }
 
 /* ---------- Big tinted panel (V3 "Features" motif) ---------- */
 .panel{
