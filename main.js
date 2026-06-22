@@ -98,6 +98,36 @@
       });
     });
   }
+
+  /* ---------- "How we help" tabs (ARIA tablist + arrow keys) ---------- */
+  var ftabs = Array.prototype.slice.call(document.querySelectorAll(".ftab"));
+  if (ftabs.length) {
+    var fpanels = document.querySelectorAll(".fpanel");
+    var selectTab = function (tab) {
+      ftabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+      });
+      fpanels.forEach(function (pnl) {
+        var on = pnl.id === tab.getAttribute("aria-controls");
+        pnl.classList.toggle("is-active", on);
+        pnl.hidden = !on;
+      });
+    };
+    ftabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { selectTab(tab); });
+      tab.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var next = ftabs[(i + d + ftabs.length) % ftabs.length];
+        next.focus();
+        selectTab(next);
+      });
+    });
+  }
 })();
 
 /* ============================================================

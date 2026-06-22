@@ -311,6 +311,43 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   -webkit-mask-image:linear-gradient(225deg,#000,transparent);mask-image:linear-gradient(225deg,#000,transparent)}
 .panel .center,.panel .three{position:relative;z-index:1}
 
+/* ---------- "How we help" — tabbed feature panel (V3 re-skin) ---------- */
+.feature-panel .ftabs,.feature-panel .fbody,.feature-panel .fcta{position:relative;z-index:1}
+.ftabs{
+  display:flex;flex-wrap:wrap;gap:4px;justify-content:center;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:6px;margin:30px auto 0;width:max-content;max-width:100%;
+}
+.ftab{
+  display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;cursor:pointer;
+  font-family:var(--disp);font-weight:600;font-size:14px;color:var(--ink-mut);
+  padding:10px 16px;border-radius:999px;transition:background .15s ease,color .15s ease;
+}
+.ftab:hover{color:var(--ink)}
+.ftab.is-active{background:var(--teal);color:#fff}
+.ftab.is-active .ang{border-color:#fff}
+.ftab:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.fbody{margin-top:28px}
+.fpanel{
+  display:none;grid-template-columns:1fr 1fr;gap:36px;align-items:center;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);padding:clamp(26px,3vw,40px);
+}
+.fpanel.is-active{display:grid}
+.fpanel-text .ic{width:46px;height:46px;border-radius:12px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.fpanel-text h3{font-size:22px;margin-bottom:10px}
+.fpanel-text p{font-size:15px;color:var(--ink-mut);line-height:1.6;margin-bottom:18px}
+.fpanel-vis{background:var(--bg-alt);border:1px solid var(--line);border-radius:var(--radius);padding:28px;align-self:stretch;display:flex;align-items:center}
+.fpoints{list-style:none;display:grid;gap:14px;width:100%}
+.fpoints li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink);line-height:1.5}
+.fpoints .ang{margin-top:5px}
+.fcta{text-align:center;margin-top:28px}
+@media(max-width:760px){
+  .ftabs{border-radius:var(--radius);width:auto}
+  .ftab{flex:1 1 auto;justify-content:center}
+  .fpanel{grid-template-columns:1fr;gap:24px}
+}
+
 /* 3-card positioning row */
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
 .tcard{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:box-shadow .2s ease,transform .2s ease}
