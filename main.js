@@ -56,7 +56,7 @@
   }
 
   /* ---------- Nav dropdowns ---------- */
-  var triggers = document.querySelectorAll(".nav-trigger");
+  var triggers = document.querySelectorAll(".nav-trigger[aria-controls]");
 
   function closeDropdowns(except) {
     triggers.forEach(function (t) {

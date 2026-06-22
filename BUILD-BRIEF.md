@@ -174,20 +174,19 @@ white / `--bg-alt`. Section intros (eyebrow + H2 + sub) are centred, BRIX-style.
   from a real engagement”, small note “to be sourced & approved”.
 - ⚠ **Do not fill these with numbers.** Real, approved metrics only, phrased directionally.
 
-### 7.8b Testimonials  *(single-line marquee — real, client-provided quotes)*
+### 7.8b Testimonials  *(anonymised quote-led placeholder marquee — Option 1)*
 - **Eyebrow:** Testimonials  ·  **H2:** In our customers’ words.
-- **Sub:** References from teams we’ve delivered for across the Kingdom and the region — in
-  hospitality, food and beverage, retail, and logistics.
-- A single horizontal **row of cards** drifting left in a slow, continuous marquee; the card set is
-  duplicated once for a seamless loop. **Pause on hover/focus.**
-- Each card: a teal **initials avatar** (monogram — no photo), name + role, a teal quote mark, the
-  quote, and the **client name as a text wordmark** (`.tlogo`) standing in for the logo.
-- ⚠ **Client logos are text wordmarks only** until each client gives written consent and supplies a
-  real logo file — same rule as the partner strip. A `--gray` consent note sits under the strip.
-- Quotes are faithful **excerpts** of the client-provided testimonials, trimmed to respect the
-  forbidden-vocabulary rule (no *transform/revolutionize/disrupt/seamless*).
+- **Sub:** Client references, anonymised by role and sector until each customer confirms attribution
+  for the new site.
+- A single horizontal **row of wide, short (landscape) cards** drifting left in a slow marquee; the
+  set is duplicated once for a seamless loop. **Pause on hover/focus.**
+- Each card is **quote-led with NO avatar**: a teal angle glyph + the placeholder line
+  **“— Approved customer reference, to be sourced.”** No names, companies, titles, or monograms.
+- ⚠ **Named customers must not appear without written approval on file** for the new site. When an
+  approval exists, drop that quote in, keep it anonymised by role/sector unless attribution is also
+  approved — no avatar, no @handle, no logo, no layout change.
 - **Accessibility:** `prefers-reduced-motion` disables the auto-scroll (static, swipeable row);
-  ≤560px narrows the cards. The Arabic testimonial is held for the RTL build.
+  ≤880px is a one-and-a-bit swipeable scroller. The Arabic testimonial is held for the RTL build.
 
 ### 7.9 Insights  *(3 article cards)*
 - **Eyebrow:** Insights  ·  **H2:** How we think, in writing.
@@ -275,11 +274,12 @@ delivers**, per `REPOSITIONPROMPT.md`. Updated section order (two sections added
 6. Industries — each card now reveals **"the decision we help with"** on hover/focus (always on mobile);
    cards deep-link to `/industries/*` spokes.
 7. Technologies — chips deep-link to `/technologies/*` spokes.
-8. **Ecosystem — "The ecosystem behind the advice"** *(NEW, `#ecosystem`)* — six capability cards
-   (Business-Unit categories). No company names, no logos, no counts.
-9. Method · Outcomes (placeholders) · **Testimonials — single-row marquee of client quotes (initials
-   avatar, name · role, client name as a text wordmark; real logos only with written consent)** ·
-   Insights · Vision 2030.
+8. **Ecosystem** *(`#ecosystem`)* — the **proof layer**, text only: trustangle owns and operates an
+   ecosystem of specialized companies, so advice and delivery answer to one standard. No capability
+   cards (those live in Technologies), no company names, no logos, no counts.
+9. Method · Outcomes (placeholders) · **Testimonials — anonymised quote-led placeholder marquee, no
+   named customers without written approval** · Insights (samples, no fabricated read-times) ·
+   Vision 2030.
 10. Final CTA — adds the **paid-diagnostic** "how a consultation works" block (fee = PLACEHOLDER).
 
 SEO: `Organization` + `ProfessionalService` JSON-LD, hreflang (en/ar/x-default), Open Graph + Twitter
