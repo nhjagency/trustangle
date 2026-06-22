@@ -632,13 +632,23 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 /* ===== Section 1 hero: text wordmarks + three-door router ===== */
 /* Uniform grayscale logo strip (full colour on hover); brands without a
    logo file render as matching muted text wordmarks. */
-.pstrip{list-style:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 44px;margin-top:8px}
-.pstrip-item{display:flex;align-items:center;justify-content:center;min-height:30px}
+.pscroll{overflow:hidden;margin-top:10px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.pscroll-track{list-style:none;display:flex;align-items:center;gap:0 56px;width:max-content;animation:pscroll 40s linear infinite}
+.pscroll:hover .pscroll-track,.pscroll:focus-within .pscroll-track{animation-play-state:paused}
+@keyframes pscroll{to{transform:translateX(-50%)}}
+.pstrip-item{display:flex;align-items:center;justify-content:center;min-height:30px;flex:none}
 .plogo{height:26px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .25s ease,opacity .25s ease}
 /* logos shipped as 16:9 images with internal whitespace — sized up so the mark reads at the same weight as tight wordmarks */
 .plogo--pad{height:50px;max-width:96px}
 .pstrip-item:hover .plogo{filter:grayscale(0);opacity:1}
 .pstrip-text{font-family:var(--disp);font-weight:700;font-size:18px;color:#9aa0a4;letter-spacing:.01em;transition:color .2s ease}
 .pstrip-text:hover{color:var(--ink)}
-@media(prefers-reduced-motion:reduce){.plogo,.pstrip-text{transition:none}}
+@media(prefers-reduced-motion:reduce){
+  .plogo,.pstrip-text{transition:none}
+  .pscroll{-webkit-mask-image:none;mask-image:none}
+  .pscroll-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:18px 44px}
+  .pscroll-track [aria-hidden="true"]{display:none}
+}
 
