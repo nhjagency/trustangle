@@ -227,7 +227,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .hero h1 .em{color:var(--teal)}
 .hero .sub{font-size:18.5px;color:var(--ink-mut);max-width:520px;margin-bottom:26px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero .micro{margin-top:18px;font-size:13.5px;color:var(--gray)}
 
 /* Hero visual — V3 framed treatment: light dot-grid panel framing a clean
    method card (no terminal chrome / fake UI) */
