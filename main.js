@@ -128,6 +128,57 @@
       });
     });
   }
+
+  /* ---------- Industries sector filter (tablist + swapping case card) ---------- */
+  var indTabs = Array.prototype.slice.call(document.querySelectorAll(".ind-tab"));
+  var indCard = document.getElementById("ind-card");
+  if (indTabs.length && indCard) {
+    var indTile = indCard.querySelector(".ind-tile");
+    var indName = indCard.querySelector(".ind-name");
+    var indBrief = indCard.querySelector(".ind-brief");
+    var indExplore = indCard.querySelector(".ind-explore");
+    var indSector = indCard.querySelector(".ind-case-sector");
+
+    var selectSector = function (tab, focus) {
+      indTabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+      });
+      var name = tab.getAttribute("data-name");
+      var plain = name.replace(/&amp;/g, "&");
+      indCard.setAttribute("aria-labelledby", tab.id);
+      indName.textContent = plain;
+      indBrief.textContent = tab.getAttribute("data-brief");
+      indExplore.setAttribute("href", tab.getAttribute("data-href"));
+      indExplore.innerHTML = "Explore " + name + " &rarr;";
+      indSector.textContent = plain;
+      var icon = tab.querySelector(".ind-tab-ic");
+      if (icon) {
+        var ic = icon.cloneNode(true);
+        ic.removeAttribute("class");   // inherit the tile's white, not the tab's teal
+        indTile.innerHTML = "";
+        indTile.appendChild(ic);
+      }
+      // restrained fade on swap
+      indCard.classList.remove("is-swapping");
+      void indCard.offsetWidth;
+      indCard.classList.add("is-swapping");
+      tab.scrollIntoView({ inline: "center", block: "nearest" });
+      if (focus) tab.focus();
+    };
+
+    indTabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { selectSector(tab, false); });
+      tab.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        selectSector(indTabs[(i + d + indTabs.length) % indTabs.length], true);
+      });
+    });
+  }
 })();
 
 /* ============================================================

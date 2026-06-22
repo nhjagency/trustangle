@@ -366,13 +366,53 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .dcard p{color:var(--ink-mut);font-size:15.5px;margin-bottom:22px}
 
 /* ---------- Industries grid (easy to add/trim) ---------- */
-.grid-ind{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
-.icard{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
-.icard:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:var(--shadow)}
-.icard .chip-ic{width:38px;height:38px;border-radius:10px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.icard h3{font-size:17px;margin-bottom:8px}
-.icard p{font-size:13.5px;color:var(--ink-mut);line-height:1.5}
-.ind-cta{text-align:center;margin-top:44px}
+/* ---------- Industries — sector scroller (one line) + case card ---------- */
+.ind-tabs{
+  display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;margin:30px 0 0;padding:4px;
+  scrollbar-width:none;scroll-snap-type:x proximity;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
+}
+.ind-tabs::-webkit-scrollbar{display:none}
+.ind-tab{
+  flex:0 0 auto;scroll-snap-align:start;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  border:1px solid var(--line);background:#fff;cursor:pointer;
+  font-family:var(--disp);font-weight:500;font-size:14px;color:var(--ink-mut);
+  padding:10px 16px;border-radius:999px;transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.ind-tab-ic{width:18px;height:18px;flex:none;color:var(--teal)}
+.ind-tab:hover{color:var(--ink);border-color:var(--teal-lt)}
+.ind-tab.is-active{background:var(--teal-dk);border-color:var(--teal-dk);color:#fff;font-weight:600}
+.ind-tab.is-active .ind-tab-ic{color:#fff}
+.ind-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+.ind-card{
+  display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:stretch;margin-top:22px;
+  background:#fff;border:0.5px solid var(--line);border-radius:20px;padding:clamp(24px,3vw,38px);
+}
+.ind-left{display:flex;flex-direction:column;align-items:flex-start}
+.ind-tile{width:54px;height:54px;border-radius:14px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.ind-tile svg{width:26px;height:26px}
+.ind-name{font-family:var(--disp);font-weight:700;font-size:24px;color:var(--ink);margin-bottom:12px}
+.ind-brief{font-size:15px;color:var(--ink-mut);line-height:1.6;margin-bottom:22px}
+.ind-explore{margin-top:auto}
+.ind-right{display:flex}
+.ind-case{
+  flex:1;min-height:240px;border-radius:16px;background:#f1f8f9;
+  background-image:radial-gradient(circle,rgba(0,153,168,.10) 1px,transparent 1px);
+  background-size:16px 16px;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+}
+.ind-case-slot{
+  width:100%;min-height:184px;border:1.5px dashed #b9d6da;border-radius:12px;background:rgba(255,255,255,.45);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px;
+}
+.ind-case-label{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--teal-dk)}
+.ind-case-note{font-size:12.5px;color:var(--gray);font-style:italic}
+@keyframes indfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.ind-card.is-swapping{animation:indfade .25s ease}
+@media(max-width:600px){ .ind-card{grid-template-columns:1fr;gap:22px} }
+@media(prefers-reduced-motion:reduce){ .ind-card.is-swapping{animation:none} }
 
 /* ---------- Technologies pill cloud ---------- */
 .chips{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:30px}
@@ -492,7 +532,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 @media(max-width:980px){
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-copy{max-width:none}
-  .grid-ind{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .fgrid{grid-template-columns:1fr 1fr;gap:32px 24px}
   .fgrid>div:first-child{grid-column:1/-1}
@@ -531,13 +570,13 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .fbar{flex-direction:column;gap:8px}
 }
 @media(max-width:560px){
-  .grid-ind,.steps,.stats{grid-template-columns:1fr}
+  .steps,.stats{grid-template-columns:1fr}
   .hero-visual{padding:24px;min-height:0}
 }
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none;transition:none}
-  .btn,.tcard,.icard,.dcard,.chip{transition:none}
+  .btn,.tcard,.dcard,.chip{transition:none}
 }
 
 /* ============================================================
@@ -572,15 +611,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 }
 .pullquote .ang{margin-top:.45em;width:12px;height:12px;flex:none}
 
-/* 2.5 Industries — decision reveal (card is now an anchor) */
-.icard{display:block;color:inherit}
-.icard .decision{
-  color:var(--teal-dk);font-weight:600;font-size:13px;line-height:1.45;
-  margin-top:0;max-height:0;opacity:0;overflow:hidden;
-  transition:max-height .3s ease,opacity .3s ease,margin-top .3s ease;
-}
-.icard:hover .decision,.icard:focus-visible .decision,.icard:focus-within .decision{max-height:96px;opacity:1;margin-top:12px}
-
 /* 2.7 Final CTA — paid diagnostic block (on dark panel) */
 .how-it-works{list-style:none;max-width:640px;margin:8px auto 26px;text-align:left;display:grid;gap:12px}
 .how-it-works li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.85);font-size:14.5px;line-height:1.5}
@@ -588,8 +618,4 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 @media(max-width:880px){
   .pov-grid{grid-template-columns:1fr;gap:26px}
-  .icard .decision{max-height:none;opacity:1;margin-top:12px}  /* always visible on mobile */
-}
-@media(prefers-reduced-motion:reduce){
-  .icard .decision{transition:none}
 }
