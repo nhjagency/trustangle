@@ -253,14 +253,14 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 [data-held]{display:none}
 
 /* ===== Section 2: Positioning (left-aligned tinted panel) ===== */
-.pos-panel{position:relative;overflow:hidden;background:#eef4f7;border:.5px solid #e1e9ec;border-radius:18px;padding:28px}
+.pos-panel{position:relative;overflow:hidden;background:#eef4f7;border:.5px solid #e1e9ec;border-radius:18px;padding:26px}
 .pos-dots{top:18px;right:18px;left:auto;width:132px;height:96px;color:rgba(0,153,168,.18);
   -webkit-mask-image:linear-gradient(225deg,#000,transparent 75%);mask-image:linear-gradient(225deg,#000,transparent 75%)}
 .pos-eyebrow{position:relative;z-index:1;margin-bottom:18px}
 .pos-h2{position:relative;z-index:1;font-family:var(--disp);font-weight:800;font-size:clamp(24px,3vw,30px);line-height:1.1;letter-spacing:-.025em;color:var(--ink)}
 .pos-teal{color:var(--teal-dk)}
-.pos-lead{position:relative;z-index:1;color:var(--ink-mut);font-size:16px;line-height:1.6;max-width:64ch;margin-top:14px}
-.pos-diff{position:relative;z-index:1;font-family:var(--disp);font-weight:600;font-size:16px;line-height:1.55;color:var(--ink);max-width:64ch;margin-top:12px}
+.pos-lead{position:relative;z-index:1;color:var(--ink-mut);font-size:13px;line-height:1.6;max-width:70ch;margin-top:14px}
+.pos-diff{position:relative;z-index:1;font-family:var(--disp);font-weight:600;font-size:13px;line-height:1.55;color:var(--ink);max-width:70ch;margin-top:12px}
 .qa-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
 .qa-card{background:#fff;border:.5px solid #e3ebee;border-radius:12px;padding:15px}
 .qa-chip{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--teal-lt);margin-bottom:11px}
