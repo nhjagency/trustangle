@@ -235,12 +235,12 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 /* Hero advisory router */
 .router{margin-top:26px}
 .router-label{display:block;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--gray);margin-bottom:12px}
-.router-chips{display:flex;flex-wrap:wrap;gap:10px}
-.rchip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);
-  font-family:var(--disp);font-weight:600;font-size:13px;color:var(--ink);padding:9px 16px;border-radius:999px;
-  transition:border-color .2s ease,color .2s ease,transform .2s ease}
+.router-chips{display:flex;flex-wrap:wrap;gap:12px 26px}
+.rchip{display:inline-flex;align-items:center;gap:9px;background:transparent;border:0;box-shadow:none;
+  font-family:var(--disp);font-weight:600;font-size:13.5px;color:var(--ink);padding:4px 0;
+  transition:color .2s ease,gap .2s ease}
 .rchip::before{content:"";width:7px;height:7px;border-right:2px solid var(--teal);border-top:2px solid var(--teal);transform:rotate(45deg);display:inline-block;flex:none}
-.rchip:hover{border-color:var(--teal);color:var(--teal-dk);transform:translateY(-1px)}
+.rchip:hover{color:var(--teal-dk);gap:13px}
 
 /* Partner strip inside the hero */
 .hero-partners{margin-top:48px;border-top:1px solid var(--line);padding-top:30px}
@@ -634,13 +634,3 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .pmarks-text li{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--ink-mut);white-space:nowrap}
 .pmarks-text li:not(:last-child)::after{content:"\00B7";margin:0 13px;color:var(--gray)}
 
-/* Router doors: intent label over destination */
-.router-chips{list-style:none}
-.router-chips li{display:flex}
-.rchip{flex-direction:column;align-items:flex-start;gap:3px;padding:11px 16px;line-height:1.3}
-.rchip::before{display:none}
-.rchip-from{font-family:var(--disp);font-weight:600;font-size:12px;color:var(--gray)}
-.rchip-to{font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--teal-dk)}
-.rchip:hover{border-color:var(--teal);transform:translateY(-1px)}
-.rchip:hover .rchip-to{color:var(--teal)}
-@media(max-width:560px){ .router-chips li,.rchip{width:100%} }
