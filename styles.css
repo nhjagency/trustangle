@@ -630,7 +630,15 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 }
 
 /* ===== Section 1 hero: text wordmarks + three-door router ===== */
-.pmarks-text{list-style:none;display:flex;flex-wrap:wrap;align-items:center;margin-top:14px}
-.pmarks-text li{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--ink-mut);white-space:nowrap}
-.pmarks-text li:not(:last-child)::after{content:"\00B7";margin:0 13px;color:var(--gray)}
+/* Uniform grayscale logo strip (full colour on hover); brands without a
+   logo file render as matching muted text wordmarks. */
+.pstrip{list-style:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 44px;margin-top:8px}
+.pstrip-item{display:flex;align-items:center;justify-content:center;min-height:30px}
+.plogo{height:26px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .25s ease,opacity .25s ease}
+/* logos shipped as 16:9 images with internal whitespace — sized up so the mark reads at the same weight as tight wordmarks */
+.plogo--pad{height:50px;max-width:96px}
+.pstrip-item:hover .plogo{filter:grayscale(0);opacity:1}
+.pstrip-text{font-family:var(--disp);font-weight:700;font-size:18px;color:#9aa0a4;letter-spacing:.01em;transition:color .2s ease}
+.pstrip-text:hover{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.plogo,.pstrip-text{transition:none}}
 
