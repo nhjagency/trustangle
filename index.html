@@ -382,26 +382,33 @@
     </div>
   </section>
 
-  <!-- 6. Point of view (POV video + insights teasers) -->
-  <section class="section section--alt" id="insights" aria-labelledby="pov-title">
+  <!-- 6. Point of view (cinematic film banner) -->
+  <section class="section section--alt" id="point-of-view" aria-labelledby="pov-title">
     <div class="wrap reveal">
-      <div class="eyebrow-wrap"><span class="pill"><span class="ang"></span>Point of view</span></div>
-      <div class="pov-grid">
-        <div class="pov-frame">
-          <video class="pov-video" controls preload="none" poster="PLACEHOLDER-pov-poster.jpg" aria-label="trustangle point of view (to be filmed)">
-            <source src="PLACEHOLDER-pov.mp4" type="video/mp4">
-            Your browser does not support the video element.
-          </video>
-        </div>
-        <div class="pov-copy">
-          <h2 class="pullquote" id="pov-title"><span class="ang" aria-hidden="true"></span>Who governs the platform after it ships?</h2>
-          <p class="pov-speaker">PLACEHOLDER: partner name and role (to be filmed &amp; approved)</p>
-          <p class="pov-invite">Bring us the decision you are weighing.</p>
-          <a href="#contact" class="link-mono">Request a Consultation &rarr;</a>
+      <div class="film">
+        <span class="film-glow" aria-hidden="true"></span>
+        <span class="film-angle" aria-hidden="true"></span>
+        <div class="film-inner">
+          <div class="film-text">
+            <p class="film-label">Featured film &middot; Point of view</p>
+            <h2 class="film-h2" id="pov-title">The risk is rarely the technology. It is <span class="film-teal">the second implementation</span>, the one that follows a first that missed its timeline.</h2>
+            <p class="film-sub">A short film on the question that outlasts the licence: who governs the platform after it ships?</p>
+            <p class="film-watch">
+              <a class="film-watch-link" href="{{FILM_URL}}" aria-disabled="true" aria-label="Watch the film, Who governs the platform after it ships, in production">Watch the film &rarr;</a>
+              <span class="film-cap">In production &middot; speaker to be confirmed</span>
+            </p>
+          </div>
+          <div class="film-play" aria-hidden="true">
+            <span class="film-ring"><span class="film-btn"></span></span>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <hr class="blog-divider">
+  <!-- Insights (moved from Point of view; to be restyled in a later pass) -->
+  <section class="section" id="insights" aria-labelledby="ins-title">
+    <div class="wrap reveal">
       <div class="blog-head">
         <div>
           <h3 class="h2" id="ins-title">How we think, in writing.</h3>
