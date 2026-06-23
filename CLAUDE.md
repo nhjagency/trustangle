@@ -16,12 +16,16 @@ node qa/brand-lint.mjs            # defaults to ./index.html
 node qa/brand-lint.mjs <file>     # lint a specific (e.g. bundled) file
 # exit 0 = clean, exit 1 = violations (prints each issue)
 
+# Unit tests — Node's built-in runner, no deps. Target the test files only
+# (do NOT run `node --test qa/`: it would also execute brand-lint.mjs).
+node --test qa/*.test.mjs
+
 # Preview: just open index.html in a browser. Asset paths are relative,
 # so it works from file:// (the /industries/* and /technologies/* spoke
 # links 404 locally — those pages are not built yet, expected).
 ```
 
-There is no test suite. "Tests" = `brand-lint` passing **plus** the manual QA checklist in each section spec (em dashes, slugs, heading order, AA contrast, responsive at ≤880px).
+"Tests" = `brand-lint` passing, the `qa/*.test.mjs` unit tests passing, **plus** the manual QA checklist in each section spec (em dashes, slugs, heading order, AA contrast, responsive at ≤880px). The `qa/*.test.mjs` files assert structural facts about the built `index.html` (e.g. the feedback button's mailto/aria/dash rules) using `node:test` + `node:assert` only.
 
 ### What `qa/brand-lint.mjs` actually checks
 It strips scripts/styles/comments/tags to visible text, then flags:

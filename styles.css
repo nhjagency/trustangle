@@ -672,3 +672,18 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .pscroll-track [aria-hidden="true"]{display:none}
 }
 
+
+/* ===== Floating feedback button ===== */
+.feedback-btn{
+  position:fixed;right:22px;bottom:22px;z-index:40;
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--teal);color:#fff;
+  font-family:var(--disp);font-weight:600;font-size:14px;
+  padding:11px 18px;border-radius:999px;
+  box-shadow:0 12px 26px -12px rgba(0,153,168,.65);
+  transition:background .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.feedback-btn:hover{background:var(--teal-dk);transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(0,153,168,.7)}
+.feedback-btn .ang{border-color:#fff;width:8px;height:8px;margin-top:-1px}
+@media(prefers-reduced-motion:reduce){.feedback-btn{transition:none}.feedback-btn:hover{transform:none}}
+@media(max-width:560px){.feedback-btn{right:14px;bottom:14px;padding:10px 15px;font-size:13px}}
