@@ -406,41 +406,56 @@
     </div>
   </section>
 
-  <!-- Insights (moved from Point of view; to be restyled in a later pass) -->
+  <!-- Insights -->
   <section class="section" id="insights" aria-labelledby="ins-title">
     <div class="wrap reveal">
-      <div class="blog-head">
-        <div>
-          <h3 class="h2" id="ins-title">How we think, in writing.</h3>
-          <p class="sub">Our perspective on advisory, sector reality, and delivering technology in the Kingdom, written for senior teams, not for search engines.</p>
+      <div class="ins-head">
+        <div class="ins-head-left">
+          <p class="ins-eyebrow"><span class="pill"><span class="ang"></span>Insights</span></p>
+          <h2 class="ins-h2" id="ins-title">How we think, <span class="ins-teal">in writing.</span></h2>
+          <p class="ins-lead">Our perspective on advisory, sector reality, and delivering technology in the Kingdom. Written for senior teams, not for search engines.</p>
         </div>
-        <a href="#" class="btn btn-ghost blog-browse">Browse all insights &rarr;</a>
+        <a class="ins-browse" href="/insights">Browse all insights &rarr;</a>
       </div>
-      <div class="blog-grid">
-        <article class="bfeat">
-          <a class="bmedia" href="#" aria-label="Read: Who governs the platform after it ships?"><span class="bmedia-ang" aria-hidden="true"></span></a>
-          <div class="bmeta"><span class="cat">Advisory</span><span class="rt">Sample</span></div>
-          <h4><a href="#">Who governs the platform after it ships?</a></h4>
-        </article>
-        <div class="blist">
-          <article class="bitem">
-            <div class="bmeta"><span class="cat">Vision 2030</span><span class="rt">Sample</span></div>
-            <h4><a href="#">ZATCA Phase Two as a finance discipline, not a project</a></h4>
-          </article>
-          <article class="bitem">
-            <div class="bmeta"><span class="cat">Hospitality</span><span class="rt">Sample</span></div>
-            <h4><a href="#">The groups that solved POS before October</a></h4>
-          </article>
+
+      <div class="ins-grid">
+        <a class="ins-feat" role="link" tabindex="0" aria-disabled="true" data-href="{{INSIGHT_1_URL}}">
+          <span class="ins-tag">Advisory &middot; Featured</span>
+          <h3 class="ins-feat-title">What to ask before you sign the platform</h3>
+          <p class="ins-feat-ex">The platform decision is rarely the hard one. The questions that decide whether it lasts come before the signature, and most of them are not about features.</p>
+          <span class="ins-card-foot">
+            <span class="ins-read">Read &rarr;</span>
+            <span class="ins-soon">Coming soon</span>
+          </span>
+        </a>
+
+        <div class="ins-list">
+          <a class="ins-item" role="link" tabindex="0" aria-disabled="true" data-href="{{INSIGHT_2_URL}}">
+            <span class="ins-tag">Vision 2030</span>
+            <h3 class="ins-item-title">ZATCA Phase Two as a finance discipline, not a project</h3>
+            <span class="ins-card-foot">
+              <span class="ins-read">Read &rarr;</span>
+              <span class="ins-soon">Coming soon</span>
+            </span>
+          </a>
+          <a class="ins-item" role="link" tabindex="0" aria-disabled="true" data-href="{{INSIGHT_3_URL}}">
+            <span class="ins-tag">Hospitality</span>
+            <h3 class="ins-item-title">The groups that solved POS before October</h3>
+            <span class="ins-card-foot">
+              <span class="ins-read">Read &rarr;</span>
+              <span class="ins-soon">Coming soon</span>
+            </span>
+          </a>
         </div>
-        <aside class="bnews">
-          <span class="bnews-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
-          <h4>Get our thinking by email</h4>
-          <p>Occasional notes for senior teams on advisory, sector reality, and delivery in the Kingdom.</p>
-          <form class="bnews-form" onsubmit="return false">
-            <input type="email" placeholder="Your work email" aria-label="Your work email">
-            <button class="btn btn-primary" type="submit">Subscribe</button>
+
+        <div class="ins-sub">
+          <h3 class="ins-sub-title">Get our thinking by email</h3>
+          <p class="ins-sub-body">Occasional notes for senior teams on advisory, sector reality, and delivery in the Kingdom.</p>
+          <form class="ins-sub-form" onsubmit="return false">
+            <input class="ins-sub-input" type="email" placeholder="Your work email" aria-label="Your work email" required>
+            <button class="ins-sub-btn" type="submit">Subscribe</button>
           </form>
-        </aside>
+        </div>
       </div>
     </div>
   </section>
