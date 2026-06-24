@@ -65,7 +65,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 }
 .skip-link{
   position:absolute;left:-9999px;top:0;z-index:200;
-  background:var(--ink);color:#fff;padding:12px 18px;border-radius:0 0 10px 0;
+  background:#0f1e23;color:#fff;padding:12px 18px;border-radius:0 0 10px 0;
   font-family:var(--disp);font-weight:600;
 }
 .skip-link:focus{left:0}
@@ -109,7 +109,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .btn .ic{width:16px;height:16px;flex:none}
 .btn-primary{background:var(--teal);color:#fff;box-shadow:0 14px 26px -14px rgba(0,153,168,.75)}
 .btn-primary:hover{background:var(--teal-dk);transform:translateY(-2px)}
-.btn-dark{background:var(--ink);color:#fff}
+.btn-dark{background:#0f1e23;color:#fff}
 .btn-dark:hover{background:#1b333a;transform:translateY(-2px)}
 .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow-sm)}
 .btn-ghost:hover{border-color:var(--teal);color:var(--teal-dk);transform:translateY(-2px)}
@@ -554,7 +554,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   background:linear-gradient(155deg,#f3fafb 0%, #e8f3f4 100%);
   border:1px solid var(--line);padding:18px;
 }
-.pov-video{display:block;width:100%;aspect-ratio:16/9;border-radius:16px;background:var(--ink);box-shadow:var(--shadow-sm)}
+.pov-video{display:block;width:100%;aspect-ratio:16/9;border-radius:16px;background:#0f1e23;box-shadow:var(--shadow-sm)}
 .pov-copy{max-width:440px}
 .pov-speaker{font-size:13px;color:var(--gray);font-style:italic;margin:16px 0 14px}
 .pov-invite{font-size:17px;color:var(--ink-mut);margin-bottom:16px}
@@ -655,7 +655,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 @media(prefers-reduced-motion:reduce){.logo-tile img,.cat-tile{transition:none}}
 
 /* ===== Section 6: Point of view (cinematic film banner) ===== */
-.film{position:relative;overflow:hidden;background:var(--ink);border-radius:14px;padding:30px;min-height:240px;display:flex;align-items:center}
+.film{position:relative;overflow:hidden;background:#0f1e23;border-radius:14px;padding:30px;min-height:240px;display:flex;align-items:center}
 .film-glow{position:absolute;top:-90px;right:-70px;width:260px;height:260px;border-radius:50%;
   background:radial-gradient(circle, rgba(0,153,168,.20), transparent 70%);pointer-events:none}
 .film-angle{position:absolute;right:-36px;bottom:-56px;width:0;height:0;
@@ -713,7 +713,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .ins-item .ins-card-foot{margin-top:0;padding-top:2px}
 
 /* Column 3: subscribe panel */
-.ins-sub{display:flex;flex-direction:column;justify-content:center;background:var(--ink);border-radius:12px;padding:20px}
+.ins-sub{display:flex;flex-direction:column;justify-content:center;background:#0f1e23;border-radius:12px;padding:20px}
 .ins-sub-title{font-family:var(--disp);font-weight:700;font-size:15px;color:#fff;margin-bottom:8px}
 .ins-sub-body{font-size:12px;line-height:1.55;color:#9fb3b6;margin-bottom:14px}
 .ins-sub-form{display:flex;flex-direction:column;gap:9px}
@@ -746,7 +746,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .dr-opt:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 
 /* Right response panel (dark anchor) */
-.dr-panel{background:var(--ink);border-radius:12px;padding:24px}
+.dr-panel{background:#0f1e23;border-radius:12px;padding:24px}
 .dr-panel-eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#25b4c2;margin-bottom:18px}
 .dr-panel-eyebrow .ang{border-right-color:#25b4c2;border-top-color:#25b4c2}
 .dr-block{margin-bottom:16px}
@@ -766,3 +766,48 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .hero-partners .pl{width:auto}
   .hero-partners .pscroll{width:100%}
 }
+
+
+/* ===== Nav icon controls (language + theme) ===== */
+.nav-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;
+  border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;
+  font-family:var(--disp);font-weight:700;font-size:16px;line-height:1;transition:border-color .2s ease,color .2s ease,background .2s ease}
+.nav-icon:hover{border-color:var(--teal);color:var(--teal-dk)}
+.nav-icon:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.nav-theme .ic{width:18px;height:18px}
+.nav-theme .ic-sun{display:none}
+:root[data-theme="dark"] .nav-theme .ic-moon{display:none}
+:root[data-theme="dark"] .nav-theme .ic-sun{display:inline-block}
+
+/* ===== Dark mode (in-memory toggle; no storage) ===== */
+:root[data-theme="dark"]{
+  --bg:#0b1418; --bg-alt:#0f1d22; --ink:#eef4f5; --ink-mut:#9fb0b4;
+  --gray:#8a9b9f; --line:#26393f; --tint:#15272d; --teal-dk:#2fb9c7;
+  color-scheme:dark;
+}
+[data-theme="dark"] .nav{background:rgba(11,20,24,.86);border-bottom-color:var(--line)}
+[data-theme="dark"] .pill{background:#14262c;color:var(--ink);border-color:var(--line)}
+[data-theme="dark"] .dropdown{background:#12232a;border-color:var(--line)}
+[data-theme="dark"] .nav-icon,
+[data-theme="dark"] .btn-ghost,
+[data-theme="dark"] .btn-white{background:#14262c;color:var(--ink);border-color:var(--line)}
+[data-theme="dark"] .method-card,
+[data-theme="dark"] .qa-card,
+[data-theme="dark"] .bcard,
+[data-theme="dark"] .ind-card,
+[data-theme="dark"] .ind-tab{background:#14262c;border-color:var(--line)}
+[data-theme="dark"] .logo-tile{background:#fff;border-color:#d7dee0}
+[data-theme="dark"] .pos-panel,
+[data-theme="dark"] .ins-feat{background:#13242a;border-color:var(--line)}
+[data-theme="dark"] .cat-tile{background:#11212a;border-color:var(--line)}
+[data-theme="dark"] .dr-opt{background:#13242a;border-color:var(--line)}
+[data-theme="dark"] .dr-opt.is-active{background:#0e2c31;border-color:var(--teal)}
+[data-theme="dark"] .qa-chip{background:#0e2c31}
+[data-theme="dark"] .hero-visual{background:linear-gradient(155deg,#13252b,#0e1e23)}
+[data-theme="dark"] .ins-sub-input{background:#0a1417;color:#eef4f5;border:1px solid var(--line)}
+[data-theme="dark"] .ins-sub-input::placeholder{color:#7f9498}
+/* Keep the partner band light so the grayscale logos stay legible */
+[data-theme="dark"] .hero-partners{background:#eef1f2;border-color:#d7dee0}
+[data-theme="dark"] .hero-partners .pl{color:#5a6a6f}
+/* Mobile menu panel */
+@media(max-width:880px){ [data-theme="dark"] .nav-links{background:#0f1d22;border-bottom-color:var(--line)} }

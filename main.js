@@ -163,4 +163,15 @@
       btn.addEventListener("click", function () { selectDecision(btn); });
     });
   }
+
+  /* ---------- Theme toggle (in-memory; no browser storage) ---------- */
+  var themeBtn = document.querySelector(".nav-theme");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      document.documentElement.setAttribute("data-theme", isDark ? "" : "dark");
+      themeBtn.setAttribute("aria-pressed", isDark ? "false" : "true");
+      themeBtn.setAttribute("aria-label", isDark ? "Switch to dark mode" : "Switch to light mode");
+    });
+  }
 })();

@@ -68,7 +68,8 @@ The Industries section is a single `.ind-card` panel swapped by the tablist in `
 
 ## IA decisions (locked)
 
-- Top nav: **What We Do** (dropdown: Advisory & Consulting, Implementation & Delivery) **· Industries · Technologies · Insights** + the Request a Consultation CTA. (Client changed this in 2026-06 from the earlier split Advisory/Implementation items.)
+- Top nav order: **Industries · Technologies · What We Do** (dropdown: Advisory & Consulting, Implementation & Delivery) **· Insights**, then an Arabic-language toggle (`/ar`), a dark-mode toggle, and the Request a Consultation CTA. (Client iterated nav in 2026-06.)
+- **Dark mode** is a `data-theme="dark"` toggle on `<html>`, held in memory only (no storage, per the rule); preference does not persist across reloads. Theme overrides live at the end of `styles.css`.
 - Primary CTA everywhere: **Request a Consultation** (never "Free Consultation" / "Book now").
 - Products/technologies are in-page filters with their own spoke pages (`/technologies/*`, `/industries/*`) — **not** mega-menu items.
 - Technology grouping uses Business Unit names: ERP · Customer Experience & POS · Data & AI · Supply Chain & Field Operations · Digital Omnichannel · Integration.
