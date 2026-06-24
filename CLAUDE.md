@@ -44,7 +44,7 @@ It does **NOT** check em dashes or browser storage — enforce those by hand (se
 
 ### Home page section order (in `<main>`)
 1 Hero · 2 Positioning · 3 Industries · 4 Technologies & ecosystem · (held, `hidden`: Outcomes) · 5 Point of view · 6 Insights · 7 Testimonials · 8 Vision 2030 · 9 Final CTA.
-The **Decision Router** is not an inline section: it is a scroll-triggered popup (`#decision-router.dr-modal`, `role="dialog"`) shown once after the user scrolls ~0.6 viewport, dismissed by close button / backdrop / Escape (in-memory, no storage).
+The **Decision Router** is not an inline section: it is a scroll-triggered popup (`#decision-router.dr-modal`, `role="dialog"`) shown once after the user scrolls ~0.6 viewport, dismissed by close button / backdrop / Escape. It is a 3-step wizard: (1) pick the decision and read the advisory answer, (2) enter details (name/email validated), (3) choose an in-person or online consultation; Confirm composes a `mailto:` (placeholder `consultations@trustangle.com`) and shows a confirmation. All state is in memory (no storage).
 **Outcomes** exists as a `[data-held]` `hidden` scaffold (between 5 and 6), ready to enable, never shipped as a visible empty band. The Testimonials wall holds real, approved, named customer references (it replaced the old hidden References scaffold). Verbatim quotes live in `<blockquote>`, which `brand-lint` exempts from the vocabulary/count rules.
 
 ### Data-driven Industries selector

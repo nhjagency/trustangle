@@ -225,9 +225,72 @@
     Array.prototype.forEach.call(drModal.querySelectorAll("[data-dr-close]"), function (el) {
       el.addEventListener("click", closeDR);
     });
+
+    /* ----- multi-step wizard inside the popup ----- */
+    var drSteps = Array.prototype.slice.call(drModal.querySelectorAll(".dr-step"));
+    var drProg = drModal.querySelectorAll(".dr-prog-i");
+    var drConfirm = drModal.querySelector("[data-dr-confirm]");
+    var chosenFormat = null;
+    var showStep = function (n) {
+      drSteps.forEach(function (s) { s.hidden = s.getAttribute("data-step") !== String(n); });
+      Array.prototype.forEach.call(drProg, function (pi) {
+        var pn = parseInt(pi.getAttribute("data-prog"), 10);
+        pi.classList.toggle("is-on", pn === n);
+        pi.classList.toggle("is-done", pn < n);
+      });
+      var cur = drModal.querySelector('.dr-step[data-step="' + n + '"]');
+      var h = cur && cur.querySelector("h2");
+      if (h) { h.setAttribute("tabindex", "-1"); h.focus(); }
+    };
+    // plain step jumps (CTA -> 2, Back buttons)
+    Array.prototype.forEach.call(drModal.querySelectorAll("[data-dr-go]"), function (b) {
+      b.addEventListener("click", function () { showStep(parseInt(b.getAttribute("data-dr-go"), 10)); });
+    });
+    // step 2 -> validate details -> step 3
+    var drNext2 = drModal.querySelector('[data-dr-next="2"]');
+    if (drNext2) drNext2.addEventListener("click", function () {
+      var ok = true;
+      ["dr-name", "dr-email"].forEach(function (id) {
+        var inp = document.getElementById(id);
+        var field = inp.closest(".dr-field");
+        var valid = inp.value.trim() !== "" && inp.checkValidity();
+        field.classList.toggle("dr-field--error", !valid);
+        if (!valid && ok) { ok = false; inp.focus(); }
+      });
+      if (ok) showStep(3);
+    });
+    // step 3 format choice
+    Array.prototype.forEach.call(drModal.querySelectorAll(".dr-fmt"), function (f) {
+      f.addEventListener("click", function () {
+        Array.prototype.forEach.call(drModal.querySelectorAll(".dr-fmt"), function (x) {
+          x.setAttribute("aria-pressed", x === f ? "true" : "false");
+        });
+        chosenFormat = f.getAttribute("data-format");
+        if (drConfirm) drConfirm.disabled = false;
+      });
+    });
+    // confirm -> compose request + confirmation
+    if (drConfirm) drConfirm.addEventListener("click", function () {
+      var val = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : ""; };
+      var active = drModal.querySelector(".dr-opt.is-active .dr-opt-label");
+      var decision = active ? active.textContent.trim() : "";
+      var name = val("dr-name"), email = val("dr-email"), company = val("dr-company"), phone = val("dr-phone");
+      var fmt = chosenFormat || "";
+      var subject = "Consultation request: " + fmt;
+      var body = "Decision: " + decision + "\nName: " + name + "\nEmail: " + email +
+                 "\nCompany: " + company + "\nPhone: " + phone + "\nPreferred format: " + fmt;
+      var msg = drModal.querySelector(".dr-done-msg");
+      if (msg) msg.textContent = "Thanks" + (name ? ", " + name.split(" ")[0] : "") +
+        ". We have your " + fmt.toLowerCase() + " consultation request and will be in touch shortly.";
+      showStep(4);
+      window.location.href = "mailto:consultations@trustangle.com?subject=" +
+        encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+
     var drOnScroll = function () {
       if (window.scrollY > window.innerHeight * 0.6) {
         openDR();
+        showStep(1);
         window.removeEventListener("scroll", drOnScroll);
       }
     };

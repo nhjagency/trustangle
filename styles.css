@@ -863,3 +863,53 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .dr-modal-close:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 .dr-modal .dr-h2{margin-bottom:24px;font-size:clamp(22px,2.6vw,28px)}
 @media(prefers-reduced-motion:reduce){.dr-modal,.dr-modal-box{transition:none}}
+
+/* ===== Decision Router wizard (multi-step) ===== */
+.dr-step[hidden]{display:none}
+.dr-prog{list-style:none;display:flex;flex-wrap:wrap;gap:18px;margin-bottom:22px;
+  font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--gray)}
+.dr-prog-i{display:inline-flex;align-items:center;gap:8px}
+.dr-prog-i::before{content:"";width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line)}
+.dr-prog-i.is-on{color:var(--teal-dk)}
+.dr-prog-i.is-on::before{border-color:var(--teal);background:var(--teal-lt)}
+.dr-prog-i.is-done{color:var(--teal-dk)}
+.dr-prog-i.is-done::before{border-color:var(--teal);background:var(--teal)}
+
+/* Step 2: details form */
+.dr-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+.dr-field{display:flex;flex-direction:column;gap:6px}
+.dr-field label{font-family:var(--disp);font-weight:600;font-size:12px;color:var(--ink)}
+.dr-opt-note{color:var(--gray);font-weight:400}
+.dr-field input{border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:var(--body);font-size:14px;color:var(--ink);background:var(--bg)}
+.dr-field input:focus-visible{outline:3px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+.dr-field--error input{border-color:#c0453f}
+.dr-field--error label{color:#c0453f}
+
+/* shared step actions */
+.dr-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:24px}
+.dr-back{background:none;border:0;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:14px;color:var(--gray);padding:8px 4px}
+.dr-back:hover{color:var(--ink)}
+.dr-back:focus-visible,.dr-fmt:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+/* Step 3: format choice */
+.dr-format{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.dr-fmt{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;cursor:pointer;
+  background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.dr-fmt:hover{border-color:#cfe0e4;box-shadow:var(--shadow-sm)}
+.dr-fmt[aria-pressed="true"]{background:var(--teal-lt);border-color:var(--teal)}
+.dr-fmt-ic{width:44px;height:44px;border-radius:12px;background:var(--teal-lt);color:var(--teal-dk);display:flex;align-items:center;justify-content:center}
+.dr-fmt-t{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--ink)}
+.dr-fmt-d{font-size:12.5px;color:var(--ink-mut);line-height:1.5}
+
+/* Step 4: confirmation */
+.dr-done{text-align:center;max-width:480px;margin:0 auto;padding:18px 0 8px}
+.dr-done-ic{width:54px;height:54px;border-radius:50%;background:var(--teal-lt);color:var(--teal-dk);display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px}
+.dr-done .dr-h2{margin-bottom:12px}
+.dr-done-msg{color:var(--ink-mut);font-size:14px;line-height:1.6;margin-bottom:22px}
+
+/* dark mode */
+[data-theme="dark"] .dr-field input{background:#0f1e23;border-color:var(--line);color:#eef4f5}
+[data-theme="dark"] .dr-fmt{background:#13242a;border-color:var(--line)}
+[data-theme="dark"] .dr-fmt[aria-pressed="true"]{background:#0e2c31;border-color:var(--teal)}
+
+@media(max-width:560px){ .dr-form,.dr-format{grid-template-columns:1fr} }
