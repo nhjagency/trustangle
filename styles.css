@@ -210,9 +210,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   font-size:clamp(22px,3.4vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.12;
   margin:0 0 20px;
 }
-.hero h1 .h1-l1,.hero h1 .h1-l2{display:block}
-.hero h1 .h1-l1{color:var(--teal-dk)}   /* AA-safe brand teal at heading size */
-.hero h1 .h1-l2{color:var(--ink)}
+.hero h1 .h1-l1,.hero h1 .h1-l2{display:block;color:var(--ink)}
+.hero h1 .h1-accent{color:var(--teal-dk)}   /* AA-safe brand teal at heading size */
+.hero h1 .h1-underline{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 .hero .sub{font-size:16px;line-height:1.6;color:var(--ink-mut);max-width:52ch;margin-bottom:26px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 
@@ -769,10 +769,10 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 
 /* ===== Nav icon controls (language + theme) ===== */
-.nav-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;
-  border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;
-  font-family:var(--disp);font-weight:700;font-size:16px;line-height:1;transition:border-color .2s ease,color .2s ease,background .2s ease}
-.nav-icon:hover{border-color:var(--teal);color:var(--teal-dk)}
+.nav-icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;
+  border:0;background:transparent;color:var(--ink-mut);cursor:pointer;
+  font-family:var(--disp);font-weight:700;font-size:16px;line-height:1;transition:color .2s ease}
+.nav-icon:hover{color:var(--ink)}
 .nav-icon:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 .nav-theme .ic{width:18px;height:18px}
 .nav-theme .ic-sun{display:none}
@@ -788,7 +788,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 [data-theme="dark"] .nav{background:rgba(11,20,24,.86);border-bottom-color:var(--line)}
 [data-theme="dark"] .pill{background:#14262c;color:var(--ink);border-color:var(--line)}
 [data-theme="dark"] .dropdown{background:#12232a;border-color:var(--line)}
-[data-theme="dark"] .nav-icon,
 [data-theme="dark"] .btn-ghost,
 [data-theme="dark"] .btn-white{background:#14262c;color:var(--ink);border-color:var(--line)}
 [data-theme="dark"] .method-card,
