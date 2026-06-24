@@ -589,10 +589,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .pscroll:hover .pscroll-track,.pscroll:focus-within .pscroll-track{animation-play-state:paused}
 @keyframes pscroll{to{transform:translateX(-50%)}}
 .pstrip-item{display:flex;align-items:center;justify-content:center;min-height:30px;flex:none}
-.plogo{height:26px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1);opacity:.6;mix-blend-mode:multiply;transition:filter .25s ease,opacity .25s ease}
+.plogo{height:26px;width:auto;max-width:150px;object-fit:contain;mix-blend-mode:multiply}
 /* logos shipped as 16:9 images with internal whitespace — sized up so the mark reads at the same weight as tight wordmarks */
 .plogo--pad{height:50px;max-width:96px}
-.pstrip-item:hover .plogo{filter:grayscale(0);opacity:1}
 .pstrip-text{font-family:var(--disp);font-weight:600;font-size:17px;color:#cfd8da;letter-spacing:.01em;white-space:nowrap;transition:color .2s ease}
 .pstrip-text:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){
