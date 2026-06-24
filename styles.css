@@ -232,16 +232,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .mstep .t .n{font-size:13px;font-weight:700;color:var(--teal-dk);letter-spacing:.04em}
 .mstep p{font-size:14px;color:var(--ink-mut);line-height:1.5}
 
-/* Hero advisory router */
-.router{margin-top:26px}
-.router-label{display:block;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--gray);margin-bottom:12px}
-.router-chips{display:flex;flex-wrap:wrap;gap:12px 26px}
-.rchip{display:inline-flex;align-items:center;gap:9px;background:transparent;border:0;box-shadow:none;
-  font-family:var(--disp);font-weight:600;font-size:13.5px;color:var(--ink);padding:4px 0;
-  transition:color .2s ease,gap .2s ease}
-.rchip::before{content:"";width:7px;height:7px;border-right:2px solid var(--teal);border-top:2px solid var(--teal);transform:rotate(45deg);display:inline-block;flex:none}
-.rchip:hover{color:var(--teal-dk);gap:13px}
-
 /* Partner strip inside the hero */
 .hero-partners{margin-top:48px;border-top:1px solid var(--line);padding-top:30px}
 
@@ -737,3 +727,35 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .ins-head{align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.ins-feat,.ins-browse,.ins-sub-btn{transition:none}}
+
+/* ===== Section 2: Decision Router ===== */
+.dr-eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--teal-dk);margin-bottom:14px}
+.dr-h2{margin-bottom:26px}
+.dr-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:18px;align-items:start}
+
+/* Left selector */
+.dr-list{display:flex;flex-direction:column;gap:10px}
+.dr-opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;
+  background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:15px 16px;
+  font-family:var(--disp);font-weight:600;font-size:14px;line-height:1.3;color:var(--ink);
+  transition:border-color .2s ease,background .2s ease}
+.dr-opt .ang{display:none;flex:none}
+.dr-opt:hover{border-color:#cfe0e4}
+.dr-opt.is-active{background:var(--teal-lt);border-color:var(--teal)}
+.dr-opt.is-active .ang{display:inline-block}
+.dr-opt:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+/* Right response panel (dark anchor) */
+.dr-panel{background:var(--ink);border-radius:12px;padding:24px}
+.dr-panel-eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#25b4c2;margin-bottom:18px}
+.dr-panel-eyebrow .ang{border-right-color:#25b4c2;border-top-color:#25b4c2}
+.dr-block{margin-bottom:16px}
+.dr-block-label{font-family:var(--disp);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8fa6aa;margin-bottom:5px}
+.dr-block-val{color:#cfdadd;font-size:13px;line-height:1.55}
+.dr-block .dr-ask{color:#fff;font-size:15.5px;line-height:1.4;font-family:var(--disp);font-weight:600}
+.dr-cta{margin-top:6px}
+
+@media(max-width:880px){
+  .dr-grid{grid-template-columns:1fr;gap:14px}
+}
+@media(prefers-reduced-motion:reduce){.dr-opt{transition:none}}

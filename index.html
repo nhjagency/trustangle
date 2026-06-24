@@ -165,15 +165,6 @@
             <a href="#contact" class="btn btn-primary">Request a Consultation</a>
             <a href="#insights" class="btn btn-ghost">See how we think &rarr;</a>
           </div>
-          <div class="router" role="group" aria-label="Where do you want to start?">
-            <span class="router-label">Where do you want to start?</span>
-            <div class="router-chips">
-              <a class="rchip" href="/advisory-and-consulting">A decision I&rsquo;m weighing</a>
-              <a class="rchip" href="/implementation-and-delivery">A delivery I need to get right</a>
-              <a class="rchip" href="#technologies">A platform I&rsquo;m choosing</a>
-              <a class="rchip" href="#industries">Just exploring</a>
-            </div>
-          </div>
         </div>
         <div class="hero-visual">
           <span class="dots" aria-hidden="true"></span>
@@ -213,7 +204,51 @@
     </div>
   </section>
 
-  <!-- 2. Positioning (judgment-first) -->
+  <!-- 2. Decision Router (interactive: self-identify by the decision carried) -->
+  <section class="section" id="decision-router" aria-labelledby="dr-title">
+    <div class="wrap reveal">
+      <p class="dr-eyebrow"><span class="ang" aria-hidden="true"></span>Start with the decision you are carrying</p>
+      <h2 class="h2 dr-h2" id="dr-title">Tell us what you are weighing. We will tell you what we see.</h2>
+      <div class="dr-grid">
+        <div class="dr-list" role="group" aria-label="Choose the decision you are weighing">
+          <button class="dr-opt is-active" type="button" aria-pressed="true"
+            data-ask="What has to be true at quarter-end for this to count as delivered?"
+            data-wrong="The platform gets picked before anyone agrees who governs it after go-live."
+            data-next="A paid diagnostic that leaves you with a defensible decision, credited toward the project if you build with us."><span class="ang" aria-hidden="true"></span><span class="dr-opt-label">I am choosing a platform, and I do not trust the timeline</span></button>
+          <button class="dr-opt" type="button" aria-pressed="false"
+            data-ask="Which go-live slipped, and what did the one before it teach you?"
+            data-wrong="The risk was rarely the technology. It was the second implementation, following a first that missed its timeline."
+            data-next="We map the sequence of go-lives and the integration points, then show you where it breaks."><span class="ang" aria-hidden="true"></span><span class="dr-opt-label">We are live, but the rollout keeps slipping</span></button>
+          <button class="dr-opt" type="button" aria-pressed="false"
+            data-ask="Does compliance live inside your finance operation, or beside it?"
+            data-wrong="Regulation gets bolted on at the end, so every quarter-end pays for it again."
+            data-next="We set data residency and governance from the first decision, not after it ships."><span class="ang" aria-hidden="true"></span><span class="dr-opt-label">ZATCA Phase Two is being run as an IT project</span></button>
+          <button class="dr-opt" type="button" aria-pressed="false"
+            data-ask="What happens to the business if you do nothing for two more quarters?"
+            data-wrong="A platform gets bought to answer a question the business had not finished asking."
+            data-next="We tell you what we see, even if the answer is that you should not build yet."><span class="ang" aria-hidden="true"></span><span class="dr-opt-label">I am not sure we should build this at all</span></button>
+        </div>
+        <div class="dr-panel" aria-live="polite">
+          <p class="dr-panel-eyebrow"><span class="ang" aria-hidden="true"></span>How we would answer</p>
+          <div class="dr-block">
+            <p class="dr-block-label">We ask first</p>
+            <p class="dr-block-val dr-ask">What has to be true at quarter-end for this to count as delivered?</p>
+          </div>
+          <div class="dr-block">
+            <p class="dr-block-label">What usually goes wrong</p>
+            <p class="dr-block-val dr-wrong">The platform gets picked before anyone agrees who governs it after go-live.</p>
+          </div>
+          <div class="dr-block">
+            <p class="dr-block-label">Your next step</p>
+            <p class="dr-block-val dr-next">A paid diagnostic that leaves you with a defensible decision, credited toward the project if you build with us.</p>
+          </div>
+          <a href="#contact" class="btn btn-primary dr-cta">Request a Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Positioning (judgment-first) -->
   <section class="section" aria-labelledby="pos-title">
     <div class="wrap reveal">
       <div class="pos-panel">
@@ -243,7 +278,7 @@
     </div>
   </section>
 
-  <!-- 3. Industries (tabbed sector filter + case panel) -->
+  <!-- 4. Industries (tabbed sector filter + case panel) -->
   <section class="section section--alt" id="industries" aria-labelledby="ind-title">
     <div class="wrap reveal">
       <div class="center">
@@ -281,7 +316,7 @@
     </div>
   </section>
 
-  <!-- 4. Technologies & ecosystem -->
+  <!-- 5. Technologies & ecosystem -->
   <section class="section" id="technologies" aria-labelledby="tech-title">
     <div class="wrap reveal">
       <div class="tech-head">
@@ -367,7 +402,7 @@
     </div>
   </section>
 
-  <!-- 5. Point of view (cinematic film banner) -->
+  <!-- 6. Point of view (cinematic film banner) -->
   <section class="section section--alt" id="point-of-view" aria-labelledby="pov-title">
     <div class="wrap reveal">
       <div class="film">
@@ -391,7 +426,7 @@
     </div>
   </section>
 
-  <!-- 6. Insights -->
+  <!-- 7. Insights -->
   <section class="section" id="insights" aria-labelledby="ins-title">
     <div class="wrap reveal">
       <div class="ins-head">
@@ -445,7 +480,7 @@
     </div>
   </section>
 
-  <!-- 7. Vision 2030 in practice -->
+  <!-- 8. Vision 2030 in practice -->
   <section class="section section--alt" aria-labelledby="vision-title">
     <div class="wrap reveal">
       <div class="vpanel">
@@ -461,7 +496,7 @@
     </div>
   </section>
 
-  <!-- 8. Final CTA (paid-diagnostic frame) -->
+  <!-- 9. Final CTA (paid-diagnostic frame) -->
   <section class="final" id="contact" aria-labelledby="cta-title">
     <div class="wrap reveal">
       <div class="ctapanel">

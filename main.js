@@ -141,4 +141,26 @@
       });
     });
   }
+
+  /* ---------- Decision Router (self-identify, then the advisory answer) ---------- */
+  var drOpts = Array.prototype.slice.call(document.querySelectorAll(".dr-opt"));
+  var drPanel = document.querySelector(".dr-panel");
+  if (drOpts.length && drPanel) {
+    var drAsk = drPanel.querySelector(".dr-ask");
+    var drWrong = drPanel.querySelector(".dr-wrong");
+    var drNext = drPanel.querySelector(".dr-next");
+    var selectDecision = function (btn) {
+      drOpts.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      drAsk.textContent = btn.getAttribute("data-ask");
+      drWrong.textContent = btn.getAttribute("data-wrong");
+      drNext.textContent = btn.getAttribute("data-next");
+    };
+    drOpts.forEach(function (btn) {
+      btn.addEventListener("click", function () { selectDecision(btn); });
+    });
+  }
 })();
