@@ -40,10 +40,10 @@ It does **NOT** check em dashes or browser storage — enforce those by hand (se
 
 - **`index.html`** — the whole page: `<head>` (SEO title/meta, OG/Twitter, hreflang en/ar/x-default, JSON-LD `Organization` + `ProfessionalService` with `foundingDate` 2014), sticky `<nav>` with dropdowns, `<main>` of ordered sections, `<footer>`, then `<script src="main.js">`.
 - **`styles.css`** — all styling. Design tokens are CSS custom properties in `:root` (brand teal, ink, gray, tints, radii, shadows, fonts). **Use the tokens; never hardcode the old AgentFlow blue/violet.** Fonts: `--disp` = Archivo (display, web substitute for Acumin), `--body` = Source Sans 3 (body, substitute for Myriad Pro). Section specs may name Plus Jakarta Sans / Inter as fallbacks — the site standardizes on Archivo + Source Sans 3 for consistency.
-- **`main.js`** — one IIFE of progressive-enhancement components, then a self-contained "Edit Mode" tool. Components: scroll-reveal (IntersectionObserver; respects `prefers-reduced-motion`), mobile nav toggle, nav dropdowns, references marquee (duplicates rows for a seamless loop), tablist widgets. JS is intentionally limited — no libraries, **no browser storage of any kind** (state in memory only).
+- **`main.js`** — one IIFE of progressive-enhancement components. Components: scroll-reveal (IntersectionObserver; respects `prefers-reduced-motion`), mobile nav toggle, nav dropdowns, references marquee (duplicates rows for a seamless loop), tablist widgets. JS is intentionally limited — no libraries, **no browser storage of any kind** (state in memory only).
 
 ### Home page section order (in `<main>`)
-1 Hero · 2 Positioning · 3 Advisory & implementation · 4 Industries · 5 Technologies & ecosystem · (held, `hidden`: Outcomes, References) · 6 Point of view (POV + Insights) · 7 Vision 2030 · 8 Final CTA.
+1 Hero · 2 Positioning · 3 Industries · 4 Technologies & ecosystem · (held, `hidden`: Outcomes, References) · 5 Point of view · 6 Insights · 7 Vision 2030 · 8 Final CTA.
 **Outcomes and References** exist as `[data-held]` `hidden` scaffold between 5 and 6 — ready to enable, never shipped as visible empty bands.
 
 ### Data-driven Industries selector
