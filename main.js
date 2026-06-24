@@ -107,6 +107,8 @@
     var indBrief = indCard.querySelector(".ind-brief");
     var indExplore = indCard.querySelector(".ind-explore");
     var indSector = indCard.querySelector(".ind-case-sector");
+    var indCaseImg = indCard.querySelector(".ind-case-img");
+    var indCaseSlot = indCard.querySelector(".ind-case-slot");
 
     var selectSector = function (tab, focus) {
       indTabs.forEach(function (t) {
@@ -123,6 +125,20 @@
       indExplore.setAttribute("href", tab.getAttribute("data-href"));
       indExplore.innerHTML = "Explore " + name + " &rarr;";
       indSector.textContent = plain;
+      // case study: show the image where we have one, else the placeholder
+      var caseSrc = tab.getAttribute("data-case");
+      if (indCaseImg && indCaseSlot) {
+        if (caseSrc) {
+          indCaseImg.src = caseSrc;
+          indCaseImg.alt = plain + " case study";
+          indCaseImg.hidden = false;
+          indCaseSlot.hidden = true;
+        } else {
+          indCaseImg.hidden = true;
+          indCaseImg.removeAttribute("src");
+          indCaseSlot.hidden = false;
+        }
+      }
       // restrained fade on swap
       indCard.classList.remove("is-swapping");
       void indCard.offsetWidth;

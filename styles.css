@@ -810,3 +810,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 [data-theme="dark"] .hero-partners .pl{color:#5a6a6f}
 /* Mobile menu panel */
 @media(max-width:880px){ [data-theme="dark"] .nav-links{background:#0f1d22;border-bottom-color:var(--line)} }
+
+/* Industries: real case study image (placeholder shown for sectors without one) */
+.ind-case-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block;box-shadow:var(--shadow-sm)}
+.ind-case-img[hidden],.ind-case-slot[hidden]{display:none}
