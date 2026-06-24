@@ -190,4 +190,47 @@
       themeBtn.setAttribute("aria-label", isDark ? "Switch to dark mode" : "Switch to light mode");
     });
   }
+
+  /* ---------- Decision Router popup (shows once after scrolling) ---------- */
+  var drModal = document.getElementById("decision-router");
+  if (drModal && drModal.classList.contains("dr-modal")) {
+    var drSeen = false, drReturn = null;
+    var drFocusables = function () {
+      return Array.prototype.slice.call(drModal.querySelectorAll(
+        'button, a[href], input, [tabindex]:not([tabindex="-1"])'
+      )).filter(function (el) { return !el.disabled && el.offsetParent !== null; });
+    };
+    var drKeydown = function (e) {
+      if (e.key === "Escape") { closeDR(); return; }
+      if (e.key !== "Tab") return;
+      var f = drFocusables(); if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    var closeDR = function () {
+      drModal.classList.remove("is-open");
+      document.removeEventListener("keydown", drKeydown);
+      window.setTimeout(function () { drModal.hidden = true; }, 240);
+      if (drReturn && drReturn.focus) drReturn.focus();
+    };
+    var openDR = function () {
+      if (drSeen) return; drSeen = true;
+      drReturn = document.activeElement;
+      drModal.hidden = false;
+      requestAnimationFrame(function () { drModal.classList.add("is-open"); });
+      var c = drModal.querySelector(".dr-modal-close"); if (c) c.focus();
+      document.addEventListener("keydown", drKeydown);
+    };
+    Array.prototype.forEach.call(drModal.querySelectorAll("[data-dr-close]"), function (el) {
+      el.addEventListener("click", closeDR);
+    });
+    var drOnScroll = function () {
+      if (window.scrollY > window.innerHeight * 0.6) {
+        openDR();
+        window.removeEventListener("scroll", drOnScroll);
+      }
+    };
+    window.addEventListener("scroll", drOnScroll, { passive: true });
+  }
 })();

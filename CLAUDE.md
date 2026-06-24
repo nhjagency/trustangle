@@ -43,7 +43,8 @@ It does **NOT** check em dashes or browser storage — enforce those by hand (se
 - **`main.js`** — one IIFE of progressive-enhancement components. Components: scroll-reveal (IntersectionObserver; respects `prefers-reduced-motion`), mobile nav toggle, nav dropdowns, references marquee (duplicates rows for a seamless loop), tablist widgets. JS is intentionally limited — no libraries, **no browser storage of any kind** (state in memory only).
 
 ### Home page section order (in `<main>`)
-1 Hero · 2 Decision Router · 3 Positioning · 4 Industries · 5 Technologies & ecosystem · (held, `hidden`: Outcomes) · 6 Point of view · 7 Insights · 8 Testimonials · 9 Vision 2030 · 10 Final CTA.
+1 Hero · 2 Positioning · 3 Industries · 4 Technologies & ecosystem · (held, `hidden`: Outcomes) · 5 Point of view · 6 Insights · 7 Testimonials · 8 Vision 2030 · 9 Final CTA.
+The **Decision Router** is not an inline section: it is a scroll-triggered popup (`#decision-router.dr-modal`, `role="dialog"`) shown once after the user scrolls ~0.6 viewport, dismissed by close button / backdrop / Escape (in-memory, no storage).
 **Outcomes** exists as a `[data-held]` `hidden` scaffold (between 5 and 6), ready to enable, never shipped as a visible empty band. The Testimonials wall holds real, approved, named customer references (it replaced the old hidden References scaffold). Verbatim quotes live in `<blockquote>`, which `brand-lint` exempts from the vocabulary/count rules.
 
 ### Data-driven Industries selector
