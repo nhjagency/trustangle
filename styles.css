@@ -913,3 +913,4 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 [data-theme="dark"] .dr-fmt[aria-pressed="true"]{background:#0e2c31;border-color:var(--teal)}
 
 @media(max-width:560px){ .dr-form,.dr-format{grid-template-columns:1fr} }
+.dr-modal h2:focus,.dr-modal [tabindex="-1"]:focus{outline:none}
