@@ -68,7 +68,7 @@ The Industries section is a single `.ind-card` panel swapped by the tablist in `
 
 ## IA decisions (locked)
 
-- Top nav: **Advisory & Consulting · Implementation & Delivery · Industries · Technologies · Insights** (not "What We Do").
+- Top nav: **What We Do** (dropdown: Advisory & Consulting, Implementation & Delivery) **· Industries · Technologies · Insights** + the Request a Consultation CTA. (Client changed this in 2026-06 from the earlier split Advisory/Implementation items.)
 - Primary CTA everywhere: **Request a Consultation** (never "Free Consultation" / "Book now").
 - Products/technologies are in-page filters with their own spoke pages (`/technologies/*`, `/industries/*`) — **not** mega-menu items.
 - Technology grouping uses Business Unit names: ERP · Customer Experience & POS · Data & AI · Supply Chain & Field Operations · Digital Omnichannel · Integration.
