@@ -43,8 +43,8 @@ It does **NOT** check em dashes or browser storage — enforce those by hand (se
 - **`main.js`** — one IIFE of progressive-enhancement components. Components: scroll-reveal (IntersectionObserver; respects `prefers-reduced-motion`), mobile nav toggle, nav dropdowns, references marquee (duplicates rows for a seamless loop), tablist widgets. JS is intentionally limited — no libraries, **no browser storage of any kind** (state in memory only).
 
 ### Home page section order (in `<main>`)
-1 Hero · 2 Positioning · 3 Industries · 4 Technologies & ecosystem · (held, `hidden`: Outcomes, References) · 5 Point of view · 6 Insights · 7 Vision 2030 · 8 Final CTA.
-**Outcomes and References** exist as `[data-held]` `hidden` scaffold between 5 and 6 — ready to enable, never shipped as visible empty bands.
+1 Hero · 2 Decision Router · 3 Positioning · 4 Industries · 5 Technologies & ecosystem · (held, `hidden`: Outcomes) · 6 Point of view · 7 Insights · 8 Testimonials · 9 Vision 2030 · 10 Final CTA.
+**Outcomes** exists as a `[data-held]` `hidden` scaffold (between 5 and 6), ready to enable, never shipped as a visible empty band. The Testimonials wall holds real, approved, named customer references (it replaced the old hidden References scaffold). Verbatim quotes live in `<blockquote>`, which `brand-lint` exempts from the vocabulary/count rules.
 
 ### Data-driven Industries selector
 The Industries section is a single `.ind-card` panel swapped by the tablist in `main.js`. Each `.ind-tab` button carries `data-name`, `data-href` (`/industries/<slug>`), and `data-brief`; clicking/arrowing updates the panel name, brief, "Explore →" link, and case-study sector. **To edit a sector, edit its tab's data attributes**, not just the visible Hospitality panel.

@@ -8,10 +8,14 @@ import { readFileSync } from "node:fs";
 const file = process.argv[2] || new URL("../index.html", import.meta.url).pathname;
 const html = readFileSync(file, "utf8");
 
-// Visible text only: drop scripts, styles, comments, then tags.
+// Visible text only: drop scripts, styles, comments, verbatim customer
+// quotes (<blockquote>), then tags. Testimonials are quoted speech: we do not
+// censor a customer's words, so blockquote content is exempt from the
+// vocabulary/count rules (the rest of the page is still checked).
 const visible = html
   .replace(/<script[\s\S]*?<\/script>/gi, " ")
   .replace(/<style[\s\S]*?<\/style>/gi, " ")
+  .replace(/<blockquote[\s\S]*?<\/blockquote>/gi, " ")
   .replace(/<!--[\s\S]*?-->/g, " ")
   .replace(/<[^>]+>/g, " ")
   .replace(/&amp;/g, "&").replace(/&rarr;/g, " ").replace(/&[a-z]+;/g, " ")

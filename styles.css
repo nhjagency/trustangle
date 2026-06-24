@@ -814,3 +814,35 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 /* Industries: real case study image (placeholder shown for sectors without one) */
 .ind-case-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block;box-shadow:var(--shadow-sm)}
 .ind-case-img[hidden],.ind-case-slot[hidden]{display:none}
+
+/* ===== Testimonials wall (vertical marquee + intro) ===== */
+.tw-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.tw-cols{grid-column:1;grid-row:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;height:468px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 11%,#000 89%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 11%,#000 89%,transparent)}
+.tw-track{list-style:none;display:flex;flex-direction:column;gap:16px;will-change:transform;animation:twup 40s linear infinite}
+.tw-track.tw-b{animation-duration:54s}
+.tw-cols:hover .tw-track,.tw-cols:focus-within .tw-track{animation-play-state:paused}
+@keyframes twup{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.tw-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.tw-quote{font-size:12.5px;line-height:1.55;color:var(--ink-mut);margin:0}
+.tw-who{display:flex;align-items:center;gap:11px;margin-top:14px}
+.tw-avatar{flex:none;width:36px;height:36px;border-radius:50%;background:var(--teal-lt);color:var(--teal-dk);
+  display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:12.5px}
+.tw-name{display:block;font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--ink);line-height:1.25}
+.tw-role{display:block;font-size:11.5px;color:var(--gray);line-height:1.3;margin-top:1px}
+.tw-intro{grid-column:2;grid-row:1}
+.tw-eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--teal-dk);margin-bottom:14px}
+.tw-intro .h2{margin:0 0 12px}
+[data-theme="dark"] .tw-card{background:#14262c;border-color:var(--line)}
+@media(max-width:880px){
+  .tw-grid{grid-template-columns:1fr;gap:26px}
+  .tw-intro{grid-column:1;grid-row:1}
+  .tw-cols{grid-column:1;grid-row:2;height:420px}
+}
+@media(max-width:560px){ .tw-cols{grid-template-columns:1fr} .tw-track.tw-b{display:none} }
+@media(prefers-reduced-motion:reduce){
+  .tw-cols{height:auto;overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .tw-track{animation:none}
+  .tw-track .tw-card[aria-hidden="true"]{display:none}
+}
