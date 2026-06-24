@@ -233,7 +233,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .mstep p{font-size:14px;color:var(--ink-mut);line-height:1.5}
 
 /* Partner strip inside the hero */
-.hero-partners{margin-top:48px;border-top:1px solid var(--line);padding-top:30px}
+.hero-partners{margin-top:48px;background:var(--ink);border-radius:14px;padding:20px 26px;display:flex;align-items:center;gap:30px;overflow:hidden}
 
 /* Section 3 method lead, section 5 ecosystem lead */
 .eco-lead{margin-top:44px}
@@ -263,7 +263,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---------- Logo cloud (V3 "trusted by") ---------- */
 .partners{padding:40px 0 8px}
-.pl{text-align:center;font-size:13px;letter-spacing:.02em;color:var(--gray);margin-bottom:26px;font-weight:600}
+.pl{flex:none;width:128px;text-align:left;font-family:var(--disp);font-size:11px;line-height:1.55;letter-spacing:.14em;text-transform:uppercase;color:#7f9498;font-weight:600;margin:0}
 .pmarks{
   overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
@@ -582,9 +582,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 /* ===== Section 1 hero: text wordmarks + three-door router ===== */
 /* Uniform grayscale logo strip (full colour on hover); brands without a
    logo file render as matching muted text wordmarks. */
-.pscroll{overflow:hidden;margin-top:10px;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.pscroll{flex:1;min-width:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 92%,transparent)}
 .pscroll-track{list-style:none;display:flex;align-items:center;gap:0 56px;width:max-content;animation:pscroll 40s linear infinite}
 .pscroll:hover .pscroll-track,.pscroll:focus-within .pscroll-track{animation-play-state:paused}
 @keyframes pscroll{to{transform:translateX(-50%)}}
@@ -593,8 +593,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 /* logos shipped as 16:9 images with internal whitespace — sized up so the mark reads at the same weight as tight wordmarks */
 .plogo--pad{height:50px;max-width:96px}
 .pstrip-item:hover .plogo{filter:grayscale(0);opacity:1}
-.pstrip-text{font-family:var(--disp);font-weight:700;font-size:18px;color:#9aa0a4;letter-spacing:.01em;transition:color .2s ease}
-.pstrip-text:hover{color:var(--ink)}
+.pstrip-text{font-family:var(--disp);font-weight:600;font-size:17px;color:#cfd8da;letter-spacing:.01em;white-space:nowrap;transition:color .2s ease}
+.pstrip-text:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){
   .plogo,.pstrip-text{transition:none}
   .pscroll{-webkit-mask-image:none;mask-image:none}
@@ -759,3 +759,10 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   .dr-grid{grid-template-columns:1fr;gap:14px}
 }
 @media(prefers-reduced-motion:reduce){.dr-opt{transition:none}}
+
+/* Partner band: stack label above the marquee on small screens */
+@media(max-width:560px){
+  .hero-partners{flex-direction:column;align-items:flex-start;gap:14px;padding:18px}
+  .hero-partners .pl{width:auto}
+  .hero-partners .pscroll{width:100%}
+}
