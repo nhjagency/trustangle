@@ -233,7 +233,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .mstep p{font-size:14px;color:var(--ink-mut);line-height:1.5}
 
 /* Partner strip inside the hero */
-.hero-partners{margin-top:48px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 26px;display:flex;align-items:center;gap:30px;overflow:hidden}
+.hero-partners{margin-top:48px;background:transparent;border:0;border-radius:0;padding:18px 0;display:flex;align-items:center;gap:30px;overflow:hidden}
 
 /* Section 3 method lead, section 5 ecosystem lead */
 .eco-lead{margin-top:44px}
@@ -806,7 +806,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 [data-theme="dark"] .ins-sub-input{background:#0a1417;color:#eef4f5;border:1px solid var(--line)}
 [data-theme="dark"] .ins-sub-input::placeholder{color:#7f9498}
 /* Keep the partner band light so the grayscale logos stay legible */
-[data-theme="dark"] .hero-partners{background:#eef1f2;border-color:#d7dee0}
+[data-theme="dark"] .hero-partners{background:transparent;border:0}
 [data-theme="dark"] .hero-partners .pl{color:#5a6a6f}
 /* Mobile menu panel */
 @media(max-width:880px){ [data-theme="dark"] .nav-links{background:#0f1d22;border-bottom-color:var(--line)} }
