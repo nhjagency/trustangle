@@ -208,14 +208,15 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ---------- Hero (V3: left text + framed visual right, LIGHT) ---------- */
-.hero{position:relative;overflow:hidden;background:var(--bg);min-height:calc(100vh - 57px);display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,3vh,40px) 0}
+.hero{position:relative;overflow:hidden;background:var(--bg);padding:clamp(12px,2vh,24px) 0 clamp(32px,4.5vh,56px)}
 .hero-copy{max-width:900px}
 .hero h1{
   font-size:clamp(30px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.1;
   margin:0 0 16px;text-wrap:balance;
 }
-.hero h1 .h1-l1,.hero h1 .h1-l2{display:block;text-transform:none;color:var(--ink)}
-.hero h1 .h1-accent{color:var(--teal-dk)}   /* #067d89 — AA-safe brand teal at heading size */
+.hero h1 .h1-l1,.hero h1 .h1-l2{display:block;text-transform:none}
+.hero h1 .h1-l1{color:var(--teal-dk)}   /* #067d89 — AA-safe brand teal at heading size */
+.hero h1 .h1-l2{color:var(--ink)}       /* #0f1e23 */
 .hero .sub{font-size:16px;line-height:1.55;color:var(--ink-mut);max-width:none;margin-bottom:18px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 
@@ -226,8 +227,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .hero-visual .dots{top:-6px;left:22px;width:150px;height:96px;
   -webkit-mask-image:linear-gradient(135deg,#000,transparent);mask-image:linear-gradient(135deg,#000,transparent)}
 /* Hero stats repeater (rendered from JS; counts up on scroll) */
-.hero-stats{position:relative;z-index:1;width:100%;max-width:400px;margin-left:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.stat{background:var(--bg-alt);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left}
+.hero-stats{position:relative;z-index:1;width:100%;max-width:380px;margin-left:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.stat{background:var(--bg-alt);border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-align:left}
 .stat-num{font-family:var(--disp);font-weight:800;font-size:clamp(26px,2.6vw,32px);line-height:1;letter-spacing:-.02em;color:var(--teal-dk)}
 .stat-label{margin-top:5px;font-size:12.5px;line-height:1.3;color:var(--gray)}
 
@@ -496,7 +497,6 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---------- Responsive ---------- */
 @media(max-width:980px){
-  .hero{min-height:0;display:block}            /* stacked mobile hero flows normally */
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-copy{max-width:none}
   .fgrid{grid-template-columns:1fr 1fr;gap:32px 24px}
