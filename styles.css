@@ -147,9 +147,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:80px;gap:24px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:56px;gap:24px}
 .logo{display:inline-flex;align-items:center}
-.logo img{height:52px;width:auto;display:block}
+.logo img{height:42px;width:auto;display:block}
 .nav-links{display:flex;gap:32px;font-size:15px;color:var(--ink-mut);font-weight:500}
 .nav-links a:hover{color:var(--ink)}
 .nav-right{display:flex;align-items:center;gap:18px}
@@ -204,36 +204,36 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ---------- Hero (V3: left text + framed visual right, LIGHT) ---------- */
-.hero{position:relative;overflow:hidden;padding:clamp(28px,5vh,64px) 0 clamp(48px,6vh,80px);background:var(--bg)}
+.hero{position:relative;overflow:hidden;padding:clamp(16px,2.5vh,28px) 0 clamp(24px,4vh,48px);background:var(--bg)}
 .hero-copy{max-width:760px}
 .hero h1{
-  font-size:clamp(22px,3.4vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.12;
-  margin:0 0 20px;
+  font-size:clamp(40px,5.2vw,64px);font-weight:800;letter-spacing:-.02em;line-height:1.05;
+  margin:0 0 16px;text-wrap:balance;
 }
 .hero h1 .h1-l1,.hero h1 .h1-l2{display:block;text-transform:none}
 .hero h1 .h1-l1{color:var(--teal-dk)}   /* #067d89 — AA-safe brand teal at heading size */
 .hero h1 .h1-l2{color:var(--ink)}       /* #0f1e23 */
-.hero .sub{font-size:16px;line-height:1.6;color:var(--ink-mut);max-width:52ch;margin-bottom:26px}
+.hero .sub{font-size:16px;line-height:1.55;color:var(--ink-mut);max-width:52ch;margin-bottom:18px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 
 /* Hero grid + framed method visual */
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center}
 .hero-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(155deg,#f3fafb 0%,#e8f3f4 100%);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px}
 .hero-visual .dots{top:22px;left:22px;width:160px;height:120px;
   -webkit-mask-image:linear-gradient(135deg,#000,transparent);mask-image:linear-gradient(135deg,#000,transparent)}
-.method-card{position:relative;z-index:1;width:100%;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:8px 28px}
+.method-card{position:relative;z-index:1;width:100%;max-width:420px;margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:4px 22px}
 .method-list{list-style:none}
-.mstep{display:flex;gap:16px;align-items:flex-start;padding:13px 2px;border-bottom:1px solid var(--line)}
+.mstep{display:flex;gap:14px;align-items:flex-start;padding:9px 2px;border-bottom:1px solid var(--line)}
 .mstep:last-child{border-bottom:0}
-.mstep .ang{margin-top:8px;width:11px;height:11px}
+.mstep .ang{margin-top:6px;width:10px;height:10px}
 .mstep .mtext{flex:1}
-.mstep .t{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--ink);margin-bottom:4px;display:flex;align-items:baseline;gap:10px}
-.mstep .t .n{font-size:13px;font-weight:700;color:var(--teal-dk);letter-spacing:.04em}
-.mstep p{font-size:14px;color:var(--ink-mut);line-height:1.5}
+.mstep .t{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:2px;display:flex;align-items:baseline;gap:9px}
+.mstep .t .n{font-size:12px;font-weight:700;color:var(--teal-dk);letter-spacing:.04em}
+.mstep p{font-size:13px;color:var(--ink-mut);line-height:1.45}
 
 /* Partner strip inside the hero */
-.hero-partners{margin-top:48px;background:transparent;border:0;border-radius:0;padding:18px 0;display:flex;align-items:center;gap:30px;overflow:hidden}
+.hero-partners{margin-top:20px;background:transparent;border:0;border-radius:0;padding:10px 0;display:flex;align-items:center;gap:30px;overflow:hidden}
 
 /* Section 3 method lead, section 5 ecosystem lead */
 .eco-lead{margin-top:44px}
@@ -595,9 +595,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .pscroll:hover .pscroll-track,.pscroll:focus-within .pscroll-track{animation-play-state:paused}
 @keyframes pscroll{to{transform:translateX(-50%)}}
 .pstrip-item{display:flex;align-items:center;justify-content:center;min-height:30px;flex:none}
-.plogo{height:26px;width:auto;max-width:150px;object-fit:contain;mix-blend-mode:multiply}
+.plogo{height:24px;width:auto;max-width:150px;object-fit:contain;mix-blend-mode:multiply}
 /* logos shipped as 16:9 images with internal whitespace — sized up so the mark reads at the same weight as tight wordmarks */
-.plogo--pad{height:50px;max-width:96px}
+.plogo--pad{height:36px;max-width:88px}
 .pstrip-text{font-family:var(--disp);font-weight:600;font-size:17px;color:#cfd8da;letter-spacing:.01em;white-space:nowrap;transition:color .2s ease}
 .pstrip-text:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){
