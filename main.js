@@ -296,4 +296,68 @@
     };
     window.addEventListener("scroll", drOnScroll, { passive: true });
   }
+
+  /* ---------- Hero stats repeater (count-up on scroll into view) ---------- */
+  var statsHost = document.getElementById("hero-stats");
+  if (statsHost) {
+    var STATS = [
+      { value: 8,  suffix: "+", label: "Industries Served" },
+      { value: 28, suffix: "+", label: "Product Categories" },
+      { value: 54, suffix: "+", label: "Technology Partners" },
+      { value: 78, suffix: "+", label: "Unique Customers" }
+    ];
+
+    // Render one reusable template per data item
+    var counters = STATS.map(function (s) {
+      var tile = document.createElement("div");
+      tile.className = "stat";
+      var num = document.createElement("div");
+      num.className = "stat-num";
+      num.textContent = prefersReduced ? (s.value + s.suffix) : ("0" + s.suffix);
+      var label = document.createElement("div");
+      label.className = "stat-label";
+      label.textContent = s.label;
+      tile.appendChild(num);
+      tile.appendChild(label);
+      statsHost.appendChild(tile);
+      return { el: num, target: s.value, suffix: s.suffix };
+    });
+
+    var runCountUp = function () {
+      var duration = 1200, started = null;
+      var frame = function (ts) {
+        if (started === null) started = ts;
+        var p = Math.min((ts - started) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+        counters.forEach(function (c) {
+          c.el.textContent = Math.round(c.target * eased) + c.suffix;
+        });
+        if (p < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          counters.forEach(function (c) { c.el.textContent = c.target + c.suffix; });
+        }
+      };
+      requestAnimationFrame(frame);
+    };
+
+    // Reduced motion: final values already rendered above, skip animation.
+    if (!prefersReduced) {
+      if ("IntersectionObserver" in window) {
+        var fired = false;
+        var statsIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && !fired) {
+              fired = true;
+              runCountUp();
+              statsIO.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        statsIO.observe(statsHost);
+      } else {
+        runCountUp();
+      }
+    }
+  }
 })();
