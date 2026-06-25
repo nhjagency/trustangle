@@ -205,7 +205,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---------- Hero (V3: left text + framed visual right, LIGHT) ---------- */
 .hero{position:relative;overflow:hidden;padding:clamp(16px,2.5vh,28px) 0 clamp(24px,4vh,48px);background:var(--bg)}
-.hero-copy{max-width:760px}
+.hero-copy{max-width:900px}
 .hero h1{
   font-size:clamp(40px,5.2vw,64px);font-weight:800;letter-spacing:-.02em;line-height:1.05;
   margin:0 0 16px;text-wrap:balance;
@@ -213,11 +213,11 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .hero h1 .h1-l1,.hero h1 .h1-l2{display:block;text-transform:none}
 .hero h1 .h1-l1{color:var(--teal-dk)}   /* #067d89 — AA-safe brand teal at heading size */
 .hero h1 .h1-l2{color:var(--ink)}       /* #0f1e23 */
-.hero .sub{font-size:16px;line-height:1.55;color:var(--ink-mut);max-width:52ch;margin-bottom:18px}
+.hero .sub{font-size:16px;line-height:1.55;color:var(--ink-mut);max-width:none;margin-bottom:18px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 
 /* Hero grid + framed method visual */
-.hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:40px;align-items:center}
 .hero-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(155deg,#f3fafb 0%,#e8f3f4 100%);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px}
 .hero-visual .dots{top:22px;left:22px;width:160px;height:120px;
