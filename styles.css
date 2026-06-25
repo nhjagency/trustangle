@@ -196,6 +196,10 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .dd-link:hover{background:var(--tint);color:var(--teal-dk)}
 .dd-link:hover svg{color:var(--teal-dk)}
 .dd-foot{display:block;margin:10px 0 0;padding:11px 8px 1px;border-top:1px solid var(--line);font-family:var(--disp);font-weight:500;font-size:13px;color:var(--teal-dk)}
+/* Insights dropdown: long article titles wrap in a single fixed-width column */
+.dropdown.dd-insights-panel{min-width:308px;max-width:330px}
+.dd-link--wrap{white-space:normal;align-items:flex-start;line-height:1.35;padding:7px 8px}
+.dd-link--wrap svg{margin-top:2px}
 
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px}
 .burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
