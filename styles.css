@@ -482,10 +482,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .footer{background:var(--bg-alt);color:var(--ink);padding:70px 0 34px;border-top:1px solid var(--line)}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
 /* brand block: text wordmark + tagline */
-.fwordmark{display:inline-flex;align-items:center;gap:5px;font-family:var(--disp);font-weight:700;font-size:26px;line-height:1;letter-spacing:-.01em;margin-bottom:16px}
-.fwm-trust{color:var(--ink)}
-.fwm-angle{color:var(--teal)}
-.fwordmark .ang{width:11px;height:11px;margin-top:-1px}
+.fwordmark{display:inline-block;margin-bottom:16px}
+.fwordmark img{height:54px;width:auto;display:block}
 .ftag{color:var(--ink-mut);font-size:14px;line-height:1.6;max-width:30ch}
 .fgrid .fcol{font-family:var(--disp);color:var(--ink);font-weight:700;font-size:15px;margin-bottom:16px}
 .fgrid li{margin-bottom:11px;font-size:14px}
