@@ -208,7 +208,7 @@
       "The groups that solved POS before October":"المجموعات التي حلّت نقاط البيع قبل أكتوبر",
       "Browse all insights":"تصفّح كل الرؤى","Request a Consultation":"اطلب استشارة","See how we think":"اطّلع على طريقة تفكيرنا",
       "Choose The Partner.":"اختر الشريك.","Then Choose The Platform.":"ثم اختر المنصة.",
-      "trustangle is a technology advisory and implementation partner working across the region since 2014. We help senior teams decide what to build, govern how it runs, and deliver it through an ecosystem of specialized companies we own and operate.":"trustangle شريك في الاستشارات والتنفيذ التقني يعمل عبر المنطقة منذ عام 2014. نساعد الفرق القيادية على تقرير ما الذي يُبنى، وحوكمة طريقة تشغيله، وتسليمه عبر منظومة من الشركات المتخصصة التي نملكها ونشغّلها.",
+      "trustangle is a technology consulting and implementation partner in Saudi Arabia, working with regional depth since 2014. Judgment first, then the platform that fits it.":"trustangle شريك في الاستشارات والتنفيذ التقني في المملكة العربية السعودية، يعمل بعمق إقليمي منذ عام 2014. الحُكم أولًا، ثم المنصة التي تناسبه.",
       "Industries Served":"القطاعات المخدومة","Product Categories":"فئات المنتجات","Technology Partners":"شركاء التقنية","Unique Customers":"عملاء مميّزون"
     };
     // For elements wrapping text + an svg/extra node, only the leading text node is swapped.
