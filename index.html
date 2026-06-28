@@ -129,7 +129,7 @@
           <svg data-when="light" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 14.2A8.2 8.2 0 1 1 9.8 4 6.4 6.4 0 0 0 20 14.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
           <svg data-when="dark" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"></circle><path d="M12 2.6v2.3M12 19.1v2.3M21.4 12h-2.3M4.9 12H2.6M18.6 5.4l-1.6 1.6M7 17l-1.6 1.6M18.6 18.6 17 17M7 7 5.4 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
         </button>
-        <a href="#contact" class="ta-cta" data-i18n>Request a Consultation<span class="ta-cta-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+        <a href="#contact" class="ta-cta" data-consult-open data-i18n>Request a Consultation<span class="ta-cta-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
       </div>
     </div>
   </header>
@@ -144,7 +144,7 @@
           <h1 class="ta-h1" id="hero-title"><span class="ta-h1-a" data-i18n>Choose The Partner.</span><br><span class="ta-h1-b" data-i18n>Then Choose The Platform.</span></h1>
           <p class="ta-hero-p" data-i18n>trustangle is a technology consulting and implementation partner in Saudi Arabia, working with regional depth since 2014. We help senior teams decide what to build, govern how it runs, and deliver it through a growing ecosystem of specialized companies we operate.</p>
           <div class="ta-btnrow">
-            <a href="#contact" class="ta-btn-primary" data-i18n>Request a Consultation<span class="ta-cta-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+            <a href="#contact" class="ta-btn-primary" data-consult-open data-i18n>Request a Consultation<span class="ta-cta-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
             <a href="#approach" class="ta-btn-ghost"><span data-i18n>See how we think</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4 20 19H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
@@ -460,7 +460,7 @@
             <li><span class="ang" aria-hidden="true"></span><span>We tell you what we see, even if the answer is that we are not the right partner.</span></li>
             <li><span class="ang" aria-hidden="true"></span><span>You leave with a defensible decision, whether or not you build with us.</span></li>
           </ul>
-          <a href="#contact" class="btn btn-white">Request a Consultation</a>
+          <a href="#contact" class="btn btn-white" data-consult-open>Request a Consultation</a>
         </div>
       </div>
     </div>
@@ -527,102 +527,111 @@
 </footer>
 
 <!-- Decision Router (scroll-triggered popup) -->
-<div class="dr-modal" id="decision-router" role="dialog" aria-modal="true" aria-labelledby="dr-title" hidden>
-  <div class="dr-modal-backdrop" data-dr-close></div>
-  <div class="dr-modal-box">
-    <button class="dr-modal-close" type="button" aria-label="Close" data-dr-close>&times;</button>
-    <ol class="dr-prog" aria-hidden="true">
-      <li class="dr-prog-i is-on" data-prog="1">Your decision</li>
-      <li class="dr-prog-i" data-prog="2">Your details</li>
-      <li class="dr-prog-i" data-prog="3">Format</li>
-    </ol>
+<!-- Consultation popup: scroll-triggered once, and every Request a Consultation CTA -->
+<div class="cm-backdrop" id="consult-modal" role="dialog" aria-modal="true" aria-label="Request a consultation" hidden>
+  <div class="cm-modal">
+    <button class="cm-close" type="button" aria-label="Close">&times;</button>
+    <div class="cm-prog"><span class="cm-seg"></span><span class="cm-seg"></span><span class="cm-seg"></span></div>
+    <div class="cm-phase" id="cm-phase">Your project</div>
 
-    <!-- Step 1: decision -->
-    <section class="dr-step" data-step="1" aria-label="Your decision">
-      <p class="dr-eyebrow"><span class="ang" aria-hidden="true"></span>Start with the decision you carry</p>
-      <h2 class="h2 dr-h2" id="dr-title">Tell us what you are weighing. We will tell you what we see.</h2>
-      <div class="dr-grid">
-        <div class="dr-list" role="group" aria-label="Choose the decision you are weighing">
-          <button class="dr-opt is-active" type="button" aria-pressed="true"
-            data-ask="What has to be true at quarter-end for this to count as delivered?"
-            data-wrong="The platform gets picked before anyone agrees who governs it after go-live."
-            data-next="A paid diagnostic that leaves you with a defensible decision, credited toward the project if you build with us."><span class="dr-opt-num" aria-hidden="true">01</span><span class="dr-opt-label">I am choosing a platform, and I do not trust the timeline.</span></button>
-          <button class="dr-opt" type="button" aria-pressed="false"
-            data-ask="Which go-live slipped, and what did the one before it teach you?"
-            data-wrong="The risk was rarely the technology. It was the second implementation, following a first that missed its timeline."
-            data-next="We map the sequence of go-lives and the integration points, then show you where it breaks."><span class="dr-opt-num" aria-hidden="true">02</span><span class="dr-opt-label">We are live, but the rollout keeps slipping.</span></button>
-          <button class="dr-opt" type="button" aria-pressed="false"
-            data-ask="Does compliance live inside your finance operation, or beside it?"
-            data-wrong="Regulation gets bolted on at the end, so every quarter-end pays for it again."
-            data-next="We set data residency and governance from the first decision, not after it ships."><span class="dr-opt-num" aria-hidden="true">03</span><span class="dr-opt-label">ZATCA Phase Two is being run as an IT project.</span></button>
-          <button class="dr-opt" type="button" aria-pressed="false"
-            data-ask="What happens to the business if you do nothing for two more quarters?"
-            data-wrong="A platform gets bought to answer a question the business had not finished asking."
-            data-next="We tell you what we see, even if the answer is that you should not build yet."><span class="dr-opt-num" aria-hidden="true">04</span><span class="dr-opt-label">I am not sure we should build this at all.</span></button>
+    <div class="cm-panel" data-scr="1">
+      <div class="cm-count">1 / 3</div>
+      <h2>Which industry is your project in?</h2>
+      <div class="cm-chips" data-group="industry">
+        <button class="cm-chip">Hospitality</button><button class="cm-chip">Food &amp; Beverage</button>
+        <button class="cm-chip">Retail &amp; Commerce</button><button class="cm-chip">Real Estate &amp; Construction</button>
+        <button class="cm-chip">Manufacturing</button><button class="cm-chip">Banking &amp; Finance</button>
+        <button class="cm-chip">Insurance</button><button class="cm-chip">Investments</button><button class="cm-chip">Other</button>
+      </div>
+    </div>
+
+    <div class="cm-panel" data-scr="2">
+      <div class="cm-count">2 / 3</div>
+      <h2>What is the pain right now?</h2>
+      <div class="cm-chips" data-group="pain" id="cm-pain"></div>
+    </div>
+
+    <div class="cm-panel" data-scr="3">
+      <div class="cm-count">3 / 3</div>
+      <h2>What matters most?</h2>
+      <div class="cm-chips" data-group="focus" id="cm-focus"></div>
+    </div>
+
+    <div class="cm-panel" data-scr="4">
+      <h2>Where do we send what we find?</h2>
+      <div class="cm-fields">
+        <div class="cm-field"><label for="cm-nm">Full name</label><input id="cm-nm" type="text" autocomplete="name" placeholder="Your name"></div>
+        <div class="cm-field"><label for="cm-ph">Phone</label><input id="cm-ph" type="tel" autocomplete="tel" placeholder="+966 5X XXX XXXX"></div>
+        <div class="cm-field"><label for="cm-co">Company name</label><input id="cm-co" type="text" autocomplete="organization" placeholder="Your company"></div>
+      </div>
+      <div class="cm-note">Saved details fill in automatically if your browser offers them.</div>
+    </div>
+
+    <div class="cm-panel" data-scr="5">
+      <h2>Choose how we meet, then pick a time.</h2>
+      <div class="cm-who">Who you will meet &middot; the advisory team</div>
+      <div class="cm-team">
+        <div class="cm-member">
+          <div class="cm-av"><img src="assets/team/maysarah-mechaal.avif" alt="Maysarah Mechaal" onerror="this.parentNode.textContent='MM';"></div>
+          <div class="cm-mn">Maysarah Mechaal</div><div class="cm-mp">[title]</div>
+          <a class="cm-ml" href="https://www.linkedin.com/in/maysarah-mechaal/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
         </div>
-        <div class="dr-panel" aria-live="polite">
-          <p class="dr-panel-eyebrow">How we would answer</p>
-          <span class="dr-tag">We ask first</span>
-          <p class="dr-ask">What has to be true at quarter-end for this to count as delivered?</p>
-          <hr class="dr-div">
-          <div class="dr-block">
-            <p class="dr-block-label">What usually goes wrong</p>
-            <p class="dr-block-val dr-wrong">The platform gets picked before anyone agrees who governs it after go-live.</p>
-          </div>
-          <div class="dr-block">
-            <p class="dr-block-label">Your next step</p>
-            <p class="dr-block-val dr-next">A paid diagnostic that leaves you with a defensible decision, credited toward the project if you build with us.</p>
-          </div>
-          <button type="button" class="btn btn-primary dr-cta" data-dr-go="2">Request a Consultation &rarr;</button>
+        <div class="cm-member">
+          <div class="cm-av"><img src="assets/team/hamza-abu-sitta.avif" alt="Hamza Abu Sitta" onerror="this.parentNode.textContent='HA';"></div>
+          <div class="cm-mn">Hamza Abu Sitta</div><div class="cm-mp">[title]</div>
+          <a class="cm-ml" href="https://www.linkedin.com/in/hamzaabusitta/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+        </div>
+        <div class="cm-member">
+          <div class="cm-av"><img src="assets/team/basheer-mishal.avif" alt="Basheer Mishal" onerror="this.parentNode.textContent='BM';"></div>
+          <div class="cm-mn">Basheer Mishal</div><div class="cm-mp">[title]</div>
+          <a class="cm-ml" href="https://www.linkedin.com/in/basheer-mishal/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+        </div>
+        <div class="cm-member">
+          <div class="cm-av"><img src="assets/team/ahmad-jallabi.avif" alt="Ahmad Jallabi" onerror="this.parentNode.textContent='AJ';"></div>
+          <div class="cm-mn">Ahmad Jallabi</div><div class="cm-mp">[title]</div>
+          <a class="cm-ml" href="https://www.linkedin.com/in/ahmad-jallabi-10/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+        </div>
+        <div class="cm-member">
+          <div class="cm-av"><img src="assets/team/sara-fareed.jpg" alt="Sara Fareed" onerror="this.parentNode.textContent='SF';"></div>
+          <div class="cm-mn">Sara Fareed</div><div class="cm-mp">[title]</div>
+          <a class="cm-ml" href="https://www.linkedin.com/in/sara-fareed/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
         </div>
       </div>
-    </section>
-
-    <!-- Step 2: details -->
-    <section class="dr-step" data-step="2" aria-label="Your details" hidden>
-      <p class="dr-eyebrow"><span class="ang" aria-hidden="true"></span>Your details</p>
-      <h2 class="h2 dr-h2">Tell us where to reach you.</h2>
-      <form class="dr-form" novalidate>
-        <div class="dr-field"><label for="dr-name">Full name</label><input id="dr-name" name="name" type="text" autocomplete="name" required></div>
-        <div class="dr-field"><label for="dr-email">Work email</label><input id="dr-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="dr-field"><label for="dr-company">Company</label><input id="dr-company" name="company" type="text" autocomplete="organization"></div>
-        <div class="dr-field"><label for="dr-phone">Phone <span class="dr-opt-note">(optional)</span></label><input id="dr-phone" name="phone" type="tel" autocomplete="tel"></div>
-      </form>
-      <div class="dr-actions">
-        <button type="button" class="dr-back" data-dr-go="1"><span aria-hidden="true">&larr;</span> Back</button>
-        <button type="button" class="btn btn-primary" data-dr-next="2">Continue &rarr;</button>
+      <div class="cm-types" data-group="type">
+        <div class="cm-type" data-type="online" data-dur="15">
+          <div><h3>Online</h3><p>A focused 15-minute video call.</p></div><span class="cm-price">Free</span>
+        </div>
+        <div class="cm-type" data-type="inperson" data-dur="60">
+          <div><h3>In person</h3><p>A 1-hour working session, credited to the project.</p></div><span class="cm-price">[fee]</span>
+        </div>
       </div>
-    </section>
-
-    <!-- Step 3: format -->
-    <section class="dr-step" data-step="3" aria-label="Consultation format" hidden>
-      <p class="dr-eyebrow"><span class="ang" aria-hidden="true"></span>Almost there</p>
-      <h2 class="h2 dr-h2">How would you like to meet?</h2>
-      <div class="dr-format" role="group" aria-label="Choose a consultation format">
-        <button type="button" class="dr-fmt" data-format="In person" aria-pressed="false">
-          <span class="dr-fmt-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <span class="dr-fmt-t">In person</span>
-          <span class="dr-fmt-d">Meet our team at your premises or ours.</span>
-        </button>
-        <button type="button" class="dr-fmt" data-format="Online" aria-pressed="false">
-          <span class="dr-fmt-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8Z"/></svg></span>
-          <span class="dr-fmt-t">Online</span>
-          <span class="dr-fmt-d">A scheduled video call at a time that suits you.</span>
-        </button>
+      <div class="cm-book">
+        <div>
+          <div class="cm-calhead"><button id="cm-prev" type="button" aria-label="Previous month">&lsaquo;</button><span class="cm-m" id="cm-mlabel">Month</span><button id="cm-next" type="button" aria-label="Next month">&rsaquo;</button></div>
+          <div class="cm-cal" id="cm-cal"></div>
+        </div>
+        <div class="cm-slots"><div class="cm-sl">Pick a time</div><div class="cm-slotgrid" id="cm-slots"><span class="cm-slothint">Pick a day first.</span></div></div>
       </div>
-      <div class="dr-actions">
-        <button type="button" class="dr-back" data-dr-go="2"><span aria-hidden="true">&larr;</span> Back</button>
-        <button type="button" class="btn btn-primary" data-dr-confirm disabled>Confirm request &rarr;</button>
-      </div>
-    </section>
+    </div>
 
-    <!-- Step 4: confirmation -->
-    <section class="dr-step dr-done" data-step="4" aria-label="Request ready" hidden>
-      <span class="dr-done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-      <h2 class="h2 dr-h2">Thank you. Your request is ready.</h2>
-      <p class="dr-done-msg"></p>
-      <button type="button" class="btn btn-primary" data-dr-close>Done</button>
-    </section>
+    <div class="cm-panel" data-scr="6">
+      <h2>Confirm your in-person session.</h2>
+      <div class="cm-paycard" id="cm-paycard"></div>
+      <div class="cm-refund"><span class="cm-ic">&#8634;</span><p>If you do not benefit from the session, we refund the fee in full.</p></div>
+      <div class="cm-paynote">Secure payment via [payment provider]. The fee is credited toward the project at signing.</div>
+    </div>
+
+    <div class="cm-panel" data-scr="7">
+      <div class="cm-done"><div class="cm-ok">&#10003;</div>
+        <h2 style="margin:0 auto 6px;max-width:20ch">Booked. We will confirm shortly.</h2>
+        <div class="cm-summary" id="cm-summary"></div>
+      </div>
+    </div>
+
+    <div class="cm-nav" id="cm-nav">
+      <button class="cm-btn cm-btn-ghost" id="cm-back" type="button" style="visibility:hidden">Back</button>
+      <button class="cm-btn cm-btn-primary" id="cm-fwd" type="button" style="display:none" disabled>Next</button>
+    </div>
   </div>
 </div>
 
