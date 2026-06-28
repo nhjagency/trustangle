@@ -9,7 +9,7 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- Scroll reveal (IntersectionObserver) ---------- */
-  var revealEls = document.querySelectorAll(".reveal");
+  var revealEls = document.querySelectorAll(".reveal,[data-reveal]");
 
   if (prefersReduced || !("IntersectionObserver" in window)) {
     // Show everything immediately — no motion.
@@ -181,13 +181,62 @@
   }
 
   /* ---------- Theme toggle (in-memory; no browser storage) ---------- */
-  var themeBtn = document.querySelector(".nav-theme");
+  var themeBtn = document.querySelector(".nav-theme, #theme-toggle");
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
       var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-      document.documentElement.setAttribute("data-theme", isDark ? "" : "dark");
+      if (isDark) { document.documentElement.removeAttribute("data-theme"); }
+      else { document.documentElement.setAttribute("data-theme", "dark"); }
       themeBtn.setAttribute("aria-pressed", isDark ? "false" : "true");
       themeBtn.setAttribute("aria-label", isDark ? "Switch to dark mode" : "Switch to light mode");
+    });
+  }
+
+  /* ---------- Language toggle EN <-> AR (in-memory; header + hero strings) ---------- */
+  var langBtn = document.getElementById("lang-toggle");
+  if (langBtn) {
+    var AR = {
+      "Approach":"النهج","Industries":"القطاعات","Technologies":"التقنيات","Insights":"رؤى",
+      "Advisory & Consulting":"الاستشارات","Implementation & Delivery":"التنفيذ والتسليم",
+      "Hospitality":"الضيافة","Food & Beverage":"الأغذية والمشروبات","Retail & Commerce":"التجزئة والتجارة",
+      "Real Estate & Construction":"العقار والإنشاء","Banking & Finance":"المصارف والتمويل","Insurance":"التأمين",
+      "Manufacturing":"التصنيع","Investments":"الاستثمارات","Explore all industries":"استكشف كل القطاعات",
+      "Customer Experience & POS":"تجربة العملاء ونقاط البيع","Supply Chain & Field Operations":"سلسلة الإمداد والعمليات الميدانية",
+      "Digital Omnichannel":"القنوات الرقمية المتعددة","Integration":"التكامل","See all technologies":"اطّلع على كل التقنيات",
+      "What to ask before you sign the platform":"ما الذي تسأله قبل توقيع المنصة",
+      "ZATCA Phase Two as a finance discipline, not a project":"المرحلة الثانية لهيئة الزكاة كانضباط مالي، لا كمشروع",
+      "The groups that solved POS before October":"المجموعات التي حلّت نقاط البيع قبل أكتوبر",
+      "Browse all insights":"تصفّح كل الرؤى","Request a Consultation":"اطلب استشارة","See how we think":"اطّلع على طريقة تفكيرنا",
+      "Choose The Partner.":"اختر الشريك.","Then Choose The Platform.":"ثم اختر المنصة.",
+      "trustangle is a technology advisory and implementation partner working across the region since 2014. We help senior teams decide what to build, govern how it runs, and deliver it through an ecosystem of specialized companies we own and operate.":"trustangle شريك في الاستشارات والتنفيذ التقني يعمل عبر المنطقة منذ عام 2014. نساعد الفرق القيادية على تقرير ما الذي يُبنى، وحوكمة طريقة تشغيله، وتسليمه عبر منظومة من الشركات المتخصصة التي نملكها ونشغّلها.",
+      "Industries Served":"القطاعات المخدومة","Product Categories":"فئات المنتجات","Technology Partners":"شركاء التقنية","Unique Customers":"عملاء مميّزون"
+    };
+    // For elements wrapping text + an svg/extra node, only the leading text node is swapped.
+    var i18nEls = document.querySelectorAll("[data-i18n]");
+    i18nEls.forEach(function (el) {
+      var node = el.firstChild;
+      // store English text from the first text node (or whole textContent if simple)
+      if (node && node.nodeType === 3 && node.textContent.trim()) {
+        el.setAttribute("data-en", node.textContent);
+      } else {
+        el.setAttribute("data-en", el.textContent);
+      }
+    });
+    var lang = "en";
+    langBtn.addEventListener("click", function () {
+      lang = lang === "en" ? "ar" : "en";
+      var ar = lang === "ar";
+      document.documentElement.setAttribute("dir", ar ? "rtl" : "ltr");
+      document.documentElement.setAttribute("lang", ar ? "ar" : "en");
+      langBtn.textContent = ar ? "EN" : "عربي";
+      i18nEls.forEach(function (el) {
+        var en = el.getAttribute("data-en") || "";
+        var key = en.trim();
+        var target = ar ? (AR[key] || en) : en;
+        var node = el.firstChild;
+        if (node && node.nodeType === 3) { node.textContent = ar ? (target + " ") : en; }
+        else { el.textContent = target; }
+      });
     });
   }
 
@@ -297,30 +346,15 @@
     window.addEventListener("scroll", drOnScroll, { passive: true });
   }
 
-  /* ---------- Hero stats repeater (count-up on scroll into view) ---------- */
+  /* ---------- Hero stats count-up on scroll into view ---------- */
   var statsHost = document.getElementById("hero-stats");
   if (statsHost) {
-    var STATS = [
-      { value: 8,  suffix: "+", label: "Industries Served" },
-      { value: 28, suffix: "+", label: "Product Categories" },
-      { value: 54, suffix: "+", label: "Technology Partners" },
-      { value: 78, suffix: "+", label: "Unique Customers" }
-    ];
-
-    // Render one reusable template per data item
-    var counters = STATS.map(function (s) {
-      var tile = document.createElement("div");
-      tile.className = "stat";
-      var num = document.createElement("div");
-      num.className = "stat-num";
-      num.textContent = prefersReduced ? (s.value + s.suffix) : ("0" + s.suffix);
-      var label = document.createElement("div");
-      label.className = "stat-label";
-      label.textContent = s.label;
-      tile.appendChild(num);
-      tile.appendChild(label);
-      statsHost.appendChild(tile);
-      return { el: num, target: s.value, suffix: s.suffix };
+    var counters = [].slice.call(statsHost.querySelectorAll(".ta-stat-num")).map(function (num) {
+      var target = parseInt(num.getAttribute("data-count"), 10) || 0;
+      var suffix = num.getAttribute("data-suffix") || "";
+      if (prefersReduced) { num.textContent = target + suffix; }
+      else { num.textContent = "0"; }
+      return { el: num, target: target, suffix: suffix };
     });
 
     var runCountUp = function () {
