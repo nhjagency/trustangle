@@ -405,4 +405,31 @@
       }
     }
   }
+
+  /* ---------- Wallet stacking polish: covered card scales down + dims (AgentFlow-style) ---------- */
+  var wcards = Array.prototype.slice.call(document.querySelectorAll(".ww-card"));
+  if (wcards.length > 1 && !prefersReduced) {
+    var wraf = null;
+    var updateStack = function () {
+      for (var i = 0; i < wcards.length - 1; i++) {
+        var cur = wcards[i].getBoundingClientRect();
+        var nxt = wcards[i + 1].getBoundingClientRect();
+        var overlap = cur.bottom - nxt.top;                 // > 0 once the next card rises over this one
+        var p = Math.max(0, Math.min(1, overlap / (cur.height * 0.85)));
+        wcards[i].style.transformOrigin = "center top";
+        wcards[i].style.transform = "scale(" + (1 - p * 0.055).toFixed(4) + ")";
+        wcards[i].style.opacity = (1 - p * 0.4).toFixed(3);
+      }
+      // the last card never gets covered
+      var last = wcards[wcards.length - 1];
+      last.style.transform = "none";
+      last.style.opacity = "1";
+    };
+    window.addEventListener("scroll", function () {
+      if (wraf) cancelAnimationFrame(wraf);
+      wraf = requestAnimationFrame(updateStack);
+    }, { passive: true });
+    window.addEventListener("resize", updateStack, { passive: true });
+    updateStack();
+  }
 })();
