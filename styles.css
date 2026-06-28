@@ -1096,3 +1096,34 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
   .ta-wcard{grid-template-columns:1fr;position:static;min-height:0}
   .ta-wcard-deco{display:none}
 }
+
+/* ==========================================================================
+   Section 2 — "What we do" two-column split + hover-fan wallet cards
+   ========================================================================== */
+.ww{background:var(--bg)}
+.ww-in{padding:0 clamp(28px,5vw,80px);display:grid;grid-template-columns:0.56fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
+.ww-left{position:sticky;top:96px}
+.ww-h2{font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1.07;letter-spacing:-.025em;color:var(--ink);margin:16px 0 0}
+.ww-sub{margin:16px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:44ch}
+.ww-stack{display:flex;flex-direction:column;gap:18px}
+.ww-card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease,border-color .3s ease;will-change:transform}
+.ww-card:first-child{position:relative;z-index:2}
+.ww-card:nth-child(2){transform:translateY(-26px) scale(.98);z-index:1}
+.ww-stack:hover .ww-card{transform:none}
+.ww-card:hover{transform:translateY(-6px) scale(1);z-index:3;border-color:var(--teal);box-shadow:var(--shadow)}
+.ww-head{display:flex;align-items:center;gap:12px}
+.ww-chip{flex:none;width:38px;height:38px;border-radius:10px;background:var(--teal-lt);color:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:14px}
+.ww-title{font-size:clamp(17px,1.7vw,21px);font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.ww-desc{margin:14px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:62ch}
+.ww-checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;margin:16px 0 0;padding:0}
+.ww-check{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;line-height:1.4;color:var(--ink-2)}
+.ww-check svg{color:var(--teal);flex:none;margin-top:1px}
+@media(max-width:880px){
+  .ww-in{grid-template-columns:1fr;gap:28px}
+  .ww-left{position:static}
+  .ww-card:nth-child(2){transform:none}
+  .ww-checks{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .ww-card,.ww-card:nth-child(2){transform:none!important;transition:border-color .3s ease,box-shadow .3s ease}
+}
