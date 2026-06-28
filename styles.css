@@ -1074,7 +1074,8 @@ html[dir="rtl"] .ta-method-list::before{left:auto;right:25px}
 .ta-h2{font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin:16px 0 0}
 .ta-advise-sub{margin:14px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:62ch}
 .ta-wallet{display:flex;flex-direction:column;gap:26px}
-.ta-wcard{position:sticky;top:calc(88px + var(--i,0)*18px);background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-sm);padding:clamp(26px,3vw,44px);display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;min-height:clamp(220px,28vh,290px);overflow:hidden;transition:box-shadow .3s ease,border-color .3s ease}
+.ta-wcard{position:sticky;top:calc(88px + var(--i,0)*18px);background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-sm);padding:clamp(26px,3vw,44px);overflow:hidden;transition:box-shadow .3s ease,border-color .3s ease}
+.ta-wcard-p{max-width:70ch}
 .ta-wcard:hover{box-shadow:var(--shadow);border-color:var(--accent-line)}
 .ta-wcard-no{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--accent)}
 .ta-wcard-t{font-size:clamp(20px,2vw,27px);font-weight:800;color:var(--ink);margin:8px 0 12px;letter-spacing:-.01em}
