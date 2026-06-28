@@ -987,10 +987,11 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .ta-cta-arrow{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2)}
 
 /* ---- Hero ---- */
-.ta-hero{position:relative;overflow:hidden;min-height:calc(100svh - 65px);display:flex;align-items:center}
+.ta-hero{position:relative;overflow:hidden;min-height:calc(100svh - 65px);display:flex}
 .ta-hero-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:900px;height:520px;background:radial-gradient(60% 60% at 50% 0%,var(--accent-soft),transparent 70%);pointer-events:none;opacity:.9}
-.ta-hero-in{max-width:none;margin:0;width:100%;padding:clamp(14px,2.4vh,28px) clamp(28px,5vw,80px);position:relative}
-.ta-hero-grid{display:grid;grid-template-columns:1.5fr 0.8fr;gap:clamp(28px,3vw,44px);align-items:center}
+.ta-hero-in{max-width:none;margin:0;width:100%;display:flex;flex-direction:column;padding:clamp(14px,2.4vh,28px) clamp(28px,5vw,80px) clamp(22px,3.2vh,40px);position:relative}
+.ta-hero-grid{display:grid;grid-template-columns:1.5fr 0.8fr;gap:clamp(28px,3vw,44px);align-items:center;flex:1;align-content:center}
+.ta-logos{margin-top:clamp(28px,5vh,64px)}
 .ta-h1{font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0;color:var(--ink)}
 .ta-h1 .ta-h1-a{color:var(--accent);background:linear-gradient(transparent 60%,var(--spark-soft) 60%);padding:0 .06em;border-radius:3px}
 .ta-h1 .ta-h1-b{white-space:nowrap}
@@ -1061,3 +1062,37 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 html[dir="rtl"] .ta-method,html[dir="rtl"] .ta-method-list::before{margin-left:0}
 html[dir="rtl"] .ta-method{margin-right:auto}
 html[dir="rtl"] .ta-method-list::before{left:auto;right:25px}
+
+/* ==========================================================================
+   Section 2 — We advise. Then we deliver. (wallet-stacking cards)
+   ========================================================================== */
+.ta-advise{background:var(--bg)}
+.ta-advise-in{max-width:1120px;margin:0 auto;padding:0 clamp(28px,5vw,80px)}
+.ta-advise-head{max-width:680px;margin:0 0 36px}
+.ta-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;background:var(--badge-bg);border:1px solid var(--badge-line);font-size:13px;font-weight:600;color:var(--ink-2)}
+.ta-eyebrow-ic{color:var(--accent);display:inline-flex}
+.ta-h2{font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin:16px 0 0}
+.ta-advise-sub{margin:14px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:62ch}
+.ta-wallet{display:flex;flex-direction:column;gap:26px}
+.ta-wcard{position:sticky;top:calc(88px + var(--i,0)*18px);background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-sm);padding:clamp(26px,3vw,44px);display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;min-height:clamp(220px,28vh,290px);overflow:hidden;transition:box-shadow .3s ease,border-color .3s ease}
+.ta-wcard:hover{box-shadow:var(--shadow);border-color:var(--accent-line)}
+.ta-wcard-no{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--accent)}
+.ta-wcard-t{font-size:clamp(20px,2vw,27px);font-weight:800;color:var(--ink);margin:8px 0 12px;letter-spacing:-.01em}
+.ta-wcard-p{color:var(--muted);font-size:15px;line-height:1.65;max-width:48ch;margin:0 0 18px}
+.ta-link{display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-weight:700;font-size:14px;position:relative;width:fit-content}
+.ta-link svg{flex:none;transition:transform .25s ease}
+.ta-link:hover svg{transform:translateX(3px)}
+.ta-wcard-deco{position:relative;align-self:stretch;min-height:170px;border-radius:18px;background:linear-gradient(150deg,var(--accent-soft),transparent);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ta-wcard-deco>svg{width:96px;height:96px;color:var(--accent);opacity:.9;position:relative;z-index:1}
+.ta-wcard-glow{position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,var(--spark-soft),transparent 72%);opacity:.8}
+.ta-wcard-dots{position:absolute;inset:0;color:var(--dot)}
+.ta-advise-foot{margin-top:40px}
+.ta-engage{background:var(--bg-2);border:1px solid var(--line);border-radius:20px;padding:clamp(24px,3vw,34px)}
+.ta-engage-t{font-size:18px;font-weight:800;color:var(--ink);margin:0 0 10px}
+.ta-engage-p{color:var(--muted);font-size:15px;line-height:1.65;margin:0;max-width:90ch}
+.ta-pullquote{margin:26px 0 0;border-left:3px solid var(--accent);padding:4px 0 4px 20px;font-size:clamp(17px,1.8vw,22px);font-weight:600;color:var(--ink);line-height:1.5}
+html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent);padding:4px 20px 4px 0}
+@media(max-width:760px){
+  .ta-wcard{grid-template-columns:1fr;position:static;min-height:0}
+  .ta-wcard-deco{display:none}
+}
