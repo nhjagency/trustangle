@@ -1110,15 +1110,11 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
 .ww-h2-a{color:var(--teal-dk)}
 .ww-h2-b{color:var(--ink)}
 .ww-sub{margin:16px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:44ch}
-.ww-stack{display:flex;flex-direction:column;gap:32px}
-/* each card is its own deck: ghost cards peek behind (wallet stack), transform-only motion */
-.ww-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease,border-color .3s ease;will-change:transform}
-.ww-card::before,.ww-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--card);border:1px solid var(--line);z-index:-1;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
-.ww-card::before{transform:translateY(-8px) scaleX(.965);opacity:.7}
-.ww-card::after{transform:translateY(-15px) scaleX(.93);opacity:.45}
-.ww-card:hover{transform:translateY(-4px);z-index:3;border-color:var(--teal);box-shadow:var(--shadow)}
-.ww-card:hover::before{transform:translateY(-13px) scaleX(.965)}
-.ww-card:hover::after{transform:translateY(-24px) scaleX(.93)}
+.ww-stack{display:block}
+/* wallet: the two cards stack behind each other on scroll (sticky) */
+.ww-card{position:sticky;top:96px;margin-bottom:clamp(60px,14vh,160px);background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:box-shadow .35s ease,border-color .3s ease}
+.ww-card:nth-child(2){top:118px;margin-bottom:0}
+.ww-card:hover{border-color:var(--teal);box-shadow:var(--shadow)}
 .ww-head{display:flex;align-items:center;gap:12px}
 .ww-chip{flex:none;width:38px;height:38px;border-radius:10px;background:var(--teal-lt);color:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:14px}
 .ww-title{font-size:clamp(17px,1.7vw,21px);font-weight:800;color:var(--ink);letter-spacing:-.01em}
@@ -1129,7 +1125,7 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
 @media(max-width:880px){
   .ww-in{grid-template-columns:1fr;gap:28px}
   .ww-left{position:static}
-  .ww-card:nth-child(2){transform:none}
+  .ww-card,.ww-card:nth-child(2){position:static;top:auto}
   .ww-checks{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
