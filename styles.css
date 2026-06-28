@@ -987,9 +987,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .ta-cta-arrow{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2)}
 
 /* ---- Hero ---- */
-.ta-hero{position:relative;overflow:hidden}
+.ta-hero{position:relative;overflow:hidden;min-height:calc(100svh - 65px);display:flex;align-items:center}
 .ta-hero-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:900px;height:520px;background:radial-gradient(60% 60% at 50% 0%,var(--accent-soft),transparent 70%);pointer-events:none;opacity:.9}
-.ta-hero-in{max-width:none;margin:0;padding:40px clamp(28px,5vw,80px) 0;position:relative}
+.ta-hero-in{max-width:none;margin:0;width:100%;padding:clamp(14px,2.4vh,28px) clamp(28px,5vw,80px);position:relative}
 .ta-hero-grid{display:grid;grid-template-columns:1.5fr 0.8fr;gap:clamp(28px,3vw,44px);align-items:center}
 .ta-h1{font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0;color:var(--ink)}
 .ta-h1 .ta-h1-a{color:var(--accent);background:linear-gradient(transparent 60%,var(--spark-soft) 60%);padding:0 .06em;border-radius:3px}
@@ -1021,6 +1021,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 @media(max-width:920px){
   .ta-hide-sm{display:none!important}
   .ta-hero-grid{grid-template-columns:1fr}
+  .ta-hero{min-height:0;display:block}     /* stacked mobile hero flows normally */
 }
 
 /* theme toggle icon visibility */
