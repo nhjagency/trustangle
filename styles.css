@@ -1185,3 +1185,8 @@ body:has(.ta-navitem:focus-within) .ta-nav-scrim{opacity:1;visibility:visible}
   .ib-tab{flex:1 1 calc(50% - 8px);min-height:46px;padding:10px 12px}
   .ib-frame{min-height:300px;flex:none;height:300px}
 }
+
+/* Unify all inline icons to one line style (overrides per-icon stroke widths) */
+svg path,svg circle,svg rect,svg ellipse,svg line,svg polyline,svg polygon{
+  stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;
+}
