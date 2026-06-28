@@ -72,7 +72,7 @@ h1,h2,h3,h4{
   color:var(--ink);
 }
 
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+.wrap{max-width:none;margin:0 auto;padding:0 clamp(28px,5vw,80px)}
 
 /* Accessibility */
 a:focus-visible,button:focus-visible,.chip:focus-visible{
@@ -1067,7 +1067,7 @@ html[dir="rtl"] .ta-method-list::before{left:auto;right:25px}
    Section 2 — We advise. Then we deliver. (wallet-stacking cards)
    ========================================================================== */
 .ta-advise{background:var(--bg)}
-.ta-advise-in{max-width:1120px;margin:0 auto;padding:0 clamp(28px,5vw,80px)}
+.ta-advise-in{max-width:none;margin:0;padding:0 clamp(28px,5vw,80px)}
 .ta-advise-head{max-width:680px;margin:0 0 26px}
 .ta-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;background:var(--badge-bg);border:1px solid var(--badge-line);font-size:13px;font-weight:600;color:var(--ink-2)}
 .ta-eyebrow-ic{color:var(--accent);display:inline-flex}
