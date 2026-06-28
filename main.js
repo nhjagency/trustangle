@@ -341,8 +341,14 @@
         encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     });
 
+    // Show the popup after the user scrolls past the Industries section
+    // (fallback: after ~0.6 of the first viewport if that section is absent).
+    var drIndustries = document.getElementById("industries");
     var drOnScroll = function () {
-      if (window.scrollY > window.innerHeight * 0.6) {
+      var triggered = drIndustries
+        ? drIndustries.getBoundingClientRect().bottom < window.innerHeight * 0.6
+        : window.scrollY > window.innerHeight * 0.6;
+      if (triggered) {
         openDR();
         showStep(1);
         window.removeEventListener("scroll", drOnScroll);

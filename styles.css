@@ -1030,14 +1030,24 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---- Hero method stepper (replaces stat boxes) ---- */
 .ta-method{position:relative;width:100%;max-width:420px;margin-left:auto}
-.ta-method-list{list-style:none;display:flex;flex-direction:column;gap:20px;position:relative;margin:0;padding:0}
-.ta-method-list::before{content:"";position:absolute;left:25px;top:34px;bottom:34px;width:2px;background:linear-gradient(var(--accent-line),var(--accent-line) 65%,transparent);opacity:.7}
-.ta-step{position:relative;display:flex;gap:16px;align-items:flex-start}
-.ta-step-badge{position:relative;z-index:1;flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--accent);border:1px solid var(--accent-line);box-shadow:var(--shadow-sm)}
-.ta-step-body{padding-top:2px}
-.ta-step-n{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--accent)}
-.ta-step-t{font-size:15px;font-weight:700;color:var(--ink);margin:3px 0 3px;letter-spacing:.01em}
-.ta-step-p{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0;max-width:34ch}
+.ta-method-list{list-style:none;display:flex;flex-direction:column;gap:14px;position:relative;margin:0;padding:0}
+.ta-method-list::before{content:"";position:absolute;left:25px;top:30px;bottom:30px;width:2px;background:linear-gradient(var(--accent-line),var(--accent-line) 65%,transparent);opacity:.7}
+.ta-step{position:relative;display:flex;gap:16px;align-items:center}
+.ta-step-badge{position:relative;z-index:1;flex:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--accent);border:1px solid var(--accent-line);box-shadow:var(--shadow-sm)}
+.ta-step-body{min-width:0}
+.ta-step-n{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--accent);vertical-align:baseline}
+.ta-step-t{font-size:15px;font-weight:700;color:var(--ink);display:inline;margin:0 0 0 8px;letter-spacing:.01em;vertical-align:baseline}
+.ta-step-p{font-size:13.5px;color:var(--muted);line-height:1.45;margin:4px 0 0;max-width:34ch}
+/* staggered reveal motion for the steps */
+.ta-step{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.ta-method.in .ta-step,[data-reveal].in .ta-step{opacity:1;transform:none}
+.ta-method .ta-step:nth-child(1){transition-delay:.05s}
+.ta-method .ta-step:nth-child(2){transition-delay:.18s}
+.ta-method .ta-step:nth-child(3){transition-delay:.31s}
+.ta-method .ta-step:nth-child(4){transition-delay:.44s}
+.ta-step-badge{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease,border-color .28s ease,background .5s ease,color .35s ease}
+.ta-step:hover .ta-step-badge{transform:translateY(-2px) scale(1.05);border-color:var(--accent);box-shadow:0 10px 22px -10px var(--glow)}
+@media(prefers-reduced-motion:reduce){.ta-step{opacity:1;transform:none;transition:none}.ta-step:hover .ta-step-badge{transform:none}}
 html[dir="rtl"] .ta-method,html[dir="rtl"] .ta-method-list::before{margin-left:0}
 html[dir="rtl"] .ta-method{margin-right:auto}
 html[dir="rtl"] .ta-method-list::before{left:auto;right:25px}
