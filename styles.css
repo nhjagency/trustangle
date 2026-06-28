@@ -1112,7 +1112,7 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
 .ww-sub{margin:16px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:44ch}
 .ww-stack{display:block}
 /* wallet: the two cards stack behind each other on scroll (sticky) */
-.ww-card{position:sticky;top:96px;margin-bottom:clamp(60px,14vh,160px);background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:box-shadow .35s ease,border-color .3s ease}
+.ww-card{position:sticky;top:96px;margin-bottom:clamp(18px,2.4vh,26px);background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:box-shadow .35s ease,border-color .3s ease}
 .ww-card:nth-child(2){top:118px;margin-bottom:0}
 .ww-card:hover{border-color:var(--teal);box-shadow:var(--shadow)}
 .ww-head{display:flex;align-items:center;gap:12px}
