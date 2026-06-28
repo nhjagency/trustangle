@@ -432,4 +432,101 @@
     window.addEventListener("resize", updateStack, { passive: true });
     updateStack();
   }
+
+  /* ---------- Industries (Structure B): selector + brief + zoomable/pannable image ---------- */
+  var ibSection = document.getElementById("industries");
+  var ibFrame = document.getElementById("ib-frame");
+  var ibImg = document.getElementById("ib-img");
+  var ibDrop = document.getElementById("ib-drop");
+  if (ibSection && ibFrame && ibImg) {
+    var ibTabs = Array.prototype.slice.call(ibSection.querySelectorAll(".ib-tab"));
+    var ibName = ibSection.querySelector(".ib-brief-name");
+    var ibDesc = ibSection.querySelector(".ib-brief-desc");
+    var zoom = 1, panX = 0, panY = 0, dragging = false, sX = 0, sY = 0, sPX = 0, sPY = 0;
+
+    var clampPan = function () {
+      var mx = ibFrame.clientWidth * (zoom - 1) / 2;
+      var my = ibFrame.clientHeight * (zoom - 1) / 2;
+      panX = Math.max(-mx, Math.min(mx, panX));
+      panY = Math.max(-my, Math.min(my, panY));
+    };
+    var apply = function () {
+      clampPan();
+      ibImg.style.transform = "translate(" + panX + "px," + panY + "px) scale(" + zoom + ")";
+      ibFrame.classList.toggle("is-zoomed", zoom > 1);
+    };
+    var resetZoom = function () { zoom = 1; panX = 0; panY = 0; apply(); };
+    var setZoom = function (z) {
+      zoom = Math.max(1, Math.min(4, Math.round(z * 100) / 100));
+      if (zoom === 1) { panX = 0; panY = 0; }
+      apply();
+    };
+
+    ibFrame.querySelectorAll(".ib-zbtn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var a = btn.getAttribute("data-zoom");
+        if (a === "in") setZoom(zoom + 0.25);
+        else if (a === "out") setZoom(zoom - 0.25);
+        else resetZoom();
+      });
+    });
+
+    ibFrame.addEventListener("pointerdown", function (e) {
+      if (zoom <= 1) return;
+      dragging = true; sX = e.clientX; sY = e.clientY; sPX = panX; sPY = panY;
+      ibFrame.classList.add("is-dragging");
+      try { ibFrame.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    ibFrame.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      panX = sPX + (e.clientX - sX); panY = sPY + (e.clientY - sY); apply();
+    });
+    var endDrag = function () { dragging = false; ibFrame.classList.remove("is-dragging"); };
+    ibFrame.addEventListener("pointerup", endDrag);
+    ibFrame.addEventListener("pointercancel", endDrag);
+
+    var selectIb = function (tab) {
+      ibTabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+      });
+      var name = (tab.getAttribute("data-name") || "").replace(/&amp;/g, "&");
+      if (ibName) ibName.textContent = name;
+      if (ibDesc) ibDesc.textContent = tab.getAttribute("data-brief") || "";
+      var img = tab.getAttribute("data-img");
+      if (img) {
+        ibImg.src = img; ibImg.alt = name; ibImg.hidden = false; ibDrop.hidden = true;
+      } else {
+        ibImg.hidden = true; ibImg.removeAttribute("src"); ibDrop.hidden = false;
+      }
+      resetZoom();
+    };
+    ibTabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { selectIb(tab); });
+      tab.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+        if (!d) return; e.preventDefault();
+        var n = ibTabs[(i + d + ibTabs.length) % ibTabs.length];
+        selectIb(n); n.focus();
+      });
+    });
+
+    // Drag-and-drop a photo onto the placeholder (in-memory preview; no storage)
+    ["dragover", "dragenter"].forEach(function (ev) {
+      ibFrame.addEventListener(ev, function (e) { if (!ibDrop.hidden) { e.preventDefault(); ibDrop.classList.add("is-over"); } });
+    });
+    ["dragleave", "dragend"].forEach(function (ev) {
+      ibFrame.addEventListener(ev, function () { ibDrop.classList.remove("is-over"); });
+    });
+    ibFrame.addEventListener("drop", function (e) {
+      if (ibDrop.hidden) return;
+      e.preventDefault(); ibDrop.classList.remove("is-over");
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f && f.type.indexOf("image/") === 0) {
+        ibImg.src = URL.createObjectURL(f); ibImg.alt = "Selected photo"; ibImg.hidden = false; ibDrop.hidden = true; resetZoom();
+      }
+    });
+  }
 })();

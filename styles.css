@@ -1139,3 +1139,49 @@ body:has(.ta-navitem:hover) .ta-nav-scrim,
 body:has(.ta-navitem:focus-within) .ta-nav-scrim{opacity:1;visibility:visible}
 @media(max-width:920px){.ta-nav-scrim{display:none}}
 @media(prefers-reduced-motion:reduce){.ta-nav-scrim{transition:none}}
+
+/* ==========================================================================
+   Industries — Structure B (selector + brief + zoomable image + logos)
+   ========================================================================== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ib{background:var(--bg-2);min-height:calc(100svh - 65px);display:flex;padding:clamp(20px,3vh,40px) clamp(28px,5vw,80px)}
+.ib-card{flex:1;display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm);padding:clamp(18px,2.2vw,30px);min-height:0}
+.ib-main{flex:1;display:grid;grid-template-columns:250px 1fr;gap:clamp(18px,2vw,30px);min-height:0}
+/* left selector: 8 buttons share the column height evenly */
+.ib-selector{display:flex;flex-direction:column;gap:8px;min-height:0}
+.ib-tab{flex:1;min-height:0;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 14px;font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--ink-2);transition:background .2s ease,border-color .2s ease,color .2s ease}
+.ib-tab .ib-ic{flex:none;width:18px;height:18px;color:var(--teal);transition:color .2s ease}
+.ib-tab span{line-height:1.2}
+.ib-tab:hover{border-color:var(--accent-line)}
+.ib-tab.is-active{background:#e2f3f4;border-color:var(--teal);color:var(--teal-dk)}
+.ib-tab.is-active .ib-ic{color:var(--teal-dk)}
+/* right: brief + image */
+.ib-view{display:flex;flex-direction:column;gap:12px;min-height:0}
+.ib-brief{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.ib-brief-name{color:var(--ink);font-weight:800;font-size:15px;margin-right:8px;font-family:var(--sans)}
+.ib-frame{position:relative;flex:1;min-height:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--inset);display:flex;align-items:center;justify-content:center;touch-action:none}
+.ib-img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transform-origin:center center;will-change:transform;display:block}
+.ib-img[hidden]{display:none}
+.ib-frame.is-zoomed{cursor:grab}
+.ib-frame.is-dragging{cursor:grabbing}
+.ib-zoom{position:absolute;bottom:12px;right:12px;display:flex;gap:6px;z-index:3}
+.ib-zbtn{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.92);color:var(--ink);font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:border-color .2s ease,color .2s ease}
+.ib-zbtn:hover{border-color:var(--teal);color:var(--teal-dk)}
+.ib-zbtn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.ib-drop{position:absolute;inset:14px;z-index:2;border:2px dashed var(--line-2);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--faint);font-size:13px;font-weight:600;text-align:center;background:var(--inset)}
+.ib-drop.is-over{border-color:var(--teal);color:var(--teal-dk);background:var(--accent-soft)}
+/* bottom logo marquee */
+.ib-logos{border-top:1px solid var(--line);padding-top:clamp(12px,1.6vh,18px)}
+.ib-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.ib-track{display:flex;align-items:center;gap:48px;width:max-content;padding:2px 24px;animation:ta-marquee 36s linear infinite}
+.ib-marquee:hover .ib-track{animation-play-state:paused}
+.ib-track span{flex:none;display:inline-flex;align-items:center}
+.ib-track img{height:24px;width:auto;max-width:120px;object-fit:contain;opacity:.62;filter:grayscale(.25);display:block}
+@media(prefers-reduced-motion:reduce){.ib-track{animation:none}}
+@media(max-width:880px){
+  .ib{min-height:0;padding:24px clamp(20px,5vw,40px)}
+  .ib-main{grid-template-columns:1fr;gap:18px}
+  .ib-selector{flex-direction:row;flex-wrap:wrap}
+  .ib-tab{flex:1 1 calc(50% - 8px);min-height:46px;padding:10px 12px}
+  .ib-frame{min-height:300px;flex:none;height:300px}
+}
