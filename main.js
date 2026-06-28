@@ -522,6 +522,7 @@
     var pointers = {}, pCount = 0, pinchDist = 0, pinchZoom = 1;
     var ptList = function () { var a = []; for (var k in pointers) a.push(pointers[k]); return a; };
     ibFrame.addEventListener("pointerdown", function (e) {
+      if (e.target.closest(".ib-zoom")) return; // let the reset button receive its click
       if (!pointers[e.pointerId]) pCount++;
       pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
       try { ibFrame.setPointerCapture(e.pointerId); } catch (err) {}
