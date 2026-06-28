@@ -1027,3 +1027,17 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 #theme-toggle [data-when="dark"]{display:none}
 :root[data-theme="dark"] #theme-toggle [data-when="dark"]{display:inline-flex}
 :root[data-theme="dark"] #theme-toggle [data-when="light"]{display:none}
+
+/* ---- Hero method stepper (replaces stat boxes) ---- */
+.ta-method{position:relative;width:100%;max-width:420px;margin-left:auto}
+.ta-method-list{list-style:none;display:flex;flex-direction:column;gap:20px;position:relative;margin:0;padding:0}
+.ta-method-list::before{content:"";position:absolute;left:25px;top:34px;bottom:34px;width:2px;background:linear-gradient(var(--accent-line),var(--accent-line) 65%,transparent);opacity:.7}
+.ta-step{position:relative;display:flex;gap:16px;align-items:flex-start}
+.ta-step-badge{position:relative;z-index:1;flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--accent);border:1px solid var(--accent-line);box-shadow:var(--shadow-sm)}
+.ta-step-body{padding-top:2px}
+.ta-step-n{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--accent)}
+.ta-step-t{font-size:15px;font-weight:700;color:var(--ink);margin:3px 0 3px;letter-spacing:.01em}
+.ta-step-p{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0;max-width:34ch}
+html[dir="rtl"] .ta-method,html[dir="rtl"] .ta-method-list::before{margin-left:0}
+html[dir="rtl"] .ta-method{margin-right:auto}
+html[dir="rtl"] .ta-method-list::before{left:auto;right:25px}
