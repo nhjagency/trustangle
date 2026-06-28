@@ -860,6 +860,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .tw-who{display:flex;align-items:center;gap:11px;margin-top:14px}
 .tw-avatar{flex:none;width:36px;height:36px;border-radius:50%;background:var(--teal-lt);color:var(--teal-dk);
   display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:12.5px}
+.tw-avatar--logo{background:#fff;border:1px solid var(--line);padding:4px;overflow:hidden}
+.tw-avatar--logo img{width:100%;height:100%;object-fit:contain;display:block}
 .tw-name{display:block;font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--ink);line-height:1.25}
 .tw-role{display:block;font-size:11.5px;color:var(--gray);line-height:1.3;margin-top:1px}
 .tw-intro{grid-column:2;grid-row:1}
@@ -1104,13 +1106,19 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
 .ww-in{padding:0 clamp(28px,5vw,80px);display:grid;grid-template-columns:0.56fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
 .ww-left{position:sticky;top:96px}
 .ww-h2{font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1.07;letter-spacing:-.025em;color:var(--ink);margin:16px 0 0}
+.ww-h2-a,.ww-h2-b{display:block}
+.ww-h2-a{color:var(--teal-dk)}
+.ww-h2-b{color:var(--ink)}
 .ww-sub{margin:16px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:44ch}
-.ww-stack{display:flex;flex-direction:column;gap:18px}
-.ww-card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease,border-color .3s ease;will-change:transform}
-.ww-card:first-child{position:relative;z-index:2}
-.ww-card:nth-child(2){transform:translateY(-26px) scale(.98);z-index:1}
-.ww-stack:hover .ww-card{transform:none}
-.ww-card:hover{transform:translateY(-6px) scale(1);z-index:3;border-color:var(--teal);box-shadow:var(--shadow)}
+.ww-stack{display:flex;flex-direction:column;gap:32px}
+/* each card is its own deck: ghost cards peek behind (wallet stack), transform-only motion */
+.ww-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.4vw,32px);transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease,border-color .3s ease;will-change:transform}
+.ww-card::before,.ww-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--card);border:1px solid var(--line);z-index:-1;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.ww-card::before{transform:translateY(-8px) scaleX(.965);opacity:.7}
+.ww-card::after{transform:translateY(-15px) scaleX(.93);opacity:.45}
+.ww-card:hover{transform:translateY(-4px);z-index:3;border-color:var(--teal);box-shadow:var(--shadow)}
+.ww-card:hover::before{transform:translateY(-13px) scaleX(.965)}
+.ww-card:hover::after{transform:translateY(-24px) scaleX(.93)}
 .ww-head{display:flex;align-items:center;gap:12px}
 .ww-chip{flex:none;width:38px;height:38px;border-radius:10px;background:var(--teal-lt);color:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:14px}
 .ww-title{font-size:clamp(17px,1.7vw,21px);font-weight:800;color:var(--ink);letter-spacing:-.01em}
@@ -1125,5 +1133,6 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
   .ww-checks{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
-  .ww-card,.ww-card:nth-child(2){transform:none!important;transition:border-color .3s ease,box-shadow .3s ease}
+  .ww-card{transform:none!important;transition:border-color .3s ease,box-shadow .3s ease}
+  .ww-card::before,.ww-card::after{transition:none}
 }
