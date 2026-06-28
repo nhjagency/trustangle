@@ -1136,3 +1136,10 @@ html[dir="rtl"] .ta-pullquote{border-left:0;border-right:3px solid var(--accent)
   .ww-card{transform:none!important;transition:border-color .3s ease,box-shadow .3s ease}
   .ww-card::before,.ww-card::after{transition:none}
 }
+
+/* Dropdown backdrop scrim: dims the page behind an open nav mega-dropdown */
+.ta-nav-scrim{position:fixed;inset:65px 0 0 0;background:rgba(8,16,19,.30);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;z-index:55;pointer-events:none}
+body:has(.ta-navitem:hover) .ta-nav-scrim,
+body:has(.ta-navitem:focus-within) .ta-nav-scrim{opacity:1;visibility:visible}
+@media(max-width:920px){.ta-nav-scrim{display:none}}
+@media(prefers-reduced-motion:reduce){.ta-nav-scrim{transition:none}}
