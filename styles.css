@@ -956,7 +956,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 
 /* ---- Header ---- */
 .ta-header{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line)}
-.ta-header-in{max-width:1200px;margin:0 auto;padding:9px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.ta-header-in{max-width:none;margin:0 auto;padding:9px clamp(28px,5vw,80px);display:flex;align-items:center;justify-content:space-between;gap:24px}
 .ta-logo{display:flex;align-items:center}
 .ta-logo img{height:46px;width:auto;display:block}
 .ta-nav{display:flex;align-items:center;gap:26px;font-size:14.5px;font-weight:500;color:var(--muted)}
