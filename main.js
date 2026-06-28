@@ -488,34 +488,75 @@
       ibFrame.classList.toggle("is-zoomed", zoom > 1);
     };
     var resetZoom = function () { zoom = 1; panX = 0; panY = 0; apply(); };
-    var setZoom = function (z) {
-      zoom = Math.max(1, Math.min(4, Math.round(z * 100) / 100));
-      if (zoom === 1) { panX = 0; panY = 0; }
+    // Zoom toward an anchor point (vx,vy = offset from frame centre); omit to zoom from centre.
+    var setZoomAt = function (z, vx, vy) {
+      var nz = Math.max(1, Math.min(4, Math.round(z * 100) / 100));
+      if (nz === zoom) return;
+      if (nz === 1) { panX = 0; panY = 0; }
+      else if (vx !== undefined) {
+        var s = nz / zoom;
+        panX = vx * (1 - s) + panX * s;
+        panY = vy * (1 - s) + panY * s;
+      }
+      zoom = nz;
       apply();
     };
 
+    // Reset is the only on-screen control now; zoom in/out is wheel + pinch.
     ibFrame.querySelectorAll(".ib-zbtn").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var a = btn.getAttribute("data-zoom");
-        if (a === "in") setZoom(zoom + 0.25);
-        else if (a === "out") setZoom(zoom - 0.25);
-        else resetZoom();
+        if (btn.getAttribute("data-zoom") === "reset") resetZoom();
       });
     });
 
+    // Mouse wheel / trackpad zoom, anchored to the cursor so you read where you point.
+    ibFrame.addEventListener("wheel", function (e) {
+      e.preventDefault();
+      var r = ibFrame.getBoundingClientRect();
+      var vx = (e.clientX - r.left) - r.width / 2;
+      var vy = (e.clientY - r.top) - r.height / 2;
+      setZoomAt(zoom * (e.deltaY < 0 ? 1.12 : 0.89), vx, vy);
+    }, { passive: false });
+
+    // Pointer handling: one pointer pans (when zoomed), two pointers pinch-zoom.
+    var pointers = {}, pCount = 0, pinchDist = 0, pinchZoom = 1;
+    var ptList = function () { var a = []; for (var k in pointers) a.push(pointers[k]); return a; };
     ibFrame.addEventListener("pointerdown", function (e) {
-      if (zoom <= 1) return;
-      dragging = true; sX = e.clientX; sY = e.clientY; sPX = panX; sPY = panY;
-      ibFrame.classList.add("is-dragging");
+      if (!pointers[e.pointerId]) pCount++;
+      pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
       try { ibFrame.setPointerCapture(e.pointerId); } catch (err) {}
+      if (pCount === 2) {
+        var p = ptList();
+        pinchDist = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+        pinchZoom = zoom;
+        dragging = false;
+        ibFrame.classList.remove("is-dragging");
+      } else if (pCount === 1 && zoom > 1) {
+        dragging = true; sX = e.clientX; sY = e.clientY; sPX = panX; sPY = panY;
+        ibFrame.classList.add("is-dragging");
+      }
     });
     ibFrame.addEventListener("pointermove", function (e) {
-      if (!dragging) return;
-      panX = sPX + (e.clientX - sX); panY = sPY + (e.clientY - sY); apply();
+      if (!pointers[e.pointerId]) return;
+      pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+      if (pCount >= 2 && pinchDist > 0) {
+        var p = ptList();
+        var d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+        var r = ibFrame.getBoundingClientRect();
+        var vx = ((p[0].x + p[1].x) / 2 - r.left) - r.width / 2;
+        var vy = ((p[0].y + p[1].y) / 2 - r.top) - r.height / 2;
+        setZoomAt(pinchZoom * (d / pinchDist), vx, vy);
+      } else if (dragging) {
+        panX = sPX + (e.clientX - sX); panY = sPY + (e.clientY - sY); apply();
+      }
     });
-    var endDrag = function () { dragging = false; ibFrame.classList.remove("is-dragging"); };
-    ibFrame.addEventListener("pointerup", endDrag);
-    ibFrame.addEventListener("pointercancel", endDrag);
+    var endPtr = function (e) {
+      if (pointers[e.pointerId]) { delete pointers[e.pointerId]; pCount = Math.max(0, pCount - 1); }
+      if (pCount < 2) pinchDist = 0;
+      if (pCount === 0) { dragging = false; ibFrame.classList.remove("is-dragging"); }
+    };
+    ibFrame.addEventListener("pointerup", endPtr);
+    ibFrame.addEventListener("pointercancel", endPtr);
 
     var selectIb = function (tab) {
       ibTabs.forEach(function (t) {
