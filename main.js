@@ -461,14 +461,16 @@
         .map(function (k) { return k.trim(); })
         .filter(function (k) { return ibLogoLib[k]; });
       if (!keys.length) { ibTrack.innerHTML = ""; return; }
-      // Repeat the set enough times to fill the bar for a seamless, centered loop.
-      var reps = Math.max(2, Math.ceil(8 / keys.length));
+      // Build one unit wide enough to span the bar, then duplicate it so the
+      // -50% marquee loop is seamless and never leaves an empty gap.
+      var unit = [];
+      while (unit.length < 10) unit = unit.concat(keys);
       var html = "";
-      for (var r = 0; r < reps; r++) {
-        keys.forEach(function (k) {
+      for (var half = 0; half < 2; half++) {
+        unit.forEach(function (k) {
           var l = ibLogoLib[k];
-          var hidden = r > 0 ? ' aria-hidden="true"' : '';
-          var alt = r > 0 ? '' : l.alt;
+          var hidden = half > 0 ? ' aria-hidden="true"' : '';
+          var alt = half > 0 ? '' : l.alt;
           html += '<span' + hidden + '><img src="' + l.src + '" alt="' + alt + '"></span>';
         });
       }
