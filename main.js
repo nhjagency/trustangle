@@ -442,6 +442,38 @@
     var ibTabs = Array.prototype.slice.call(ibSection.querySelectorAll(".ib-tab"));
     var ibName = ibSection.querySelector(".ib-brief-name");
     var ibDesc = ibSection.querySelector(".ib-brief-desc");
+    var ibTrack = document.getElementById("ib-track");
+
+    // Per-industry platform logos: tab data-logos lists keys into this registry.
+    var ibLogoLib = {
+      "netsuite": { src: "assets/netsuite-logo.jpg", alt: "Oracle NetSuite" },
+      "dynamics-365": { src: "assets/dynamics-365-logo.jpg", alt: "Microsoft Dynamics 365" },
+      "shiji": { src: "assets/shiji-logo.png", alt: "Shiji" },
+      "cegid": { src: "assets/cegid-logo.png", alt: "Cegid" },
+      "lightspeed": { src: "assets/lightspeed-logo.png", alt: "Lightspeed" },
+      "snowflake": { src: "assets/snowflake-logo.png", alt: "Snowflake" },
+      "uipath": { src: "assets/uipath-logo.png", alt: "UiPath" },
+      "reachware": { src: "assets/reachware-logo.png", alt: "Reachware" }
+    };
+    var renderLogos = function (tab) {
+      if (!ibTrack) return;
+      var keys = (tab.getAttribute("data-logos") || "").split(",")
+        .map(function (k) { return k.trim(); })
+        .filter(function (k) { return ibLogoLib[k]; });
+      if (!keys.length) { ibTrack.innerHTML = ""; return; }
+      // Repeat the set enough times to fill the bar for a seamless, centered loop.
+      var reps = Math.max(2, Math.ceil(8 / keys.length));
+      var html = "";
+      for (var r = 0; r < reps; r++) {
+        keys.forEach(function (k) {
+          var l = ibLogoLib[k];
+          var hidden = r > 0 ? ' aria-hidden="true"' : '';
+          var alt = r > 0 ? '' : l.alt;
+          html += '<span' + hidden + '><img src="' + l.src + '" alt="' + alt + '"></span>';
+        });
+      }
+      ibTrack.innerHTML = html;
+    };
     var zoom = 1, panX = 0, panY = 0, dragging = false, sX = 0, sY = 0, sPX = 0, sPY = 0;
 
     var clampPan = function () {
@@ -501,6 +533,7 @@
       } else {
         ibImg.hidden = true; ibImg.removeAttribute("src"); ibDrop.hidden = false;
       }
+      renderLogos(tab);
       resetZoom();
     };
     ibTabs.forEach(function (tab, i) {
@@ -512,6 +545,10 @@
         selectIb(n); n.focus();
       });
     });
+
+    // Initial render of the logo bar for the default active tab.
+    var ibActive = ibSection.querySelector(".ib-tab.is-active") || ibTabs[0];
+    if (ibActive) renderLogos(ibActive);
 
     // Drag-and-drop a photo onto the placeholder (in-memory preview; no storage)
     ["dragover", "dragenter"].forEach(function (ev) {

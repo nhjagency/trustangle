@@ -972,8 +972,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible{
 .ta-dd::before{content:"";position:absolute;top:-16px;left:0;right:0;height:18px}
 .ta-dd a{display:flex;align-items:center;gap:11px;padding:8px 12px;border-radius:11px;font-size:14px;font-weight:600;color:var(--ink-2);white-space:nowrap;min-width:222px}
 .ta-dd a:hover{background:var(--accent-soft);color:var(--accent)}
-.ta-ic{flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);transition:background .18s ease,color .18s ease}
-.ta-dd a:hover .ta-ic{background:var(--accent);color:#fff}
+.ta-ic{flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;color:var(--accent);transition:color .18s ease}
+.ta-dd a:hover .ta-ic{color:var(--accent-2)}
 .ta-dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 .ta-dd-grid a{min-width:198px}
 .ta-dd-text a{white-space:normal;min-width:286px;max-width:300px;line-height:1.32;align-items:flex-start}
@@ -1144,22 +1144,23 @@ body:has(.ta-navitem:focus-within) .ta-nav-scrim{opacity:1;visibility:visible}
    Industries — Structure B (selector + brief + zoomable image + logos)
    ========================================================================== */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.ib{background:var(--bg-2);min-height:calc(100svh - 65px);display:flex;padding:clamp(20px,3vh,40px) clamp(28px,5vw,80px)}
-.ib-card{flex:1;display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm);padding:clamp(18px,2.2vw,30px);min-height:0}
-.ib-main{flex:1;display:grid;grid-template-columns:250px 1fr;gap:clamp(18px,2vw,30px);min-height:0}
-/* left selector: 8 buttons share the column height evenly */
-.ib-selector{display:flex;flex-direction:column;gap:8px;min-height:0}
-.ib-tab{flex:1;min-height:0;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 14px;font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--ink-2);transition:background .2s ease,border-color .2s ease,color .2s ease}
+.ib{background:var(--bg-2);padding:clamp(48px,7vh,90px) clamp(28px,5vw,80px)}
+.ib-card{display:flex;flex-direction:column;gap:clamp(18px,2.4vh,28px);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm);padding:clamp(22px,2.6vw,38px)}
+.ib-head{display:flex;flex-direction:column;gap:12px}
+.ib-main{display:grid;grid-template-columns:260px 1fr;gap:clamp(18px,2vw,30px);align-items:stretch}
+/* left selector: natural-height buttons */
+.ib-selector{display:flex;flex-direction:column;gap:8px}
+.ib-tab{min-height:54px;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--ink-2);transition:background .2s ease,border-color .2s ease,color .2s ease}
 .ib-tab .ib-ic{flex:none;width:18px;height:18px;color:var(--teal);transition:color .2s ease}
 .ib-tab span{line-height:1.2}
 .ib-tab:hover{border-color:var(--accent-line)}
 .ib-tab.is-active{background:#e2f3f4;border-color:var(--teal);color:var(--teal-dk)}
 .ib-tab.is-active .ib-ic{color:var(--teal-dk)}
 /* right: brief + image */
-.ib-view{display:flex;flex-direction:column;gap:12px;min-height:0}
+.ib-view{display:flex;flex-direction:column;gap:12px}
 .ib-brief{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
 .ib-brief-name{color:var(--ink);font-weight:800;font-size:15px;margin-right:8px;font-family:var(--sans)}
-.ib-frame{position:relative;flex:1;min-height:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--inset);display:flex;align-items:center;justify-content:center;touch-action:none}
+.ib-frame{position:relative;flex:1;min-height:340px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--inset);display:flex;align-items:center;justify-content:center;touch-action:none}
 .ib-img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transform-origin:center center;will-change:transform;display:block}
 .ib-img[hidden]{display:none}
 .ib-frame.is-zoomed{cursor:grab}
@@ -1170,10 +1171,11 @@ body:has(.ta-navitem:focus-within) .ta-nav-scrim{opacity:1;visibility:visible}
 .ib-zbtn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .ib-drop{position:absolute;inset:14px;z-index:2;border:2px dashed var(--line-2);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--faint);font-size:13px;font-weight:600;text-align:center;background:var(--inset)}
 .ib-drop.is-over{border-color:var(--teal);color:var(--teal-dk);background:var(--accent-soft)}
-/* bottom logo marquee */
-.ib-logos{border-top:1px solid var(--line);padding-top:clamp(12px,1.6vh,18px)}
-.ib-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.ib-track{display:flex;align-items:center;gap:48px;width:max-content;padding:2px 24px;animation:ta-marquee 36s linear infinite}
+.ib-drop[hidden]{display:none}
+/* bottom logo marquee (per-industry, centered, fast) */
+.ib-logos{padding-top:clamp(10px,1.4vh,16px)}
+.ib-marquee{position:relative;overflow:hidden;display:flex;justify-content:center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.ib-track{display:flex;align-items:center;justify-content:center;gap:48px;width:max-content;padding:2px 24px;animation:ta-marquee 18s linear infinite}
 .ib-marquee:hover .ib-track{animation-play-state:paused}
 .ib-track span{flex:none;display:inline-flex;align-items:center}
 .ib-track img{height:24px;width:auto;max-width:120px;object-fit:contain;opacity:.62;filter:grayscale(.25);display:block}
