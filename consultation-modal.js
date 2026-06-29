@@ -575,8 +575,8 @@
       if (this.state.type === "inperson") {
         var loc = el("div", "locard");
         loc.innerHTML = '<span class="lpin">' + IC.pin + '</span>' +
-          '<div><div class="lt">King Abdullah Financial District (KAFD)</div>' +
-          '<div class="la">Riyadh, Saudi Arabia</div>' +
+          '<div><div class="lt">trustangle Head office</div>' +
+          '<div class="la">King Abdullah Financial District (KAFD), Riyadh, Saudi Arabia</div>' +
           '<a href="https://maps.app.goo.gl/3qnF1WnFU3N2s8T3A" target="_blank" rel="noopener">View on map ' + IC.extlink + '</a></div>';
         col.appendChild(loc);
       }
