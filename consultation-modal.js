@@ -103,6 +103,12 @@
 .seg.on{background:linear-gradient(135deg,#067d89,#0099a8)}\
 .phase{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep)}\
 .body{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}\
+.main *{scrollbar-width:thin;scrollbar-color:#cdd9d9 transparent}\
+.main ::-webkit-scrollbar{width:7px;height:7px}\
+.main ::-webkit-scrollbar-track{background:transparent}\
+.main ::-webkit-scrollbar-thumb{background:#cdd9d9;border-radius:99px}\
+.main ::-webkit-scrollbar-thumb:hover{background:#aab8b8}\
+.main ::-webkit-scrollbar-button{display:none;width:0;height:0}\
 .screen{display:none;flex-direction:column;min-height:0}\
 .screen.show{display:flex}\
 .count{font-family:var(--body);font-size:13px;font-weight:700;color:var(--muted);margin-bottom:5px}\
