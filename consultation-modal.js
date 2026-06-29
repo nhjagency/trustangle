@@ -569,7 +569,7 @@
         loc.innerHTML = '<span class="lpin">' + IC.pin + '</span>' +
           '<div><div class="lt">King Abdullah Financial District (KAFD)</div>' +
           '<div class="la">Riyadh, Saudi Arabia</div>' +
-          '<a href="https://maps.app.goo.gl/JhnSe44AseKDLBiA8" target="_blank" rel="noopener">View on map ' + IC.extlink + '</a></div>';
+          '<a href="https://maps.app.goo.gl/3qnF1WnFU3N2s8T3A" target="_blank" rel="noopener">View on map ' + IC.extlink + '</a></div>';
         col.appendChild(loc);
       }
       var info = el("div", "infocard");
