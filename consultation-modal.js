@@ -363,7 +363,7 @@
 
     _screen1() {
       var self = this, s = this.state;
-      var w = this._wrap("1 / 3", "Which industry is your project in?");
+      var w = this._wrap("", "Which industry is your project in?");
       var box = el("div", "chips");
       INDUSTRIES.forEach(function (t) {
         var c = el("button", "chip" + (s.industry === t ? " sel" : ""), esc(t)); c.type = "button";
@@ -378,7 +378,7 @@
     }
     _screen2() {
       var self = this, s = this.state, ind = s.industry || "Other";
-      var w = this._wrap("2 / 3", "What is hurting right now?", "Select all that apply.");
+      var w = this._wrap("", "What is hurting right now?");
       var box = el("div", "chips");
       (DATA[ind] || DATA.Other).pains.forEach(function (t) {
         var c = el("button", "chip" + (s.pains.indexOf(t) >= 0 ? " sel" : ""), esc(t)); c.type = "button";
@@ -394,7 +394,7 @@
     }
     _screen3() {
       var self = this, s = this.state, ind = s.industry || "Other";
-      var w = this._wrap("3 / 3", "What matters most?");
+      var w = this._wrap("", "What matters most?");
       var box = el("div", "chips");
       (DATA[ind] || DATA.Other).priorities.forEach(function (t) {
         var c = el("button", "chip" + (s.priority === t ? " sel" : ""), esc(t)); c.type = "button";
