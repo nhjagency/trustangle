@@ -7,16 +7,16 @@
   "use strict";
 
   /* ---- placeholders (left literal until real values are supplied) ---- */
-  var DIAGNOSTIC_FEE = "{{DIAGNOSTIC_FEE}}";
+  var DIAGNOSTIC_FEE = "SAR 750";
   var PAYMENT_PROVIDER = "{{PAYMENT_PROVIDER}}";
   var FORM_ENDPOINT = "{{FORM_ENDPOINT}}";
 
   var TEAM = [
-    { name: "Maysarah Mechaal", slug: "maysarah-mechaal", initials: "MM", url: "https://www.linkedin.com/in/maysarah-mechaal/", title: "{{TITLE_MAYSARAH}}" },
-    { name: "Hamza Abu Sitta",  slug: "hamza-abu-sitta",  initials: "HA", url: "https://www.linkedin.com/in/hamzaabusitta/",   title: "{{TITLE_HAMZA}}" },
-    { name: "Basheer Mishal",   slug: "basheer-mishal",   initials: "BM", url: "https://www.linkedin.com/in/basheer-mishal/",  title: "{{TITLE_BASHEER}}" },
-    { name: "Ahmad Jallabi",    slug: "ahmad-jallabi",    initials: "AJ", url: "https://www.linkedin.com/in/ahmad-jallabi-10/", title: "{{TITLE_AHMAD}}" },
-    { name: "Sara Fareed",      slug: "sara-fareed",      initials: "SF", url: "https://www.linkedin.com/in/sara-fareed/",     title: "{{TITLE_SARA}}" }
+    { name: "Maysarah Mechaal", abbr: "Maysarah M.", slug: "maysarah-mechaal", initials: "MM", url: "https://www.linkedin.com/in/maysarah-mechaal/", title: "{{TITLE_MAYSARAH}}" },
+    { name: "Hamza Abu Sitta",  abbr: "Hamza A.",    slug: "hamza-abu-sitta",  initials: "HA", url: "https://www.linkedin.com/in/hamzaabusitta/",   title: "{{TITLE_HAMZA}}" },
+    { name: "Basheer Mishal",   abbr: "Basheer M.",  slug: "basheer-mishal",   initials: "BM", url: "https://www.linkedin.com/in/basheer-mishal/",  title: "{{TITLE_BASHEER}}" },
+    { name: "Ahmad Jallabi",    abbr: "Ahmad J.",    slug: "ahmad-jallabi",    initials: "AJ", url: "https://www.linkedin.com/in/ahmad-jallabi-10/", title: "{{TITLE_AHMAD}}" },
+    { name: "Sara Fareed",      abbr: "Sara F.",     slug: "sara-fareed",      initials: "SF", url: "https://www.linkedin.com/in/sara-fareed/",     title: "{{TITLE_SARA}}" }
   ];
 
   var INDUSTRIES = ["Hospitality","Food & Beverage","Retail & Commerce","Real Estate & Construction","Manufacturing","Banking & Finance","Insurance","Investments","Other"];
@@ -46,7 +46,14 @@
     linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.25 8.25h4.5V24h-4.5zM8.5 8.25h4.3v2.15h.06c.6-1.13 2.06-2.32 4.24-2.32 4.54 0 5.38 2.99 5.38 6.87V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8s-2.67 1.81-2.67 3.68V24h-4.5z"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.1 8.1L23.3 22h-6.6l-5.2-6.8L5.6 22H2.5l7.6-8.7L1 2h6.8l4.7 6.2L18.9 2Zm-1.2 18h1.8L7.4 3.9H5.5L17.7 20Z"/></svg>',
     instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>',
-    arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>'
+    arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>',
+    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l2.6 1.6"/></svg>',
+    people: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><path d="M16 6.2a3 3 0 0 1 0 5.6M21 19c0-2.3-1.4-4-3.6-4.7"/></svg>',
+    building: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v16"/><path d="M15 9h3a1 1 0 0 1 1 1v11"/><path d="M3.5 21h17"/><path d="M9.5 8h2M9.5 12h2M9.5 16h2"/></svg>',
+    video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3z"/></svg>',
+    calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>',
+    extlink: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5.5"/></svg>'
   };
 
   var RAIL = [
@@ -113,54 +120,83 @@
 .field input{width:100%;font-family:var(--body);font-size:15px;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:11px;padding:12px 14px}\
 .field input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}\
 .note{font-size:13px;color:var(--muted);margin-top:14px}\
-/* consultation */\
-.who-h{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}\
-.teamrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px}\
-.tm{flex:1 1 0;min-width:112px;display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--tint);border:1px solid var(--line);border-radius:13px;padding:9px 7px 8px}\
-.tm .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;overflow:hidden;margin-bottom:6px}\
-.tm .av img{width:100%;height:100%;object-fit:cover}\
-.tm .nm{font-family:var(--disp);font-weight:700;font-size:12.5px;color:var(--ink);line-height:1.15}\
-.tm .ti{font-size:11px;color:var(--muted);margin:2px 0 5px;min-height:13px}\
-.tm .li{font-size:11px;font-weight:600;color:var(--accent-deep);text-decoration:none}\
-.tm .li:hover{color:var(--accent)}\
-.tm .li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.types{display:grid;gap:8px;margin-bottom:11px;max-width:560px}\
-.trow{display:flex;align-items:center;gap:13px;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:13px;padding:10px 14px;cursor:pointer;background:#fff;font-family:var(--body)}\
-.trow:hover{border-color:var(--accent)}\
-.trow.sel{border-color:var(--accent);background:var(--accent-soft)}\
-.trow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.trow .radio{flex:none;width:20px;height:20px;border-radius:50%;border:1.6px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;color:transparent}\
-.trow.sel .radio{background:var(--accent);border-color:var(--accent);color:#fff}\
-.trow .radio svg{width:12px;height:12px}\
-.trow .ti b{font-family:var(--disp);font-size:15.5px;color:var(--ink)}\
-.trow .ti span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}\
-.trow .tprice{margin-left:auto;font-family:var(--disp);font-weight:700;font-size:14px;color:var(--accent-deep);white-space:nowrap}\
-.book{display:grid;grid-template-columns:auto 244px;gap:30px;align-items:start;justify-content:start}\
-.bk-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px}\
+/* connect: center column + right info sidebar */\
+.screen.connect.show{display:grid;grid-template-columns:1fr 280px;gap:26px;align-items:start;flex:1;min-height:0}\
+.cmain{display:flex;flex-direction:column;min-height:0}\
+.cside{display:flex;flex-direction:column;min-height:0}\
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:11px}\
+.type{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;transition:.13s;background:#fff}\
+.type:hover{border-color:var(--accent)}\
+.type.sel{border-color:var(--accent);background:var(--accent-soft)}\
+.tradio{position:absolute;top:11px;right:11px;width:18px;height:18px;border-radius:50%;border:1.6px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;color:transparent}\
+.type.sel .tradio{background:var(--accent);border-color:var(--accent);color:#fff}\
+.tradio svg{width:11px;height:11px}\
+.ticon{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;margin-bottom:9px}\
+.type.sel .ticon{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff}\
+.ticon svg{width:18px;height:18px}\
+.type .tt{font-family:var(--disp);font-weight:700;font-size:15px}\
+.type .td{font-size:12px;color:var(--muted);margin-top:2px}\
+.type .tp{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent-deep);margin-top:8px;min-height:16px}\
+.teamnote{display:flex;align-items:flex-start;gap:10px;background:var(--accent-soft);border-radius:12px;padding:11px 13px;margin-bottom:12px}\
+.teamnote svg{width:16px;height:16px;flex:none;color:var(--accent-deep);margin-top:1px}\
+.teamnote b{display:block;font-size:12.5px;color:var(--ink);font-weight:700;line-height:1.3}\
+.teamnote span{display:block;font-size:12px;color:var(--accent-deep);margin-top:1px}\
+.bk-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 8px}\
+.book{display:grid;grid-template-columns:1fr 150px;gap:18px}\
 .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}\
 .calhead b{font-family:var(--disp);font-weight:700;font-size:14px}\
 .calhead button{border:1px solid var(--line);background:#fff;border-radius:8px;width:28px;height:28px;cursor:pointer;color:var(--ink);font-size:15px;line-height:1}\
 .calhead button:hover:not(:disabled){border-color:var(--accent);color:var(--accent-deep)}\
 .calhead button:disabled{opacity:.35;cursor:not-allowed}\
-.calhead button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.cal{display:grid;grid-template-columns:repeat(7,44px);gap:6px}\
-.cal .dw{font-size:11px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:5px}\
-.cal .d{width:44px;height:44px;border:none;background:var(--tint);border-radius:10px;font-size:13.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}\
+.cal .dw{font-size:10.5px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:3px}\
+.cal .d{aspect-ratio:1;min-height:30px;border:none;background:none;border-radius:50%;font-size:12.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
 .cal .d:hover:not(:disabled){background:var(--accent-soft);color:var(--accent-deep)}\
 .cal .d.sel{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;font-weight:600}\
-.cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent)}\
+.cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent-line,#bee4e4)}\
 .cal .d:disabled{background:none;color:#cbd4d5;cursor:not-allowed}\
-.cal .d:focus-visible{outline:2px solid var(--accent);outline-offset:1px}\
 .cal .d.empty{background:none;cursor:default}\
-.slots{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
-.slots.two{grid-template-columns:1fr 1fr}\
-.slot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--body);font-size:14.5px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 16px;cursor:pointer;color:var(--ink)}\
+.times{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
+.times.two{grid-template-columns:1fr 1fr}\
+.slot{display:flex;justify-content:flex-start;align-items:center;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 15px;cursor:pointer;color:var(--ink)}\
 .slot:hover:not(:disabled){border-color:var(--accent)}\
 .slot.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:600}\
-.slot:disabled{background:var(--tint);color:#aab4b5;cursor:not-allowed}\
-.slot .bk{font-size:9.5px;font-weight:600;letter-spacing:.06em;color:#9aa6a7}\
-.slot:focus-visible{outline:2px solid var(--accent);outline-offset:1px}\
-.hint{font-size:12.5px;color:var(--muted)}\
+.slot:disabled{color:#b3bcbd;cursor:not-allowed;background:var(--tint)}\
+.slot .bk{font-size:9px;text-transform:uppercase;letter-spacing:.05em;margin-left:5px}\
+.hint{font-size:12px;color:var(--muted)}\
+.locard{border:1px solid var(--line);border-radius:14px;padding:13px;display:flex;gap:11px;margin-bottom:11px}\
+.locard .lpin{flex:none;width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center}\
+.locard .lpin svg{width:17px;height:17px}\
+.locard .lt{font-weight:700;font-size:13.5px}\
+.locard .la{font-size:12px;color:var(--muted);margin:3px 0 0;line-height:1.4}\
+.locard a{display:inline-flex;align-items:center;gap:5px;color:var(--accent-deep);font-weight:600;text-decoration:none;font-size:12.5px;margin-top:8px}\
+.locard a svg{width:13px;height:13px}\
+.locard a:hover{color:var(--accent)}\
+.infocard{border:1px solid var(--line);border-radius:14px;padding:4px 14px;margin-bottom:13px}\
+.irow{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-bottom:1px solid var(--line)}\
+.irow:last-child{border-bottom:none}\
+.irow .ii{flex:none;width:32px;height:32px;border-radius:9px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;margin-top:1px}\
+.irow .ii svg{width:17px;height:17px}\
+.irow .il{font-size:11px;color:var(--muted)}\
+.irow .iv{font-size:13px;font-weight:600;line-height:1.25}\
+.who-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px}\
+.team{display:flex;flex-direction:column}\
+.adv{display:flex;align-items:center;gap:10px;padding:7px 2px;border-radius:9px;text-decoration:none;color:inherit;border-bottom:1px solid var(--line)}\
+.adv:last-child{border-bottom:none}\
+.adv:hover{background:var(--tint)}\
+.adv .av{flex:none;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;overflow:hidden}\
+.adv .av img{width:100%;height:100%;object-fit:cover}\
+.adv .an{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}\
+.adv .ali{color:var(--muted)}\
+.adv .ali svg{width:15px;height:15px;display:block}\
+.adv:hover .ali{color:var(--accent-deep)}\
+.contactrows{display:grid;gap:10px;max-width:420px}\
+.crow{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:12px;padding:12px 14px}\
+.crow .ii{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center}\
+.crow .ii svg{width:17px;height:17px}\
+.crow a{color:var(--ink);font-weight:600;text-decoration:none;font-size:14px}\
+.crow a:hover{color:var(--accent-deep)}\
+.crow .cl{font-size:11px;color:var(--muted)}\
 .summ{border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:480px;margin-bottom:14px}\
 .summ .r{display:flex;justify-content:space-between;gap:16px;padding:6px 0;font-size:14px}\
 .summ .r span:first-child{color:var(--muted)}\
@@ -296,7 +332,7 @@
         case 2: return s.pains.length > 0 || !!s.customPain.trim();
         case 3: return !!(s.priority || s.priorityText.trim());
         case 4: return !!(s.name.trim() && s.phone.trim() && s.company.trim());
-        case 5: return !!(s.type && s.date && s.slot);
+        case 5: return s.type === "contact" ? true : !!(s.type && s.date && s.slot);
         case 6: return true;
         default: return true;
       }
@@ -342,7 +378,7 @@
       var s = this.state;
       if (s.screen === 2) return "Continue";
       if (s.screen === 4) return "Continue";
-      if (s.screen === 5) return s.type === "inperson" ? "Continue to payment" : "Book the session";
+      if (s.screen === 5) return s.type === "inperson" ? "Continue to payment" : s.type === "contact" ? "Send request" : "Book the session";
       if (s.screen === 6) return "Pay " + DIAGNOSTIC_FEE + " and confirm";
       return "Next";
     }
@@ -422,43 +458,56 @@
 
     _screen5() {
       var self = this, s = this.state;
-      var w = this._wrap("", "Choose how we meet, then pick a time.");
-      // a) team
-      w.appendChild(el("p", "who-h", "Who you will meet · the advisory team"));
-      var team = el("div", "teamrow");
-      TEAM.forEach(function (m) {
-        var card = el("div", "tm");
-        card.innerHTML =
-          '<span class="av"><img src="assets/team/' + m.slug + '.avif" alt="' + esc(m.name) + '" onerror="this.parentNode.textContent=\'' + m.initials + '\'"></span>' +
-          '<div class="nm">' + esc(m.name) + '</div><div class="ti">' + m.title + '</div>' +
-          '<a class="li" href="' + m.url + '" target="_blank" rel="noopener">LinkedIn ↗</a>';
-        team.appendChild(card);
-      });
-      w.appendChild(team);
-      // b) type rows
+      if (!s.type) s.type = "inperson"; // default selection, matches the design
+      var contact = s.type === "contact";
+      var w = el("div", "screen show" + (contact ? "" : " connect"));
+
+      var main = el("div", "cmain");
+      main.appendChild(el("h2", "h", "How would you like to connect?"));
+      main.appendChild(el("p", "sub", "Pick a format, then a time. You will meet our 5-person advisory team."));
       var types = el("div", "types");
       [
-        { k: "online", t: "Online", d: "15 minutes", p: "Free" },
-        { k: "inperson", t: "In person", d: "1 hour, credited to the project", p: DIAGNOSTIC_FEE }
+        { k: "inperson", t: "In person", d: "1 hour", p: DIAGNOSTIC_FEE, ic: IC.building },
+        { k: "online", t: "Online", d: "15 min", p: "Free", ic: IC.video },
+        { k: "contact", t: "Contact", d: "Direct", p: "", ic: IC.chat }
       ].forEach(function (tp) {
-        var r = el("button", "trow" + (s.type === tp.k ? " sel" : "")); r.type = "button";
-        r.innerHTML = '<span class="radio">' + IC.check + '</span>' +
-          '<span class="ti"><b>' + tp.t + '</b><span>' + tp.d + '</span></span>' +
-          '<span class="tprice">' + tp.p + '</span>';
-        r.addEventListener("click", function () { s.type = tp.k; s.slot = null; self._render(); });
-        types.appendChild(r);
+        var c = el("div", "type" + (s.type === tp.k ? " sel" : ""));
+        c.innerHTML = '<span class="tradio">' + IC.check + '</span>' +
+          '<span class="ticon">' + tp.ic + '</span>' +
+          '<div class="tt">' + tp.t + '</div><div class="td">' + tp.d + '</div>' +
+          '<div class="tp">' + (tp.p || "&nbsp;") + '</div>';
+        c.addEventListener("click", function () {
+          s.type = tp.k; s.date = null; s.slot = null; self.view = null; self._render();
+        });
+        types.appendChild(c);
       });
-      w.appendChild(types);
-      // c) calendar + slots
-      w.appendChild(this._book());
+      main.appendChild(types);
+      main.appendChild(el("div", "teamnote", IC.people +
+        '<div><b>We will select the consulting team best suited to your case and needs.</b>' +
+        '<span>You will meet our 5-person advisory team.</span></div>'));
+
+      if (contact) {
+        var rows = el("div", "contactrows");
+        rows.innerHTML =
+          '<div class="crow"><span class="ii">' + IC.chat + '</span><div><div class="cl">Email</div><a href="mailto:consultations@trustangle.com">consultations@trustangle.com</a></div></div>' +
+          '<div class="crow"><span class="ii">' + IC.person + '</span><div><div class="cl">Phone</div><a href="tel:+966112930707">+966 11 293 0707</a></div></div>';
+        main.appendChild(rows);
+        w.appendChild(main);
+        return w;
+      }
+      main.appendChild(this._book());
+      w.appendChild(main);
+      w.appendChild(this._side());
       return w;
     }
 
     _book() {
       var self = this, s = this.state;
       var book = el("div", "book");
+      // ----- date -----
       var left = el("div");
-      if (!this.view) { var t0 = new Date(); t0.setHours(0, 0, 0, 0); this.view = new Date(t0.getFullYear(), t0.getMonth(), 1); }
+      left.appendChild(el("p", "bk-h", "Pick a date"));
+      if (!this.view) { var t = new Date(); t.setHours(0, 0, 0, 0); this.view = new Date(t.getFullYear(), t.getMonth(), 1); }
       var head = el("div", "calhead");
       var prev = el("button", null, "&lsaquo;"); prev.type = "button"; prev.setAttribute("aria-label", "Previous month");
       var lab = el("b", null, MONTHS[this.view.getMonth()] + " " + this.view.getFullYear());
@@ -468,7 +517,8 @@
       var cal = el("div", "cal");
       DOWS.forEach(function (d) { cal.appendChild(el("div", "dw", d)); });
       var today = new Date(); today.setHours(0, 0, 0, 0);
-      var maxD = new Date(today); maxD.setDate(maxD.getDate() + 30); // booking window: next 30 days
+      var minD = new Date(today); if (s.type === "inperson") minD.setDate(minD.getDate() + 1);
+      var maxD = new Date(today); maxD.setDate(maxD.getDate() + 30);
       var first = new Date(this.view.getFullYear(), this.view.getMonth(), 1).getDay();
       var days = new Date(this.view.getFullYear(), this.view.getMonth() + 1, 0).getDate();
       for (var i = 0; i < first; i++) cal.appendChild(el("div", "d empty"));
@@ -476,7 +526,7 @@
         var dt = new Date(this.view.getFullYear(), this.view.getMonth(), d);
         var wd = dt.getDay();
         var b = el("button", "d", String(d)); b.type = "button";
-        var dis = dt < today || dt > maxD || wd === 5 || wd === 6; // past, beyond window, or Fri/Sat (KSA week Sun-Thu)
+        var dis = dt < minD || dt > maxD || wd === 5 || wd === 6;
         if (dt.getTime() === today.getTime()) b.classList.add("today");
         if (dis) { b.disabled = true; }
         else b.addEventListener("click", (function (dd) {
@@ -494,29 +544,55 @@
       next.addEventListener("click", function () { self.view = new Date(self.view.getFullYear(), self.view.getMonth() + 1, 1); self._render(); });
       left.appendChild(cal);
       book.appendChild(left);
-
+      // ----- time -----
       var right = el("div");
-      right.appendChild(el("p", "bk-h", "Available times"));
-      var slots = el("div", "slots");
-      if (!s.type) { slots.appendChild(el("p", "hint", "Choose online or in person first.")); }
-      else if (!s.date) { slots.appendChild(el("p", "hint", "Pick a day first.")); }
+      right.appendChild(el("p", "bk-h", "Pick a time"));
+      var tcol = el("div", "times");
+      if (!s.date) { tcol.appendChild(el("p", "hint", "Pick a day first.")); }
       else {
         var times = [];
         if (s.type === "inperson") { [12, 13, 14, 15, 16].forEach(function (h) { times.push(fmt(h, 0)); }); }
-        else { for (var h = 12; h <= 16; h++) { times.push(fmt(h, 0)); times.push(fmt(h, 30)); } slots.classList.add("two"); }
-        times.forEach(function (tt, i) {
-          var booked = bookedSlot(s.date, i);
-          var sl = el("button", "slot" + (s.slot === tt ? " sel" : "")); sl.type = "button";
-          sl.innerHTML = "<span>" + tt + "</span>" + (booked ? '<span class="bk">BOOKED</span>' : "");
-          if (booked) { sl.disabled = true; }
-          else sl.addEventListener("click", function () { s.slot = tt; self._render(); });
-          slots.appendChild(sl);
+        else { for (var h = 12; h <= 16; h++) { times.push(fmt(h, 0)); if (h < 16) times.push(fmt(h, 30)); } tcol.classList.add("two"); }
+        times.forEach(function (t) {
+          var sl = el("button", "slot" + (s.slot === t ? " sel" : ""), t); sl.type = "button";
+          sl.addEventListener("click", function () { s.slot = t; self._render(); });
+          tcol.appendChild(sl);
         });
       }
-      right.appendChild(slots);
+      right.appendChild(tcol);
       book.appendChild(right);
       return book;
     }
+
+    _side() {
+      var col = el("aside", "cside");
+      // location only matters for an in-person session
+      if (this.state.type === "inperson") {
+        var loc = el("div", "locard");
+        loc.innerHTML = '<span class="lpin">' + IC.pin + '</span>' +
+          '<div><div class="lt">King Abdullah Financial District (KAFD)</div>' +
+          '<div class="la">Riyadh, Saudi Arabia</div>' +
+          '<a href="https://maps.app.goo.gl/JhnSe44AseKDLBiA8" target="_blank" rel="noopener">View on map ' + IC.extlink + '</a></div>';
+        col.appendChild(loc);
+      }
+      var info = el("div", "infocard");
+      var dur = this.state.type === "inperson" ? "1 hour" : "15 minutes";
+      info.innerHTML =
+        '<div class="irow"><span class="ii">' + IC.clock + '</span><div><div class="il">Duration</div><div class="iv">' + dur + '</div></div></div>' +
+        '<div class="irow"><span class="ii">' + IC.people + '</span><div><div class="il">Team</div><div class="iv">5 specialists</div></div></div>' +
+        '<div class="irow"><span class="ii">' + IC.calendar + '</span><div><div class="il">What to expect</div><div class="iv">A focused discussion tailored to your needs.</div></div></div>';
+      col.appendChild(info);
+      col.appendChild(el("p", "who-h", "Who you will meet"));
+      var team = el("div", "team");
+      TEAM.forEach(function (m) {
+        var a = el("a", "adv"); a.href = m.url; a.target = "_blank"; a.rel = "noopener";
+        a.innerHTML = '<span class="av">' + m.initials + '</span><span class="an">' + m.abbr + '</span><span class="ali">' + IC.linkedin + '</span>';
+        team.appendChild(a);
+      });
+      col.appendChild(team);
+      return col;
+    }
+
 
     _screen6() {
       var s = this.state;
@@ -532,13 +608,13 @@
       return w;
     }
     _screen7() {
-      var s = this.state;
+      var s = this.state, contact = s.type === "contact";
       var w = el("div", "screen show");
       var d = el("div", "done");
       d.appendChild(el("div", "ok", IC.check));
-      d.appendChild(el("h2", "h", "Booked. We will confirm shortly."));
+      d.appendChild(el("h2", "h", contact ? "We will be in touch shortly." : "Booked. We will confirm shortly."));
       var pains = s.pains.slice(); if (s.customPain.trim()) pains.push(s.customPain.trim());
-      var consult = s.type === "online" ? "Online · 15 min · free" : "In person · 1 hour · paid, refundable";
+      var consult = s.type === "online" ? "Online · 15 min · free" : s.type === "contact" ? "Direct contact" : "In person · 1 hour · paid, refundable";
       var rows = [
         ["Industry", s.industry || s.industryText],
         ["Pain", pains.join(", ")],
