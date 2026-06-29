@@ -464,7 +464,7 @@
 
       var main = el("div", "cmain");
       main.appendChild(el("h2", "h", "How would you like to connect?"));
-      main.appendChild(el("p", "sub", "Pick a format, then a time. You will meet our 5-person advisory team."));
+      main.appendChild(el("p", "sub", "Pick a format, then a time. You will meet the people who would advise you."));
       var types = el("div", "types");
       [
         { k: "inperson", t: "In person", d: "1 hour", p: DIAGNOSTIC_FEE, ic: IC.building },
@@ -483,8 +483,8 @@
       });
       main.appendChild(types);
       main.appendChild(el("div", "teamnote", IC.people +
-        '<div><b>We will select the consulting team best suited to your case and needs.</b>' +
-        '<span>You will meet our 5-person advisory team.</span></div>'));
+        '<div><b>We pair you with the specialists who fit your case.</b>' +
+        '<span>You meet the advisory team, not a sales desk.</span></div>'));
 
       if (contact) {
         var rows = el("div", "contactrows");
