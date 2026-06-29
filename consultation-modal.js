@@ -106,7 +106,8 @@
 .screen{display:none;flex-direction:column;min-height:0}\
 .screen.show{display:flex}\
 .count{font-family:var(--body);font-size:13px;font-weight:700;color:var(--muted);margin-bottom:5px}\
-.h{font-family:var(--disp);font-weight:800;font-size:clamp(20px,2vw,25px);line-height:1.14;letter-spacing:-.015em;margin:0 0 4px;white-space:nowrap}\
+.h{font-family:var(--disp);font-weight:800;font-size:clamp(20px,2vw,25px);line-height:1.14;letter-spacing:-.015em;margin:0 0 16px;white-space:nowrap}\
+.h+.sub{margin-top:-9px}\
 .sub{font-size:13.5px;color:var(--muted);margin:0 0 11px}\
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:10px}\
 .chip{font-family:var(--body);font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 16px;cursor:pointer;transition:.13s;text-align:left}\
