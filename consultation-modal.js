@@ -576,7 +576,6 @@
       var dur = this.state.type === "inperson" ? "1 hour" : "15 minutes";
       info.innerHTML =
         '<div class="irow"><span class="ii">' + IC.clock + '</span><div><div class="il">Duration</div><div class="iv">' + dur + '</div></div></div>' +
-        '<div class="irow"><span class="ii">' + IC.people + '</span><div><div class="il">Team</div><div class="iv">5 specialists</div></div></div>' +
         '<div class="irow"><span class="ii">' + IC.calendar + '</span><div><div class="il">What to expect</div><div class="iv">A focused discussion tailored to your needs.</div></div></div>';
       col.appendChild(info);
       col.appendChild(el("p", "who-h", "Who you will meet"));
