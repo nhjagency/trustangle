@@ -453,7 +453,6 @@
         fl.appendChild(inp); f.appendChild(fl);
       });
       w.appendChild(f);
-      w.appendChild(el("div", "note", "Saved details fill in automatically if your browser offers them."));
       return w;
     }
 
