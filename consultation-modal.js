@@ -135,7 +135,7 @@
 .trow .ti b{font-family:var(--disp);font-size:15.5px;color:var(--ink)}\
 .trow .ti span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}\
 .trow .tprice{margin-left:auto;font-family:var(--disp);font-weight:700;font-size:14px;color:var(--accent-deep);white-space:nowrap}\
-.book{display:grid;grid-template-columns:auto 230px;gap:28px;align-items:start;justify-content:start}\
+.book{display:grid;grid-template-columns:auto 244px;gap:30px;align-items:start;justify-content:start}\
 .bk-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px}\
 .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}\
 .calhead b{font-family:var(--disp);font-weight:700;font-size:14px}\
@@ -143,9 +143,9 @@
 .calhead button:hover:not(:disabled){border-color:var(--accent);color:var(--accent-deep)}\
 .calhead button:disabled{opacity:.35;cursor:not-allowed}\
 .calhead button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.cal{display:grid;grid-template-columns:repeat(7,40px);gap:6px}\
-.cal .dw{font-size:11px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:4px}\
-.cal .d{width:40px;height:40px;border:none;background:var(--tint);border-radius:10px;font-size:13px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
+.cal{display:grid;grid-template-columns:repeat(7,44px);gap:6px}\
+.cal .dw{font-size:11px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:5px}\
+.cal .d{width:44px;height:44px;border:none;background:var(--tint);border-radius:10px;font-size:13.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
 .cal .d:hover:not(:disabled){background:var(--accent-soft);color:var(--accent-deep)}\
 .cal .d.sel{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;font-weight:600}\
 .cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent)}\
@@ -154,7 +154,7 @@
 .cal .d.empty{background:none;cursor:default}\
 .slots{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
 .slots.two{grid-template-columns:1fr 1fr}\
-.slot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 15px;cursor:pointer;color:var(--ink)}\
+.slot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--body);font-size:14.5px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 16px;cursor:pointer;color:var(--ink)}\
 .slot:hover:not(:disabled){border-color:var(--accent)}\
 .slot.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:600}\
 .slot:disabled{background:var(--tint);color:#aab4b5;cursor:not-allowed}\
