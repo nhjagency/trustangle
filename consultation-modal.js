@@ -72,7 +72,7 @@
   background:rgba(10,24,28,.52);opacity:0;transition:opacity .22s ease;font-family:var(--body);color:var(--ink)}\
 :host([open]) .backdrop{display:flex}\
 .backdrop.show{opacity:1}\
-.modal{width:min(96vw,1080px);height:min(96vh,924px);background:#fff;border-radius:24px;overflow:hidden;\
+.modal{width:min(95vw,920px);height:min(92vh,700px);background:#fff;border-radius:22px;overflow:hidden;\
   display:grid;grid-template-columns:260px 1fr;box-shadow:0 40px 110px -38px rgba(10,24,28,.6);transform:translateY(10px) scale(.99);transition:transform .22s ease}\
 .backdrop.show .modal{transform:none}\
 .rail{background:linear-gradient(170deg,#f6fbfb,#eef5f5);border-right:1px solid var(--line);padding:26px 22px;display:flex;flex-direction:column}\
@@ -112,7 +112,7 @@
 .screen{display:none;flex-direction:column;min-height:0}\
 .screen.show{display:flex}\
 .count{font-family:var(--body);font-size:13px;font-weight:700;color:var(--muted);margin-bottom:5px}\
-.h{font-family:var(--disp);font-weight:800;font-size:clamp(20px,2vw,25px);line-height:1.14;letter-spacing:-.015em;margin:0 0 16px;white-space:nowrap}\
+.h{font-family:var(--disp);font-weight:800;font-size:clamp(19px,1.9vw,24px);line-height:1.15;letter-spacing:-.015em;margin:0 0 14px}\
 .h+.sub{margin-top:-9px}\
 .sub{font-size:13.5px;color:var(--muted);margin:0 0 11px}\
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:10px}\
@@ -149,23 +149,22 @@
 .teamnote b{display:block;font-size:12.5px;color:var(--ink);font-weight:700;line-height:1.3}\
 .teamnote span{display:block;font-size:12px;color:var(--accent-deep);margin-top:1px}\
 .bk-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 8px}\
-.book{display:grid;grid-template-columns:1fr 150px;gap:18px}\
+.book{display:flex;flex-direction:column;gap:14px}\
 .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}\
 .calhead b{font-family:var(--disp);font-weight:700;font-size:14px}\
 .calhead button{border:1px solid var(--line);background:#fff;border-radius:8px;width:28px;height:28px;cursor:pointer;color:var(--ink);font-size:15px;line-height:1}\
 .calhead button:hover:not(:disabled){border-color:var(--accent);color:var(--accent-deep)}\
 .calhead button:disabled{opacity:.35;cursor:not-allowed}\
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}\
+.cal{display:grid;grid-template-columns:repeat(7,38px);gap:5px}\
 .cal .dw{font-size:10.5px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:3px}\
-.cal .d{aspect-ratio:1;min-height:30px;border:none;background:none;border-radius:50%;font-size:12.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
+.cal .d{width:38px;height:38px;border:none;background:none;border-radius:10px;font-size:13px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
 .cal .d:hover:not(:disabled){background:var(--accent-soft);color:var(--accent-deep)}\
 .cal .d.sel{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;font-weight:600}\
 .cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent-line,#bee4e4)}\
 .cal .d:disabled{background:none;color:#cbd4d5;cursor:not-allowed}\
 .cal .d.empty{background:none;cursor:default}\
-.times{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
-.times.two{grid-template-columns:1fr 1fr}\
-.slot{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 15px;cursor:pointer;color:var(--ink)}\
+.times{display:flex;flex-wrap:wrap;gap:8px;align-content:start}\
+.slot{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:13px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 13px;cursor:pointer;color:var(--ink)}\
 .slot:hover:not(:disabled){border-color:var(--accent)}\
 .slot.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:600}\
 .slot:disabled{color:#b3bcbd;cursor:not-allowed;background:var(--tint)}\
@@ -515,41 +514,31 @@
       // ----- date -----
       var left = el("div");
       left.appendChild(el("p", "bk-h", "Pick a date"));
-      if (!this.view) { var t = new Date(); t.setHours(0, 0, 0, 0); this.view = new Date(t.getFullYear(), t.getMonth(), 1); }
-      var head = el("div", "calhead");
-      var prev = el("button", null, "&lsaquo;"); prev.type = "button"; prev.setAttribute("aria-label", "Previous month");
-      var lab = el("b", null, MONTHS[this.view.getMonth()] + " " + this.view.getFullYear());
-      var next = el("button", null, "&rsaquo;"); next.type = "button"; next.setAttribute("aria-label", "Next month");
-      head.appendChild(prev); head.appendChild(lab); head.appendChild(next);
-      left.appendChild(head);
-      var cal = el("div", "cal");
-      DOWS.forEach(function (d) { cal.appendChild(el("div", "dw", d)); });
       var today = new Date(); today.setHours(0, 0, 0, 0);
       var minD = new Date(today); if (s.type === "inperson") minD.setDate(minD.getDate() + 1);
-      var maxD = new Date(today); maxD.setDate(maxD.getDate() + 30);
-      var first = new Date(this.view.getFullYear(), this.view.getMonth(), 1).getDay();
-      var days = new Date(this.view.getFullYear(), this.view.getMonth() + 1, 0).getDate();
-      for (var i = 0; i < first; i++) cal.appendChild(el("div", "d empty"));
-      for (var d = 1; d <= days; d++) {
-        var dt = new Date(this.view.getFullYear(), this.view.getMonth(), d);
+      var start = new Date(today); start.setDate(start.getDate() - start.getDay()); // Sunday of this week (column alignment)
+      var cells = 14; // exactly two weeks (2 rows)
+      var maxD = new Date(start); maxD.setDate(start.getDate() + cells - 1);
+      var rng = function (d) { return d.getDate() + " " + MONTHS[d.getMonth()].slice(0, 3); };
+      left.appendChild(el("div", "calhead", '<b>' + rng(today) + " – " + rng(maxD) + " " + maxD.getFullYear() + '</b>'));
+      var cal = el("div", "cal");
+      DOWS.forEach(function (d) { cal.appendChild(el("div", "dw", d)); });
+      for (var i = 0; i < cells; i++) {
+        var dt = new Date(start); dt.setDate(start.getDate() + i);
         var wd = dt.getDay();
-        var b = el("button", "d", String(d)); b.type = "button";
+        var b = el("button", "d", String(dt.getDate())); b.type = "button";
         var dis = dt < minD || dt > maxD || wd === 5 || wd === 6;
         if (dt.getTime() === today.getTime()) b.classList.add("today");
         if (dis) { b.disabled = true; }
         else b.addEventListener("click", (function (dd) {
           return function () {
-            s.date = { d: dd, m: self.view.getMonth(), y: self.view.getFullYear(), label: dd + " " + MONTHS[self.view.getMonth()] + " " + self.view.getFullYear() };
+            s.date = { d: dd.getDate(), m: dd.getMonth(), y: dd.getFullYear(), label: dd.getDate() + " " + MONTHS[dd.getMonth()] + " " + dd.getFullYear() };
             s.slot = null; self._render();
           };
-        })(d));
-        if (s.date && s.date.d === d && s.date.m === this.view.getMonth() && s.date.y === this.view.getFullYear()) b.classList.add("sel");
+        })(dt));
+        if (s.date && s.date.d === dt.getDate() && s.date.m === dt.getMonth() && s.date.y === dt.getFullYear()) b.classList.add("sel");
         cal.appendChild(b);
       }
-      prev.disabled = (this.view.getFullYear() === today.getFullYear() && this.view.getMonth() <= today.getMonth());
-      next.disabled = (new Date(this.view.getFullYear(), this.view.getMonth(), 1) >= new Date(maxD.getFullYear(), maxD.getMonth(), 1));
-      prev.addEventListener("click", function () { self.view = new Date(self.view.getFullYear(), self.view.getMonth() - 1, 1); self._render(); });
-      next.addEventListener("click", function () { self.view = new Date(self.view.getFullYear(), self.view.getMonth() + 1, 1); self._render(); });
       left.appendChild(cal);
       book.appendChild(left);
       // ----- time -----
@@ -596,7 +585,8 @@
       var team = el("div", "team");
       TEAM.forEach(function (m) {
         var a = el("a", "adv"); a.href = m.url; a.target = "_blank"; a.rel = "noopener";
-        a.innerHTML = '<span class="av">' + m.initials + '</span><span class="an">' + m.abbr + '</span><span class="ali">' + IC.linkedin + '</span>';
+        a.innerHTML = '<span class="av"><img src="assets/team/' + m.slug + '.avif" alt="' + esc(m.name) + '" onerror="this.parentNode.textContent=\'' + m.initials + '\'"></span>' +
+          '<span class="an">' + m.abbr + '</span><span class="ali">' + IC.linkedin + '</span>';
         team.appendChild(a);
       });
       col.appendChild(team);
