@@ -482,9 +482,6 @@
         types.appendChild(c);
       });
       main.appendChild(types);
-      main.appendChild(el("div", "teamnote", IC.people +
-        '<div><b>We pair you with the specialists who fit your case.</b>' +
-        '<span>You meet the advisory team, not a sales desk.</span></div>'));
 
       if (contact) {
         var rows = el("div", "contactrows");
