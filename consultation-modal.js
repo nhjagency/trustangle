@@ -145,18 +145,20 @@
 .calhead button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}\
 .cal .dw{font-size:10.5px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:3px}\
-.cal .d{aspect-ratio:1;min-height:27px;border:none;background:none;border-radius:50%;font-size:12.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
+.cal .d{aspect-ratio:1;min-height:27px;border:none;background:var(--tint);border-radius:9px;font-size:12.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
 .cal .d:hover:not(:disabled){background:var(--accent-soft);color:var(--accent-deep)}\
 .cal .d.sel{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;font-weight:600}\
-.cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent-soft)}\
+.cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent)}\
 .cal .d:disabled{background:none;color:#cbd4d5;cursor:not-allowed}\
 .cal .d:focus-visible{outline:2px solid var(--accent);outline-offset:1px}\
 .cal .d.empty{background:none;cursor:default}\
 .slots{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
 .slots.two{grid-template-columns:1fr 1fr}\
-.slot{display:flex;align-items:center;justify-content:center;font-family:var(--body);font-size:13px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 8px;cursor:pointer;color:var(--ink)}\
-.slot:hover{border-color:var(--accent)}\
+.slot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--body);font-size:13px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 13px;cursor:pointer;color:var(--ink)}\
+.slot:hover:not(:disabled){border-color:var(--accent)}\
 .slot.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:600}\
+.slot:disabled{background:var(--tint);color:#aab4b5;cursor:not-allowed}\
+.slot .bk{font-size:9.5px;font-weight:600;letter-spacing:.06em;color:#9aa6a7}\
 .slot:focus-visible{outline:2px solid var(--accent);outline-offset:1px}\
 .hint{font-size:12.5px;color:var(--muted)}\
 .summ{border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:480px;margin-bottom:14px}\
@@ -186,6 +188,11 @@
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function fmt(h, m) { var ap = h >= 12 ? "pm" : "am"; var hh = h > 12 ? h - 12 : h; return hh + ":" + (m < 10 ? "0" + m : m) + " " + ap; }
+  // pseudo-random "booked" marker that varies per day and slot (~25%)
+  function bookedSlot(date, i) {
+    var h = ((date.y * 73856093) ^ (date.m * 19349663) ^ (date.d * 83492791) ^ ((i + 1) * 2654435761)) >>> 0;
+    return (h % 4) === 0;
+  }
 
   class ConsultationModal extends HTMLElement {
     constructor() {
@@ -451,7 +458,6 @@
       var self = this, s = this.state;
       var book = el("div", "book");
       var left = el("div");
-      left.appendChild(el("p", "bk-h", "Pick a date"));
       if (!this.view) { var t0 = new Date(); t0.setHours(0, 0, 0, 0); this.view = new Date(t0.getFullYear(), t0.getMonth(), 1); }
       var head = el("div", "calhead");
       var prev = el("button", null, "&lsaquo;"); prev.type = "button"; prev.setAttribute("aria-label", "Previous month");
@@ -488,7 +494,7 @@
       book.appendChild(left);
 
       var right = el("div");
-      right.appendChild(el("p", "bk-h", "Pick a time"));
+      right.appendChild(el("p", "bk-h", "Available times"));
       var slots = el("div", "slots");
       if (!s.type) { slots.appendChild(el("p", "hint", "Choose online or in person first.")); }
       else if (!s.date) { slots.appendChild(el("p", "hint", "Pick a day first.")); }
@@ -496,9 +502,12 @@
         var times = [];
         if (s.type === "inperson") { [12, 13, 14, 15, 16].forEach(function (h) { times.push(fmt(h, 0)); }); }
         else { for (var h = 12; h <= 16; h++) { times.push(fmt(h, 0)); times.push(fmt(h, 30)); } slots.classList.add("two"); }
-        times.forEach(function (tt) {
-          var sl = el("button", "slot" + (s.slot === tt ? " sel" : ""), tt); sl.type = "button";
-          sl.addEventListener("click", function () { s.slot = tt; self._render(); });
+        times.forEach(function (tt, i) {
+          var booked = bookedSlot(s.date, i);
+          var sl = el("button", "slot" + (s.slot === tt ? " sel" : "")); sl.type = "button";
+          sl.innerHTML = "<span>" + tt + "</span>" + (booked ? '<span class="bk">BOOKED</span>' : "");
+          if (booked) { sl.disabled = true; }
+          else sl.addEventListener("click", function () { s.slot = tt; self._render(); });
           slots.appendChild(sl);
         });
       }
