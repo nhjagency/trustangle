@@ -102,12 +102,7 @@
 .seg{height:4px;flex:1;border-radius:99px;background:var(--line)}\
 .seg.on{background:linear-gradient(135deg,#067d89,#0099a8)}\
 .phase{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep)}\
-.body{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;scrollbar-width:thin;scrollbar-color:#cdd9d9 transparent}\
-.body::-webkit-scrollbar{width:7px}\
-.body::-webkit-scrollbar-track{background:transparent}\
-.body::-webkit-scrollbar-thumb{background:#cdd9d9;border-radius:99px}\
-.body::-webkit-scrollbar-thumb:hover{background:#aab8b8}\
-.body::-webkit-scrollbar-button{display:none;height:0}\
+.body{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}\
 .screen{display:none;flex-direction:column;min-height:0}\
 .screen.show{display:flex}\
 .count{font-family:var(--body);font-size:13px;font-weight:700;color:var(--muted);margin-bottom:5px}\
@@ -127,9 +122,9 @@
 .field input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}\
 .note{font-size:13px;color:var(--muted);margin-top:14px}\
 /* connect: center column + right info sidebar */\
-.screen.connect.show{display:grid;grid-template-columns:1fr 280px;gap:26px;align-items:start;flex:1;min-height:0}\
-.cmain{display:flex;flex-direction:column;min-height:0}\
-.cside{display:flex;flex-direction:column;min-height:0}\
+.screen.connect.show{display:grid;grid-template-columns:1fr 280px;grid-template-rows:minmax(0,1fr);gap:26px;align-items:stretch;flex:1;min-height:0}\
+.cmain{display:flex;flex-direction:column;min-height:0;overflow-y:auto}\
+.cside{display:flex;flex-direction:column;min-height:0;overflow:hidden}\
 .types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:11px}\
 .type{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;transition:.13s;background:#fff}\
 .type:hover{border-color:var(--accent)}\
@@ -164,7 +159,7 @@
 .cal .d.empty{background:none;cursor:default}\
 .times{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
 .times.two{grid-template-columns:1fr 1fr}\
-.slot{display:flex;justify-content:flex-start;align-items:center;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 15px;cursor:pointer;color:var(--ink)}\
+.slot{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 15px;cursor:pointer;color:var(--ink)}\
 .slot:hover:not(:disabled){border-color:var(--accent)}\
 .slot.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:600}\
 .slot:disabled{color:#b3bcbd;cursor:not-allowed;background:var(--tint)}\
@@ -186,7 +181,12 @@
 .irow .il{font-size:11px;color:var(--muted)}\
 .irow .iv{font-size:13px;font-weight:600;line-height:1.25}\
 .who-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px}\
-.team{display:flex;flex-direction:column}\
+.team{display:flex;flex-direction:column;flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#cdd9d9 transparent}\
+.team::-webkit-scrollbar{width:6px}\
+.team::-webkit-scrollbar-track{background:transparent}\
+.team::-webkit-scrollbar-thumb{background:#cdd9d9;border-radius:99px}\
+.team::-webkit-scrollbar-thumb:hover{background:#aab8b8}\
+.team::-webkit-scrollbar-button{display:none;height:0}\
 .adv{display:flex;align-items:center;gap:10px;padding:7px 2px;border-radius:9px;text-decoration:none;color:inherit;border-bottom:1px solid var(--line)}\
 .adv:last-child{border-bottom:none}\
 .adv:hover{background:var(--tint)}\
@@ -548,16 +548,19 @@
       book.appendChild(left);
       // ----- time -----
       var right = el("div");
-      right.appendChild(el("p", "bk-h", "Pick a time"));
+      right.appendChild(el("p", "bk-h", "Available times"));
       var tcol = el("div", "times");
       if (!s.date) { tcol.appendChild(el("p", "hint", "Pick a day first.")); }
       else {
         var times = [];
         if (s.type === "inperson") { [12, 13, 14, 15, 16].forEach(function (h) { times.push(fmt(h, 0)); }); }
         else { for (var h = 12; h <= 16; h++) { times.push(fmt(h, 0)); if (h < 16) times.push(fmt(h, 30)); } tcol.classList.add("two"); }
-        times.forEach(function (t) {
-          var sl = el("button", "slot" + (s.slot === t ? " sel" : ""), t); sl.type = "button";
-          sl.addEventListener("click", function () { s.slot = t; self._render(); });
+        times.forEach(function (t, i) {
+          var booked = bookedSlot(s.date, i); // pseudo-random, varies per day
+          var sl = el("button", "slot" + (s.slot === t ? " sel" : "")); sl.type = "button";
+          sl.innerHTML = "<span>" + t + "</span>" + (booked ? '<span class="bk">BOOKED</span>' : "");
+          if (booked) { sl.disabled = true; }
+          else sl.addEventListener("click", function () { s.slot = t; self._render(); });
           tcol.appendChild(sl);
         });
       }
