@@ -135,7 +135,7 @@
 .trow .ti b{font-family:var(--disp);font-size:15.5px;color:var(--ink)}\
 .trow .ti span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}\
 .trow .tprice{margin-left:auto;font-family:var(--disp);font-weight:700;font-size:14px;color:var(--accent-deep);white-space:nowrap}\
-.book{display:grid;grid-template-columns:1fr 168px;gap:18px;align-items:start}\
+.book{display:grid;grid-template-columns:auto 230px;gap:28px;align-items:start;justify-content:start}\
 .bk-h{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px}\
 .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}\
 .calhead b{font-family:var(--disp);font-weight:700;font-size:14px}\
@@ -143,9 +143,9 @@
 .calhead button:hover:not(:disabled){border-color:var(--accent);color:var(--accent-deep)}\
 .calhead button:disabled{opacity:.35;cursor:not-allowed}\
 .calhead button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}\
-.cal .dw{font-size:10.5px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:3px}\
-.cal .d{aspect-ratio:1;min-height:27px;border:none;background:var(--tint);border-radius:9px;font-size:12.5px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
+.cal{display:grid;grid-template-columns:repeat(7,40px);gap:6px}\
+.cal .dw{font-size:11px;font-weight:600;color:var(--muted);text-align:center;padding-bottom:4px}\
+.cal .d{width:40px;height:40px;border:none;background:var(--tint);border-radius:10px;font-size:13px;color:var(--ink);cursor:pointer;font-family:var(--body)}\
 .cal .d:hover:not(:disabled){background:var(--accent-soft);color:var(--accent-deep)}\
 .cal .d.sel{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;font-weight:600}\
 .cal .d.today:not(.sel){box-shadow:inset 0 0 0 1.5px var(--accent)}\
@@ -154,7 +154,7 @@
 .cal .d.empty{background:none;cursor:default}\
 .slots{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}\
 .slots.two{grid-template-columns:1fr 1fr}\
-.slot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--body);font-size:13px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 13px;cursor:pointer;color:var(--ink)}\
+.slot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 15px;cursor:pointer;color:var(--ink)}\
 .slot:hover:not(:disabled){border-color:var(--accent)}\
 .slot.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:600}\
 .slot:disabled{background:var(--tint);color:#aab4b5;cursor:not-allowed}\
@@ -468,6 +468,7 @@
       var cal = el("div", "cal");
       DOWS.forEach(function (d) { cal.appendChild(el("div", "dw", d)); });
       var today = new Date(); today.setHours(0, 0, 0, 0);
+      var maxD = new Date(today); maxD.setDate(maxD.getDate() + 30); // booking window: next 30 days
       var first = new Date(this.view.getFullYear(), this.view.getMonth(), 1).getDay();
       var days = new Date(this.view.getFullYear(), this.view.getMonth() + 1, 0).getDate();
       for (var i = 0; i < first; i++) cal.appendChild(el("div", "d empty"));
@@ -475,7 +476,7 @@
         var dt = new Date(this.view.getFullYear(), this.view.getMonth(), d);
         var wd = dt.getDay();
         var b = el("button", "d", String(d)); b.type = "button";
-        var dis = dt < today || wd === 5 || wd === 6; // past + Fri/Sat (KSA week Sun-Thu)
+        var dis = dt < today || dt > maxD || wd === 5 || wd === 6; // past, beyond window, or Fri/Sat (KSA week Sun-Thu)
         if (dt.getTime() === today.getTime()) b.classList.add("today");
         if (dis) { b.disabled = true; }
         else b.addEventListener("click", (function (dd) {
@@ -488,6 +489,7 @@
         cal.appendChild(b);
       }
       prev.disabled = (this.view.getFullYear() === today.getFullYear() && this.view.getMonth() <= today.getMonth());
+      next.disabled = (new Date(this.view.getFullYear(), this.view.getMonth(), 1) >= new Date(maxD.getFullYear(), maxD.getMonth(), 1));
       prev.addEventListener("click", function () { self.view = new Date(self.view.getFullYear(), self.view.getMonth() - 1, 1); self._render(); });
       next.addEventListener("click", function () { self.view = new Date(self.view.getFullYear(), self.view.getMonth() + 1, 1); self._render(); });
       left.appendChild(cal);
