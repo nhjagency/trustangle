@@ -61,8 +61,7 @@
 .pane{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:30px 28px;color:#fff;\
   background:linear-gradient(155deg,#0c3940,#067d89 55%,#0099a8)}\
 .pane::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 10%,rgba(255,255,255,.14),transparent 60%);pointer-events:none}\
-.brand{position:relative;z-index:1;font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:-.01em}\
-.brand i{font-style:normal;color:#8fe0e6}\
+.brand-logo{position:relative;z-index:1;height:30px;width:auto;display:block;filter:brightness(0) invert(1)}\
 .pane-foot{position:relative;z-index:1}\
 .pane-h{font-family:var(--disp);font-weight:800;font-size:clamp(24px,2.6vw,30px);line-height:1.1;letter-spacing:-.02em;margin:0 0 10px}\
 .pane-sub{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.82);margin:0 0 18px;max-width:30ch}\
@@ -212,7 +211,8 @@
       modal.setAttribute("aria-label", "Request a consultation");
 
       var pane = el("aside", "pane");
-      pane.appendChild(el("div", "brand", 'trust<i>angle</i>'));
+      var brand = el("img", "brand-logo"); brand.src = "assets/trustangle-logo-full.png"; brand.alt = "trustangle";
+      pane.appendChild(brand);
       var foot = el("div", "pane-foot");
       foot.appendChild(el("h2", "pane-h", "Let's scope your project together."));
       foot.appendChild(el("p", "pane-sub", "Book time with the team that will advise and deliver. KAFD, Riyadh, or online."));
