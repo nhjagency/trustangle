@@ -46,7 +46,9 @@
     pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>',
     extlink: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5.5"/></svg>',
     mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
-    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>'
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>',
+    warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>',
+    cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>'
   };
 
   var CSS = '\
@@ -106,9 +108,16 @@
 .writein{display:block;width:100%;max-width:420px;margin:3px 0 0;font-family:var(--body);font-size:14px;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:11px 14px}\
 .writein:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}\
 .fields{display:grid;gap:13px;max-width:440px}\
-.field label{display:block;font-weight:600;font-size:12.5px;color:var(--muted);margin-bottom:5px}\
+.field label{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12.5px;color:var(--muted);margin-bottom:5px}\
+.field .req{color:var(--accent-deep)}\
+.field .opt{font-weight:500;color:var(--line);font-size:11px;letter-spacing:.02em}\
 .field input{width:100%;font-family:var(--body);font-size:15px;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:12px 14px}\
 .field input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}\
+.field input.bad{border-color:#c0392b;background:#fdf3f2}\
+.field input.bad:focus{box-shadow:0 0 0 3px rgba(192,57,43,.14)}\
+.field .err{display:none;font-size:12px;font-weight:600;color:#c0392b;margin-top:5px}\
+.field.show-err .err{display:block}\
+.field .err svg{width:13px;height:13px;vertical-align:-2px;margin-right:3px}\
 /* type rows */\
 .types{display:flex;flex-direction:column;gap:11px}\
 .trow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:15px;padding:15px 18px;cursor:pointer;background:#fff;font-family:var(--body);transition:.13s}\
@@ -161,6 +170,13 @@
 .paynote{font-size:12.5px;color:var(--muted);margin-top:12px;max-width:420px}\
 .done-ok{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;display:flex;align-items:center;justify-content:center;margin:6px 0 14px}\
 .done-ok svg{width:28px;height:28px}\
+.done-sub{font-size:14px;color:var(--muted);margin:-2px 0 16px;max-width:42ch;line-height:1.5}\
+.icsbtn{display:inline-flex;align-items:center;gap:8px;margin:2px 0 16px;font-family:var(--disp);font-weight:600;font-size:13.5px;color:var(--accent-deep);background:var(--accent-soft);border-radius:999px;padding:10px 16px;text-decoration:none;transition:.13s}\
+.icsbtn:hover{background:#d2ecee}\
+.icsbtn svg{width:15px;height:15px}\
+.cfallback{margin-top:16px;font-size:13px;color:var(--muted)}\
+.cfallback a{color:var(--accent-deep);font-weight:600;text-decoration:none}\
+.cfallback a:hover{text-decoration:underline}\
 /* footer nav */\
 .nav{flex:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 34px 24px}\
 .nav .cluster .a{border-color:#fff;background:var(--accent-deep);width:30px;height:30px}\
@@ -177,6 +193,10 @@
 
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function validEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s).trim()); }
+  function validPhone(s) { var d = String(s).replace(/[^0-9]/g, ""); return d.length >= 8 && /^\+?[0-9\s()-]+$/.test(String(s).trim()); }
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function parseSlot(t) { var m = String(t).match(/(\d+):(\d+)\s*(AM|PM)/i); if (!m) return null; var h = (+m[1]) % 12; if (/pm/i.test(m[3])) h += 12; return { h: h, min: +m[2] }; }
   function fmt(h, m) { var ap = h >= 12 ? "pm" : "am"; var hh = h > 12 ? h - 12 : h; return hh + ":" + (m < 10 ? "0" + m : m) + " " + ap; }
   function bookedSlot(date, i) {
     var h = ((date.y * 73856093) ^ (date.m * 19349663) ^ (date.d * 83492791) ^ ((i + 1) * 2654435761)) >>> 0;
@@ -200,7 +220,7 @@
     }
     _reset() {
       this.state = { screen: 1, industry: null, industryText: "", pains: [], customPain: "", priority: "", priorityText: "",
-        name: "", phone: "", company: "", type: null, date: null, slot: null, paid: false };
+        name: "", email: "", phone: "", company: "", type: null, date: null, slot: null, paid: false };
     }
     connectedCallback() {
       var st = el("style"); st.textContent = CSS;
@@ -285,7 +305,7 @@
         case 1: return !!(s.industry || s.industryText.trim());
         case 2: return s.pains.length > 0 || !!s.customPain.trim();
         case 3: return !!(s.priority || s.priorityText.trim());
-        case 4: return !!(s.name.trim() && s.phone.trim() && s.company.trim());
+        case 4: return !!s.name.trim() && validEmail(s.email) && (!s.phone.trim() || validPhone(s.phone));
         case 5: return !!s.type;
         case 6: return !!(s.date && s.slot);
         case 7: return true;
@@ -391,12 +411,37 @@
       var self = this, s = this.state;
       var w = this._wrap("Where do we send what we find?");
       var f = el("div", "fields");
-      [["name", "Full name", "text", "name"], ["phone", "Phone", "tel", "tel"], ["company", "Company name", "text", "organization"]].forEach(function (r) {
+      var fields = [
+        { k: "name", label: "Full name", type: "text", ac: "name", req: true, ph: "", err: "Please enter your name." },
+        { k: "email", label: "Email", type: "email", ac: "email", req: true, ph: "you@company.com", err: "Enter a valid email address." },
+        { k: "phone", label: "Phone", type: "tel", ac: "tel", req: false, ph: "+966 5X XXX XXXX", err: "Enter a valid phone number." },
+        { k: "company", label: "Company name", type: "text", ac: "organization", req: false, ph: "", err: "" }
+      ];
+      var check = function (fd, inp, fl) {
+        var v = inp.value.trim(), ok = true;
+        if (fd.req && !v) ok = false;
+        else if (fd.k === "email" && v && !validEmail(v)) ok = false;
+        else if (fd.k === "phone" && v && !validPhone(v)) ok = false;
+        fl.classList.toggle("show-err", !ok);
+        inp.classList.toggle("bad", !ok);
+        return ok;
+      };
+      fields.forEach(function (fd) {
         var fl = el("div", "field");
-        fl.appendChild(el("label", null, r[1])).setAttribute("for", "cm-" + r[0]);
-        var inp = el("input"); inp.id = "cm-" + r[0]; inp.type = r[2]; inp.autocomplete = r[3]; inp.value = s[r[0]];
-        inp.addEventListener("input", function () { s[r[0]] = inp.value; self._next.disabled = !self._valid(); });
-        fl.appendChild(inp); f.appendChild(fl);
+        var lab = el("label");
+        lab.innerHTML = esc(fd.label) + (fd.req ? '<span class="req">*</span>' : '<span class="opt">Optional</span>');
+        lab.setAttribute("for", "cm-" + fd.k); fl.appendChild(lab);
+        var inp = el("input"); inp.id = "cm-" + fd.k; inp.type = fd.type; inp.autocomplete = fd.ac;
+        if (fd.ph) inp.placeholder = fd.ph; inp.value = s[fd.k];
+        inp.addEventListener("input", function () {
+          s[fd.k] = inp.value;
+          if (fl.classList.contains("show-err")) check(fd, inp, fl);
+          self._next.disabled = !self._valid();
+        });
+        inp.addEventListener("blur", function () { if (inp.value.trim()) check(fd, inp, fl); });
+        fl.appendChild(inp);
+        if (fd.err) fl.appendChild(el("p", "err", IC.warn + esc(fd.err)));
+        f.appendChild(fl);
       });
       w.appendChild(f);
       return w;
@@ -495,31 +540,61 @@
       w.appendChild(el("p", "paynote", "Secure payment via " + PAYMENT_PROVIDER + ". The fee is credited toward the project at signing."));
       return w;
     }
+    _icsHref() {
+      var s = this.state;
+      if (!s.date || !s.slot || s.type === "contact") return null;
+      var t = parseSlot(s.slot); if (!t) return null;
+      var dur = s.type === "inperson" ? 60 : 15;
+      var startMin = t.h * 60 + t.min, endMin = startMin + dur;
+      var fmtDT = function (mins) { return "" + s.date.y + pad2(s.date.m + 1) + pad2(s.date.d) + "T" + pad2(Math.floor(mins / 60)) + pad2(mins % 60) + "00"; };
+      var stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+      var loc = s.type === "inperson" ? "trustangle Head office, KAFD, Riyadh" : "Online video call";
+      var ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//trustangle//consultation//EN", "CALSCALE:GREGORIAN",
+        "BEGIN:VEVENT", "UID:" + fmtDT(startMin) + "-" + (s.email || "guest") + "@trustangle.com",
+        "DTSTAMP:" + stamp, "DTSTART:" + fmtDT(startMin), "DTEND:" + fmtDT(endMin),
+        "SUMMARY:trustangle consultation", "LOCATION:" + loc,
+        "DESCRIPTION:A " + dur + "-minute consultation with the trustangle advisory team.",
+        "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+      return "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+    }
     _screen8() {
-      var s = this.state, contact = s.type === "contact";
+      var s = this.state, contact = s.type === "contact", booked = !!(s.date && s.slot);
       var w = el("div", "screen show");
       w.appendChild(el("div", "done-ok", IC.check));
-      w.appendChild(el("h2", "h", contact ? "We will be in touch shortly." : "Booked. We will confirm shortly."));
+      w.appendChild(el("h2", "h", contact ? "Request received." : "You're booked."));
+      w.appendChild(el("p", "done-sub", contact
+        ? "A trustangle specialist will reply within one business day. A copy of your request is below."
+        : "We have your slot and will send a calendar invite to confirm. Add it to your calendar now so you don't lose the time."));
+      var ics = this._icsHref();
+      if (booked && ics) {
+        var a = el("a", "icsbtn", IC.cal + "<span>Add to calendar</span>");
+        a.setAttribute("href", ics); a.setAttribute("download", "trustangle-consultation.ics");
+        w.appendChild(a);
+      }
       var pains = s.pains.slice(); if (s.customPain.trim()) pains.push(s.customPain.trim());
       var consult = s.type === "online" ? "Online · 15 min · free" : s.type === "contact" ? "Direct contact" : "In person · 1 hour · paid, refundable";
       var rows = [
         ["Industry", s.industry || s.industryText],
         ["Pain", pains.join(", ")],
         ["Priority", s.priority || s.priorityText],
-        ["Name", s.name], ["Company", s.company], ["Phone", s.phone],
+        ["Name", s.name], ["Email", s.email], ["Company", s.company], ["Phone", s.phone],
         ["Consultation", consult]
       ];
       if (s.date) rows.push(["When", s.date.label + (s.slot ? " · " + s.slot : "")]);
       var sm = el("div", "summ");
-      sm.innerHTML = rows.map(function (r) { return '<div class="r"><span>' + r[0] + '</span><span>' + esc(r[1] || "") + '</span></div>'; }).join("");
+      sm.innerHTML = rows.filter(function (r) { return r[1]; }).map(function (r) { return '<div class="r"><span>' + r[0] + '</span><span>' + esc(r[1] || "") + '</span></div>'; }).join("");
       w.appendChild(sm);
+      var fb = el("p", "cfallback");
+      fb.innerHTML = 'Need to change something? Email <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>' +
+        (CONTACT_PHONE.indexOf("{{") !== 0 ? ' or call <a href="tel:' + CONTACT_PHONE.replace(/[^+0-9]/g, "") + '">' + esc(CONTACT_PHONE) + '</a>' : '') + '.';
+      w.appendChild(fb);
       return w;
     }
 
     _submit() {
       var s = this.state;
       var payload = { industry: s.industry || s.industryText, pains: s.pains.slice(), customPain: s.customPain,
-        priority: s.priority || s.priorityText, name: s.name, phone: s.phone, company: s.company,
+        priority: s.priority || s.priorityText, name: s.name, email: s.email, phone: s.phone, company: s.company,
         type: s.type, date: s.date ? s.date.label : "", slot: s.slot, paid: s.paid };
       if (!FORM_ENDPOINT || FORM_ENDPOINT.indexOf("{{") === 0) return;
       try { fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(function () {}); } catch (e) {}
