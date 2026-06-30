@@ -11,6 +11,8 @@
   var DIAGNOSTIC_FEE = "SAR 750";
   var PAYMENT_PROVIDER = "{{PAYMENT_PROVIDER}}";
   var FORM_ENDPOINT = "{{FORM_ENDPOINT}}";
+  var CONTACT_EMAIL = "consultations@trustangle.com";
+  var CONTACT_PHONE = "{{CONTACT_PHONE}}";
 
   var TEAM = [
     { name: "Maysarah Mechaal", abbr: "Maysarah M.", slug: "maysarah-mechaal", initials: "MM", url: "https://www.linkedin.com/in/maysarah-mechaal/" },
@@ -42,7 +44,9 @@
     check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>',
     pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>',
-    extlink: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5.5"/></svg>'
+    extlink: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5.5"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>'
   };
 
   var CSS = '\
@@ -83,10 +87,8 @@
 .close:hover{color:var(--ink)}\
 .close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
 .rtop{flex:none;padding:24px 34px 0}\
-.tabs{display:flex;gap:24px;border-bottom:1px solid var(--line)}\
-.tab{position:relative;font-family:var(--body);font-size:13px;font-weight:600;color:var(--muted);padding:0 0 11px;white-space:nowrap;transition:color .18s}\
-.tab.on{color:var(--accent-deep)}\
-.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;border-radius:99px;background:linear-gradient(135deg,#067d89,#0099a8)}\
+.pbar{height:3px;background:var(--line);border-radius:99px;overflow:hidden}\
+.pfill{display:block;height:100%;width:25%;border-radius:99px;background:linear-gradient(135deg,#067d89,#0099a8);transition:width .3s ease}\
 .body{flex:1;min-height:0;overflow-y:auto;padding:28px 34px 6px;scrollbar-width:thin;scrollbar-color:#cdd9d9 transparent}\
 .body::-webkit-scrollbar{width:7px}\
 .body::-webkit-scrollbar-thumb{background:#cdd9d9;border-radius:99px}\
@@ -143,12 +145,11 @@
 .loc a{color:var(--accent-deep);font-weight:600;text-decoration:none}\
 .loc a:hover{color:var(--accent)}\
 .contactrows{display:grid;gap:10px;max-width:380px}\
-.crow{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:13px;padding:12px 14px}\
+.crow{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;cursor:pointer;transition:.13s}\
+.crow:hover{border-color:var(--accent);background:var(--tint)}\
 .crow .ii{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center}\
 .crow .ii svg{width:16px;height:16px}\
-.crow .cl{font-size:11px;color:var(--muted)}\
-.crow a{color:var(--ink);font-weight:600;text-decoration:none;font-size:14px}\
-.crow a:hover{color:var(--accent-deep)}\
+.crow .cl{font-size:11px;font-weight:600;color:var(--muted)}\
 .summ{border:1px solid var(--line);border-radius:14px;padding:15px 18px;max-width:420px;margin-bottom:13px}\
 .summ .r{display:flex;justify-content:space-between;gap:16px;padding:6px 0;font-size:14px}\
 .summ .r span:first-child{color:var(--muted)}\
@@ -167,10 +168,10 @@
 .btn{font-family:var(--disp);font-weight:600;font-size:14.5px;border-radius:999px;padding:12px 24px;cursor:pointer;border:1px solid transparent;transition:.15s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}\
 .btn svg{width:15px;height:15px}\
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.btn-back{background:#fff;border-color:var(--line);color:var(--ink)}\
-.btn-back:hover{border-color:var(--muted)}\
-.btn-next{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff;box-shadow:0 12px 26px -12px rgba(6,125,137,.8)}\
-.btn-next:disabled{background:#c4cdce;box-shadow:none;cursor:not-allowed}\
+.btn-back{background:transparent;border-color:transparent;color:var(--muted);padding-left:6px;padding-right:6px}\
+.btn-back:hover{color:var(--ink)}\
+.btn-next{background:linear-gradient(135deg,#067d89,#0099a8);color:#fff}\
+.btn-next:disabled{background:#c4cdce;cursor:not-allowed}\
 @media(max-width:740px){.modal{grid-template-columns:1fr;height:min(94vh,640px)}.pane{display:none}}\
 @media(prefers-reduced-motion:reduce){.backdrop,.modal{transition:none}}';
 
@@ -229,7 +230,7 @@
 
       var right = el("div", "right");
       right.appendChild(el("button", "close", "&times;")).setAttribute("aria-label", "Close");
-      right.appendChild(el("div", "rtop", '<div class="tabs"><span class="tab">Project</span><span class="tab">Details</span><span class="tab">Consultation</span><span class="tab">Confirm</span></div>'));
+      right.appendChild(el("div", "rtop", '<div class="pbar"><span class="pfill"></span></div>'));
       right.appendChild(el("div", "body"));
       var nav = el("div", "nav");
       nav.appendChild(el("button", "btn btn-back", "Back"));
@@ -240,7 +241,7 @@
       bd.appendChild(modal);
       this._bd = bd; this._modal = modal;
       this._body = right.querySelector(".body");
-      this._segs = right.querySelectorAll(".tab");
+      this._pfill = right.querySelector(".pfill");
       this._back = nav.querySelector(".btn-back");
       this._next = nav.querySelector(".btn-next");
       this._nav = nav;
@@ -294,7 +295,7 @@
     _goNext() {
       if (!this._valid()) return;
       var s = this.state;
-      if (s.screen === 5) { if (s.type === "contact") { this._submit(); s.screen = 8; } else s.screen = 6; this._render(); return; }
+      if (s.screen === 5) { s.screen = 6; this._render(); return; }
       if (s.screen === 6) { if (s.type === "inperson") s.screen = 7; else { this._submit(); s.screen = 8; } this._render(); return; }
       if (s.screen === 7) { s.paid = true; this._submit(); s.screen = 8; this._render(); return; }
       if (s.screen >= 8) return;
@@ -310,11 +311,11 @@
 
     _render() {
       var s = this.state, ti = this._tabOf(s.screen);
-      Array.prototype.forEach.call(this._segs, function (sg, i) { sg.classList.toggle("on", i === ti); });
+      if (this._pfill) this._pfill.style.width = ((ti + 1) / 4 * 100) + "%";
       this._body.innerHTML = "";
       this._body.appendChild(this["_screen" + s.screen]());
       this._body.scrollTop = 0;
-      var showNext = (s.screen === 2 || s.screen === 4 || s.screen === 5 || s.screen === 6 || s.screen === 7);
+      var showNext = (s.screen === 2 || s.screen === 4 || (s.screen === 5 && s.type !== "contact") || s.screen === 6 || s.screen === 7);
       this._next.style.display = showNext ? "inline-flex" : "none";
       this._next.disabled = !this._valid();
       this._next.innerHTML = this._nextLabel() + IC.arrow;
@@ -324,7 +325,7 @@
     _nextLabel() {
       var s = this.state;
       if (s.screen === 2 || s.screen === 4) return "Continue";
-      if (s.screen === 5) return s.type === "contact" ? "Send request" : "Pick a time";
+      if (s.screen === 5) return "Pick a time";
       if (s.screen === 6) return s.type === "inperson" ? "Continue to payment" : "Confirm booking";
       if (s.screen === 7) return "Pay " + DIAGNOSTIC_FEE + " and confirm";
       return "Next";
@@ -418,6 +419,16 @@
         types.appendChild(r);
       });
       w.appendChild(types);
+      if (s.type === "contact") {
+        var cc = el("div", "contactrows"); cc.style.marginTop = "16px";
+        cc.appendChild(el("a", "crow", '<span class="ii">' + IC.mail + '</span><span><span class="cl">Email</span><br>' + CONTACT_EMAIL + '</span>'));
+        cc.firstChild.setAttribute("href", "mailto:" + CONTACT_EMAIL);
+        if (CONTACT_PHONE.indexOf("{{") !== 0) {
+          cc.appendChild(el("a", "crow", '<span class="ii">' + IC.phone + '</span><span><span class="cl">Call</span><br>' + esc(CONTACT_PHONE) + '</span>'));
+          cc.lastChild.setAttribute("href", "tel:" + CONTACT_PHONE.replace(/[^+0-9]/g, ""));
+        }
+        w.appendChild(cc);
+      }
       return w;
     }
     _screen6() {
