@@ -59,8 +59,10 @@
 .backdrop.show .modal{transform:none}\
 /* ---- left pane ---- */\
 .pane{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:30px 28px;color:#fff;\
-  background:linear-gradient(155deg,#0c3940,#067d89 55%,#0099a8)}\
-.pane::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 10%,rgba(255,255,255,.14),transparent 60%);pointer-events:none}\
+  background:linear-gradient(180deg,rgba(6,30,35,0) 28%,rgba(6,30,35,.55) 64%,rgba(5,26,30,.92) 100%),\
+    linear-gradient(155deg,rgba(12,57,64,.7),rgba(6,125,137,.5) 55%,rgba(0,153,168,.42)),\
+    url("assets/consultation-image.png") center/cover no-repeat}\
+.pane::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 10%,rgba(255,255,255,.1),transparent 60%);pointer-events:none}\
 .brand{position:relative;z-index:1;align-self:flex-start;background:#fff;border-radius:12px;padding:9px 13px;box-shadow:0 8px 20px -10px rgba(0,0,0,.35)}\
 .brand-logo{height:26px;width:auto;display:block}\
 .pane-foot{position:relative;z-index:1}\
