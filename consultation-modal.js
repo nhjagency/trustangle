@@ -57,14 +57,15 @@
 .modal{width:min(96vw,940px);height:min(92vh,600px);background:#fff;border-radius:22px;box-shadow:0 36px 90px -34px rgba(10,24,28,.55);\
   display:grid;grid-template-columns:340px 1fr;overflow:hidden;transform:translateY(10px) scale(.99);transition:transform .22s ease}\
 .backdrop.show .modal{transform:none}\
+.modal:focus{outline:none}\
 /* ---- left pane ---- */\
 .pane{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:30px 28px;color:#fff;\
   background:linear-gradient(180deg,rgba(6,30,35,0) 28%,rgba(6,30,35,.55) 64%,rgba(5,26,30,.92) 100%),\
     linear-gradient(155deg,rgba(12,57,64,.7),rgba(6,125,137,.5) 55%,rgba(0,153,168,.42)),\
-    url("assets/consultation-image.png") center/cover no-repeat}\
+    url("assets/consultation-image2.png") center/cover no-repeat}\
 .pane::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 10%,rgba(255,255,255,.1),transparent 60%);pointer-events:none}\
-.brand{position:relative;z-index:1;align-self:flex-start;background:#fff;border-radius:12px;padding:9px 13px;box-shadow:0 8px 20px -10px rgba(0,0,0,.35)}\
-.brand-logo{height:26px;width:auto;display:block}\
+.brand{position:relative;z-index:1;align-self:flex-start}\
+.brand-logo{height:30px;width:auto;display:block;filter:brightness(0) invert(1);-webkit-filter:brightness(0) invert(1)}\
 .pane-foot{position:relative;z-index:1}\
 .pane-h{font-family:var(--disp);font-weight:800;font-size:clamp(24px,2.6vw,30px);line-height:1.1;letter-spacing:-.02em;margin:0 0 10px}\
 .pane-sub{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.82);margin:0 0 18px;max-width:30ch}\
@@ -73,19 +74,20 @@
 .cluster .a{width:32px;height:32px;border-radius:50%;margin-left:-9px;border:2px solid #0a6b75;background:#0a6b75;color:#fff;\
   display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;overflow:hidden}\
 .cluster .a:first-child{margin-left:0}\
-.cluster .a img{width:100%;height:100%;object-fit:cover}\
+.cluster .a img{width:100%;height:100%;object-fit:cover;object-position:center 18%}\
 .cluster .a.more{background:rgba(255,255,255,.16)}\
 .pane-team span{font-size:12px;color:rgba(255,255,255,.85)}\
 /* ---- right pane ---- */\
 .right{position:relative;display:flex;flex-direction:column;min-width:0}\
-.close{position:absolute;top:16px;right:16px;width:34px;height:34px;border:1px solid var(--line);background:#fff;font-size:20px;line-height:1;color:var(--muted);cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2}\
-.close:hover{color:var(--ink);border-color:var(--muted)}\
+.close{position:absolute;top:16px;right:16px;width:34px;height:34px;border:0;background:transparent;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2}\
+.close:hover{color:var(--ink)}\
 .close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}\
-.rtop{flex:none;padding:26px 34px 0}\
-.prog{display:flex;gap:7px}\
-.seg{height:4px;width:30px;border-radius:99px;background:var(--line);transition:.2s}\
-.seg.on{background:linear-gradient(135deg,#067d89,#0099a8)}\
-.body{flex:1;min-height:0;overflow-y:auto;padding:16px 34px 6px;scrollbar-width:thin;scrollbar-color:#cdd9d9 transparent}\
+.rtop{flex:none;padding:24px 34px 0}\
+.tabs{display:flex;gap:24px;border-bottom:1px solid var(--line)}\
+.tab{position:relative;font-family:var(--body);font-size:13px;font-weight:600;color:var(--muted);padding:0 0 11px;white-space:nowrap;transition:color .18s}\
+.tab.on{color:var(--accent-deep)}\
+.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;border-radius:99px;background:linear-gradient(135deg,#067d89,#0099a8)}\
+.body{flex:1;min-height:0;overflow-y:auto;padding:28px 34px 6px;scrollbar-width:thin;scrollbar-color:#cdd9d9 transparent}\
 .body::-webkit-scrollbar{width:7px}\
 .body::-webkit-scrollbar-thumb{background:#cdd9d9;border-radius:99px}\
 .body::-webkit-scrollbar-button{display:none;height:0}\
@@ -208,7 +210,7 @@
 
     _build() {
       var bd = el("div", "backdrop");
-      var modal = el("div", "modal");
+      var modal = el("div", "modal"); modal.tabIndex = -1;
       modal.setAttribute("role", "dialog");
       modal.setAttribute("aria-modal", "true");
       modal.setAttribute("aria-label", "Request a consultation");
@@ -227,7 +229,7 @@
 
       var right = el("div", "right");
       right.appendChild(el("button", "close", "&times;")).setAttribute("aria-label", "Close");
-      right.appendChild(el("div", "rtop", '<div class="prog"><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>'));
+      right.appendChild(el("div", "rtop", '<div class="tabs"><span class="tab">Project</span><span class="tab">Details</span><span class="tab">Consultation</span><span class="tab">Confirm</span></div>'));
       right.appendChild(el("div", "body"));
       var nav = el("div", "nav");
       nav.appendChild(el("button", "btn btn-back", "Back"));
@@ -239,7 +241,7 @@
       bd.appendChild(modal);
       this._bd = bd; this._modal = modal;
       this._body = right.querySelector(".body");
-      this._segs = right.querySelectorAll(".seg");
+      this._segs = right.querySelectorAll(".tab");
       this._back = nav.querySelector(".btn-back");
       this._next = nav.querySelector(".btn-next");
       this._navCluster = nav.querySelector(".cluster-wrap");
@@ -264,7 +266,7 @@
       var self = this;
       requestAnimationFrame(function () { self._bd.classList.add("show"); });
       this._render();
-      var c = this.shadowRoot.querySelector(".close"); if (c) c.focus();
+      if (this._modal) this._modal.focus();
     }
     close() {
       this._bd.classList.remove("show");
@@ -277,6 +279,7 @@
 
     /* flow: 1 industry, 2 pain, 3 priority, 4 details, 5 type, 6 time, 7 pay, 8 done */
     _phaseOf(n) { return n <= 3 ? 1 : n === 4 ? 2 : 3; }
+    _tabOf(n) { return n <= 3 ? 0 : n === 4 ? 1 : n === 8 ? 3 : 2; }
     _valid() {
       var s = this.state;
       switch (s.screen) {
@@ -308,8 +311,8 @@
     _advance(to) { this.state.screen = to; this._render(); }
 
     _render() {
-      var s = this.state, ph = this._phaseOf(s.screen);
-      Array.prototype.forEach.call(this._segs, function (sg, i) { sg.classList.toggle("on", i < (s.screen === 8 ? 3 : ph)); });
+      var s = this.state, ti = this._tabOf(s.screen);
+      Array.prototype.forEach.call(this._segs, function (sg, i) { sg.classList.toggle("on", i === ti); });
       this._body.innerHTML = "";
       this._body.appendChild(this["_screen" + s.screen]());
       this._body.scrollTop = 0;
@@ -332,7 +335,6 @@
 
     _wrap(title, sub) {
       var w = el("div", "screen show");
-      w.appendChild(el("p", "eyebrow", PHASES[this._phaseOf(this.state.screen) - 1].toUpperCase()));
       w.appendChild(el("h2", "h", title));
       if (sub) w.appendChild(el("p", "sub", sub));
       return w;
