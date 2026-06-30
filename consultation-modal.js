@@ -233,7 +233,6 @@
       right.appendChild(el("div", "body"));
       var nav = el("div", "nav");
       nav.appendChild(el("button", "btn btn-back", "Back"));
-      nav.appendChild(el("div", "cluster-wrap", clusterHTML()));
       nav.appendChild(el("button", "btn btn-next", "Next"));
       right.appendChild(nav);
       modal.appendChild(right);
@@ -244,7 +243,6 @@
       this._segs = right.querySelectorAll(".tab");
       this._back = nav.querySelector(".btn-back");
       this._next = nav.querySelector(".btn-next");
-      this._navCluster = nav.querySelector(".cluster-wrap");
       this._nav = nav;
       return bd;
     }
@@ -321,7 +319,6 @@
       this._next.disabled = !this._valid();
       this._next.innerHTML = this._nextLabel() + IC.arrow;
       this._back.style.visibility = (s.screen > 1 && s.screen < 8) ? "visible" : "hidden";
-      this._navCluster.style.display = (s.screen >= 5 && s.screen <= 6) ? "block" : "none";
       this._nav.style.display = s.screen === 8 ? "none" : "flex";
     }
     _nextLabel() {
