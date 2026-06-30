@@ -222,8 +222,8 @@
       brand.appendChild(brandImg);
       pane.appendChild(brand);
       var foot = el("div", "pane-foot");
-      foot.appendChild(el("h2", "pane-h", "Let's scope your project together."));
-      foot.appendChild(el("p", "pane-sub", "Book time with the team that will advise and deliver. KAFD, Riyadh, or online."));
+      foot.appendChild(el("h2", "pane-h", "Let's Scope Your Project Together."));
+      foot.appendChild(el("p", "pane-sub", "Time with the team that advises and delivers, on the decision you are weighing now."));
       foot.appendChild(el("div", "pane-team", clusterHTML() + '<span>Your advisory team</span>'));
       pane.appendChild(foot);
       modal.appendChild(pane);
