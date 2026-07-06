@@ -557,3 +557,32 @@
   backBtn.addEventListener("click", function () { if (cur > 0) { cur--; renderQ(); } });
   root.querySelector(".rd-restart").addEventListener("click", function () { show("intro"); });
 })();
+
+/* Success-stories rotator (in-memory, bilingual) */
+(function () {
+  var root = document.getElementById("proofx");
+  if (!root) return;
+  var S = [
+    { q_en: "At OAK Village in NEOM, we delivered Shiji's hotel management and point-of-sale platform, connected to e-invoicing through the Reachware integration platform, unifying operations and elevating the guest experience across the property.", q_ar: "في قرية أوك بنيوم، قدّمنا منصّة شيجي لإدارة الفنادق ونقاط البيع، وربطناها بالفوترة الإلكترونية عبر منصّة ريتشوير للتكامل، فوحّدنا العمليات وارتقينا بتجربة الضيف عبر المنشأة.", c_en: "OAK Village, NEOM", c_ar: "قرية أوك، نيوم", s_en: "Hospitality", s_ar: "الضيافة" },
+    { q_en: "At Golf Saudi, we delivered the technology systems that power a connected customer experience, becoming its technology partner on the road to Vision 2030.", q_ar: "خلف كل تجربة سلسة في قولف السعودية منظومةٌ بنيناها لتخدم طموحها ضمن رؤية 2030، وشريكٌ تقني تعتمد عليه في مسيرتها.", c_en: "Golf Saudi", c_ar: "قولف السعودية", s_en: "Sports & Entertainment", s_ar: "الرياضة والترفيه" },
+    { q_en: "At Karaz Linen, we delivered the Omniful order and inventory management platform with Reachware integration, unifying stores and online channels into one connected business, with faster fulfillment and clearer inventory.", q_ar: "في كرز لنن، قدّمنا منصّة أومنيفل لإدارة الطلبات والمخزون مع منصّة ريتشوير للتكامل، فوحّدنا المتاجر والقنوات الإلكترونية في تجارة واحدة متكاملة، وأصبح تنفيذ الطلبات أسرع والمخزون أوضح.", c_en: "Karaz Linen", c_ar: "كرز لنن", s_en: "Retail, Omnichannel", s_ar: "التجزئة والقنوات الرقمية" },
+    { q_en: "At Siniora, we delivered the Fiix maintenance management system with tight integration, turning maintenance from reactive to planned and lifting efficiency and productivity.", q_ar: "في سنيورة، قدّمنا نظام فيكس لإدارة الصيانة بتكامل سلس، فتحوّلت الصيانة من ردّ فعل إلى انضباط مُخطّط، وارتفعت الكفاءة والإنتاجية.", c_en: "Siniora", c_ar: "سنيورة", s_en: "Manufacturing", s_ar: "التصنيع" },
+    { q_en: "At Al Jabr Soft Drinks, we delivered Oracle NetSuite ERP as the solid foundation that grows and scales with the company.", q_ar: "في مصنع الجبر للمشروبات، قدّمنا نظام أوراكل نت سويت لتخطيط موارد المؤسسات ليكون الأساس المتين الذي ينمو ويتوسّع مع الشركة.", c_en: "Al Jabr Soft Drinks, Rita", c_ar: "مصنع الجبر للمشروبات، ريتا", s_en: "F&B, Manufacturing", s_ar: "الأغذية والمشروبات، التصنيع" }
+  ];
+  var qEl = document.getElementById("story-quote"), cEl = document.getElementById("story-client"), sEl = document.getElementById("story-sector");
+  var i = 0, lang = document.documentElement.lang === "ar" ? "ar" : "en";
+  function render() {
+    var it = S[i];
+    qEl.textContent = lang === "ar" ? it.q_ar : it.q_en;
+    cEl.textContent = lang === "ar" ? it.c_ar : it.c_en;
+    sEl.textContent = lang === "ar" ? it.s_ar : it.s_en;
+  }
+  root.querySelectorAll("[data-story]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      i = b.getAttribute("data-story") === "next" ? (i + 1) % S.length : (i - 1 + S.length) % S.length;
+      render();
+    });
+  });
+  document.addEventListener("ta-lang", function (e) { lang = e.detail && e.detail.ar ? "ar" : "en"; render(); });
+  render();
+})();
