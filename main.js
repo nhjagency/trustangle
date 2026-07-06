@@ -194,11 +194,11 @@
       "On the ground after the last location is live.":"حضور ميداني بعد تشغيل آخر موقع.",
       "Industries Served":"القطاعات المخدومة","Product Categories":"فئات المنتجات","Technology Partners":"شركاء التقنية","Unique Customers":"عملاء مميّزون"
     };
-    // For elements wrapping text + an svg/extra node, only the leading text node is swapped.
-    var i18nEls = document.querySelectorAll("[data-i18n]");
+    // Translate any element carrying data-ar (preferred) or data-i18n (AR dict fallback).
+    // Only the leading text node is swapped, so trailing <svg> icons are preserved.
+    var i18nEls = document.querySelectorAll("[data-i18n],[data-ar]");
     i18nEls.forEach(function (el) {
       var node = el.firstChild;
-      // store English text from the first text node (or whole textContent if simple)
       if (node && node.nodeType === 3 && node.textContent.trim()) {
         el.setAttribute("data-en", node.textContent);
       } else {
@@ -206,20 +206,28 @@
       }
     });
     var lang = "en";
-    langBtn.addEventListener("click", function () {
-      lang = lang === "en" ? "ar" : "en";
-      var ar = lang === "ar";
+    function applyLang(ar) {
       document.documentElement.setAttribute("dir", ar ? "rtl" : "ltr");
       document.documentElement.setAttribute("lang", ar ? "ar" : "en");
+      document.documentElement.classList.toggle("is-ar", ar);
       langBtn.textContent = ar ? "EN" : "عربي";
       i18nEls.forEach(function (el) {
         var en = el.getAttribute("data-en") || "";
-        var key = en.trim();
-        var target = ar ? (AR[key] || en) : en;
+        var arv = el.getAttribute("data-ar") || AR[en.trim()] || en;
+        var target = ar ? arv : en;
         var node = el.firstChild;
         if (node && node.nodeType === 3) { node.textContent = ar ? (target + " ") : en; }
         else { el.textContent = target; }
       });
+      document.querySelectorAll("[data-ar-ph]").forEach(function (el) {
+        if (!el.hasAttribute("data-en-ph")) el.setAttribute("data-en-ph", el.getAttribute("placeholder") || "");
+        el.setAttribute("placeholder", ar ? el.getAttribute("data-ar-ph") : el.getAttribute("data-en-ph"));
+      });
+      document.dispatchEvent(new CustomEvent("ta-lang", { detail: { ar: ar } }));
+    }
+    langBtn.addEventListener("click", function () {
+      lang = lang === "en" ? "ar" : "en";
+      applyLang(lang === "ar");
     });
   }
 
@@ -482,28 +490,48 @@
 (function () {
   var root = document.getElementById("readiness");
   if (!root) return;
-  var Q = [
+  var Q_EN = [
     { q: "How clear is your technology direction for the next two years?", o: ["Clear, we have a roadmap", "Somewhat, but not documented", "Not clear yet"] },
     { q: "How well do your systems integrate today?", o: ["Fully integrated", "Partly connected", "Mostly siloed"] },
     { q: "Do you make decisions from reliable data?", o: ["Yes, real-time data", "Sometimes, with manual effort", "Rarely"] },
     { q: "How ready are you for local compliance?", o: ["Ready and compliant", "Working on it", "Not started yet"] },
     { q: "When something breaks, how fast do you recover?", o: ["Fast, we have support and a plan", "Sometimes delayed", "Slowly, and manually"] }
   ];
-  var R = {
+  var Q_AR = [
+    { q: "ما مدى وضوح وجهتك التقنية للعامين القادمين؟", o: ["واضحة، ولدينا خارطة طريق", "إلى حدٍّ ما، لكن غير موثّقة", "غير واضحة بعد"] },
+    { q: "إلى أي مدى تتكامل أنظمتك اليوم؟", o: ["متكاملة بالكامل", "مترابطة جزئيًا", "منفصلة غالبًا"] },
+    { q: "هل تتّخذ قراراتك من بيانات موثوقة؟", o: ["نعم، بيانات لحظية", "أحيانًا، بجهد يدوي", "نادرًا"] },
+    { q: "ما مدى جاهزيتك للتوافق مع الأنظمة المحلية؟", o: ["جاهزون ومتوافقون", "نعمل عليها حاليًا", "لم نبدأ بعد"] },
+    { q: "حين يتعطّل شيء، ما سرعة تعافيك؟", o: ["سريعًا، لدينا دعم وخطة", "بتأخّرٍ أحيانًا", "ببطءٍ وبشكل يدوي"] }
+  ];
+  var R_EN = {
     adv: { t: "Advanced", d: "Your technology foundation is solid and your direction is clear. Your priority now is to invest in data and AI, turning operational strength into a competitive edge." },
     mid: { t: "Intermediate", d: "You have a good foundation, but a few gaps are slowing you down, usually in integration or data. Your priority is to connect your systems and unify your data before adding anything new." },
     early: { t: "Early", d: "You are at the start of the journey, and this is a chance to build the foundation right the first time. Your priority is to set your technology direction and choose the right systems before you build." }
   };
-  var panels = {}, cur = 0, ans = [];
+  var R_AR = {
+    adv: { t: "متقدّم", d: "أساسك التقني متين ووجهتك واضحة. الأولوية الآن أن تستثمر في البيانات والذكاء الاصطناعي لتحويل تميّزك التشغيلي إلى ميزة تنافسية." },
+    mid: { t: "متوسّط", d: "لديك أساس جيّد، لكن بعض الفجوات تُبطئك، غالبًا في التكامل أو البيانات. الأولوية أن تربط أنظمتك وتوحّد بياناتك قبل إضافة أي جديد." },
+    early: { t: "مبكّر", d: "أنت في بداية الطريق، وهذه فرصة لبناء الأساس بشكل صحيح من أول مرة. الأولوية أن تضبط وجهتك التقنية وتختار الأنظمة الأنسب قبل التنفيذ." }
+  };
+  var lang = document.documentElement.lang === "ar" ? "ar" : "en";
+  function Q() { return lang === "ar" ? Q_AR : Q_EN; }
+  function R() { return lang === "ar" ? R_AR : R_EN; }
+  var panels = {}, cur = 0, ans = [], view = "intro", lastKey = null;
   root.querySelectorAll("[data-rd-panel]").forEach(function (p) { panels[p.getAttribute("data-rd-panel")] = p; });
   var qEl = root.querySelector("#rd-q"), optsEl = root.querySelector("#rd-opts"),
       fill = root.querySelector(".rd-fill"), countEl = root.querySelector(".rd-i"), backBtn = root.querySelector(".rd-back");
-  function show(name) { Object.keys(panels).forEach(function (k) { panels[k].hidden = k !== name; }); }
+  function show(name) { view = name; Object.keys(panels).forEach(function (k) { panels[k].hidden = k !== name; }); }
+  document.addEventListener("ta-lang", function (e) {
+    lang = e.detail && e.detail.ar ? "ar" : "en";
+    if (view === "quiz") renderQ();
+    else if (view === "result" && lastKey) { root.querySelector("#rd-level").textContent = R()[lastKey].t; root.querySelector("#rd-rtext").textContent = R()[lastKey].d; }
+  });
   function renderQ() {
-    var item = Q[cur];
+    var item = Q()[cur];
     qEl.textContent = item.q;
     countEl.textContent = String(cur + 1);
-    fill.style.width = ((cur + 1) / Q.length * 100) + "%";
+    fill.style.width = ((cur + 1) / Q().length * 100) + "%";
     backBtn.hidden = cur === 0;
     optsEl.innerHTML = "";
     item.o.forEach(function (txt, i) {
@@ -511,7 +539,7 @@
       b.type = "button"; b.className = "rd-opt"; b.textContent = txt;
       b.addEventListener("click", function () {
         ans[cur] = i;
-        if (cur < Q.length - 1) { cur++; renderQ(); } else finish();
+        if (cur < Q().length - 1) { cur++; renderQ(); } else finish();
       });
       optsEl.appendChild(b);
     });
@@ -520,8 +548,9 @@
   function finish() {
     var score = ans.reduce(function (s, i) { return s + (2 - i); }, 0);
     var key = score >= 8 ? "adv" : score >= 4 ? "mid" : "early";
-    root.querySelector("#rd-level").textContent = R[key].t;
-    root.querySelector("#rd-rtext").textContent = R[key].d;
+    lastKey = key;
+    root.querySelector("#rd-level").textContent = R()[key].t;
+    root.querySelector("#rd-rtext").textContent = R()[key].d;
     show("result");
   }
   root.querySelector(".rd-start").addEventListener("click", function () { cur = 0; ans = []; show("quiz"); renderQ(); });

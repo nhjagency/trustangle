@@ -629,4 +629,20 @@
       if (m) { e.preventDefault(); m.open(); }
     }
   });
+
+  // Open once automatically after the Industries section scrolls into view.
+  var seen = false;
+  function onScroll() {
+    if (seen) return;
+    var ind = document.getElementById("industries");
+    var past = ind ? ind.getBoundingClientRect().bottom < window.innerHeight * 0.6
+                   : window.scrollY > window.innerHeight * 0.6;
+    if (past) {
+      seen = true;
+      window.removeEventListener("scroll", onScroll);
+      var m = findModal();
+      if (m) m.open();
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
 })();

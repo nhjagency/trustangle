@@ -1265,3 +1265,17 @@ body:has(.ta-navitem:focus-within) .ta-nav-scrim{opacity:1;visibility:visible}
 svg path,svg circle,svg rect,svg ellipse,svg line,svg polyline,svg polygon{
   stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;
 }
+
+/* ===== Arabic / RTL layer (in-memory toggle, no storage) ===== */
+html[dir="rtl"]{--disp:var(--ar);--body:var(--ar);--sans:var(--ar);--mono:var(--ar)}
+html[dir="rtl"] *{letter-spacing:normal !important}
+html[dir="rtl"] .ta-hero-p,html[dir="rtl"] .sub,html[dir="rtl"] .ww-sub,html[dir="rtl"] .ww-desc,
+html[dir="rtl"] .proof-body,html[dir="rtl"] .unit-desc,html[dir="rtl"] .faq-a,html[dir="rtl"] .ins-lead,
+html[dir="rtl"] .film-sub,html[dir="rtl"] .vpanel p,html[dir="rtl"] .ctapanel p{text-align:right}
+html[dir="rtl"] .rd,html[dir="rtl"] .ta-creds{text-align:center}
+html[dir="rtl"] .rd-opt{text-align:right}
+html[dir="rtl"] .ww-checks .ww-check{flex-direction:row-reverse;justify-content:flex-end}
+html[dir="rtl"] .how-it-works li{flex-direction:row-reverse;justify-content:flex-end;text-align:right}
+html[dir="rtl"] .ib-tab,html[dir="rtl"] .ib-brief-name{text-align:right}
+html[dir="rtl"] .ib-brief-name{margin-right:0;margin-left:8px}
+html[dir="rtl"] .ta-creds-label{margin-right:0;margin-left:8px}
