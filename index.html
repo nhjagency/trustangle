@@ -285,6 +285,37 @@
     </div>
   </section>
 
+  <!-- 3b. Interactive advisory diagnostic (readiness check) -->
+  <section class="section rd-section" id="readiness" aria-labelledby="rd-title">
+    <div class="wrap reveal">
+      <div class="rd">
+        <div class="rd-panel" data-rd-panel="intro">
+          <p class="ins-eyebrow"><span class="pill"><span class="ang"></span><span data-i18n data-ar="اختبار الجاهزية">Readiness check</span></span></p>
+          <h2 class="h2" id="rd-title" data-i18n data-ar="أين تقف تقنيتك؟">Where does your technology stand?</h2>
+          <p class="sub" data-i18n data-ar="تقنيتك تدفعك للأمام أم تشدّك للخلف؟ خمسة أسئلة تكشف الحقيقة في دقيقتين.">Is your technology pushing you forward or holding you back? Five questions reveal the truth in two minutes.</p>
+          <button class="btn btn-primary rd-start" type="button" data-i18n data-ar="ابدأ التقييم">Start the check</button>
+        </div>
+        <div class="rd-panel" data-rd-panel="quiz" hidden>
+          <div class="rd-progress"><span class="rd-fill"></span></div>
+          <p class="rd-count"><span class="rd-i">1</span> / 5</p>
+          <h3 class="rd-q" id="rd-q" aria-live="polite"></h3>
+          <div class="rd-opts" id="rd-opts"></div>
+          <button class="rd-back" type="button" hidden data-i18n data-ar="عودة">&larr; Back</button>
+        </div>
+        <div class="rd-panel" data-rd-panel="result" hidden>
+          <p class="ins-eyebrow"><span class="pill"><span class="ang"></span><span data-i18n data-ar="نتيجتك">Your result</span></span></p>
+          <h3 class="rd-level" id="rd-level"></h3>
+          <p class="rd-rtext" id="rd-rtext"></p>
+          <p class="rd-ctatext" data-i18n data-ar="ثلاثون دقيقة مع مستشار قد تغيّر وجهتك، احجز جلستك واخرج بخطة واضحة.">Thirty minutes with an advisor could change your direction. Book your session and leave with a clear plan.</p>
+          <div class="rd-actions">
+            <a href="#contact" class="btn btn-primary" data-consult-open data-i18n data-ar="اطلب استشارة">Request a Consultation</a>
+            <button class="btn btn-ghost rd-restart" type="button" data-i18n data-ar="البدء من جديد">Start over</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 4. Technologies & ecosystem -->
   <section class="section" id="technologies" aria-labelledby="tech-title">
     <div class="wrap reveal">
@@ -481,36 +512,6 @@
     </div>
   </section>
 
-  <!-- 8b. Interactive advisory diagnostic (readiness check) -->
-  <section class="section" id="readiness" aria-labelledby="rd-title">
-    <div class="wrap reveal">
-      <div class="rd">
-        <div class="rd-panel" data-rd-panel="intro">
-          <p class="ins-eyebrow"><span class="pill"><span class="ang"></span><span data-i18n data-ar="اختبار الجاهزية">Readiness check</span></span></p>
-          <h2 class="h2" id="rd-title" data-i18n data-ar="أين تقف تقنيتك؟">Where does your technology stand?</h2>
-          <p class="sub" data-i18n data-ar="تقنيتك تدفعك للأمام أم تشدّك للخلف؟ خمسة أسئلة تكشف الحقيقة في دقيقتين.">Is your technology pushing you forward or holding you back? Five questions reveal the truth in two minutes.</p>
-          <button class="btn btn-primary rd-start" type="button" data-i18n data-ar="ابدأ التقييم">Start the check</button>
-        </div>
-        <div class="rd-panel" data-rd-panel="quiz" hidden>
-          <div class="rd-progress"><span class="rd-fill"></span></div>
-          <p class="rd-count"><span class="rd-i">1</span> / 5</p>
-          <h3 class="rd-q" id="rd-q" aria-live="polite"></h3>
-          <div class="rd-opts" id="rd-opts"></div>
-          <button class="rd-back" type="button" hidden data-i18n data-ar="عودة">&larr; Back</button>
-        </div>
-        <div class="rd-panel" data-rd-panel="result" hidden>
-          <p class="ins-eyebrow"><span class="pill"><span class="ang"></span><span data-i18n data-ar="نتيجتك">Your result</span></span></p>
-          <h3 class="rd-level" id="rd-level"></h3>
-          <p class="rd-rtext" id="rd-rtext"></p>
-          <p class="rd-ctatext" data-i18n data-ar="ثلاثون دقيقة مع مستشار قد تغيّر وجهتك، احجز جلستك واخرج بخطة واضحة.">Thirty minutes with an advisor could change your direction. Book your session and leave with a clear plan.</p>
-          <div class="rd-actions">
-            <a href="#contact" class="btn btn-primary" data-consult-open data-i18n data-ar="اطلب استشارة">Request a Consultation</a>
-            <button class="btn btn-ghost rd-restart" type="button" data-i18n data-ar="البدء من جديد">Start over</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- 8c. FAQ -->
   <section class="section faqx" id="faq" aria-labelledby="faq-title">

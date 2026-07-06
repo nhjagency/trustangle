@@ -1351,3 +1351,19 @@ html[dir="rtl"] .certs-in .sub,html[dir="rtl"] .faqx-head .sub,html[dir="rtl"] .
 #faq .faqx-a{padding-bottom:14px;font-size:14px}
 #faq .faqx-more{margin-top:12px;padding:16px 24px}
 #faq .faqx-more-txt h3{font-size:16px}
+
+/* ===== Readiness diagnostic as a dark section ===== */
+.rd-section{background:linear-gradient(165deg,#0c2b31,#0b1f26 55%,#0a1c22);color:#fff}
+.rd-section .h2,.rd-section .rd-q,.rd-section .rd-level{color:#fff}
+.rd-section .sub{color:rgba(255,255,255,.74)}
+.rd-section .pill{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}
+.rd-section .rd-count{color:rgba(255,255,255,.6)}
+.rd-section .rd-progress{background:rgba(255,255,255,.14)}
+.rd-section .rd-opt{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.2);color:#fff}
+.rd-section .rd-opt:hover{border-color:var(--teal);background:rgba(0,153,168,.2)}
+.rd-section .rd-back{color:rgba(255,255,255,.72)}
+.rd-section .rd-back:hover{color:#fff}
+.rd-section .rd-rtext{color:rgba(255,255,255,.84)}
+.rd-section .rd-ctatext{color:rgba(255,255,255,.68)}
+.rd-section .btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff}
+.rd-section .btn-ghost:hover{border-color:var(--teal);color:#fff;transform:translateY(-2px)}
