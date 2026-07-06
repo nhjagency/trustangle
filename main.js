@@ -477,3 +477,54 @@
     });
   }
 })();
+
+/* Readiness diagnostic: 5-question technology check (in-memory only, no storage) */
+(function () {
+  var root = document.getElementById("readiness");
+  if (!root) return;
+  var Q = [
+    { q: "How clear is your technology direction for the next two years?", o: ["Clear, we have a roadmap", "Somewhat, but not documented", "Not clear yet"] },
+    { q: "How well do your systems integrate today?", o: ["Fully integrated", "Partly connected", "Mostly siloed"] },
+    { q: "Do you make decisions from reliable data?", o: ["Yes, real-time data", "Sometimes, with manual effort", "Rarely"] },
+    { q: "How ready are you for local compliance?", o: ["Ready and compliant", "Working on it", "Not started yet"] },
+    { q: "When something breaks, how fast do you recover?", o: ["Fast, we have support and a plan", "Sometimes delayed", "Slowly, and manually"] }
+  ];
+  var R = {
+    adv: { t: "Advanced", d: "Your technology foundation is solid and your direction is clear. Your priority now is to invest in data and AI, turning operational strength into a competitive edge." },
+    mid: { t: "Intermediate", d: "You have a good foundation, but a few gaps are slowing you down, usually in integration or data. Your priority is to connect your systems and unify your data before adding anything new." },
+    early: { t: "Early", d: "You are at the start of the journey, and this is a chance to build the foundation right the first time. Your priority is to set your technology direction and choose the right systems before you build." }
+  };
+  var panels = {}, cur = 0, ans = [];
+  root.querySelectorAll("[data-rd-panel]").forEach(function (p) { panels[p.getAttribute("data-rd-panel")] = p; });
+  var qEl = root.querySelector("#rd-q"), optsEl = root.querySelector("#rd-opts"),
+      fill = root.querySelector(".rd-fill"), countEl = root.querySelector(".rd-i"), backBtn = root.querySelector(".rd-back");
+  function show(name) { Object.keys(panels).forEach(function (k) { panels[k].hidden = k !== name; }); }
+  function renderQ() {
+    var item = Q[cur];
+    qEl.textContent = item.q;
+    countEl.textContent = String(cur + 1);
+    fill.style.width = ((cur + 1) / Q.length * 100) + "%";
+    backBtn.hidden = cur === 0;
+    optsEl.innerHTML = "";
+    item.o.forEach(function (txt, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "rd-opt"; b.textContent = txt;
+      b.addEventListener("click", function () {
+        ans[cur] = i;
+        if (cur < Q.length - 1) { cur++; renderQ(); } else finish();
+      });
+      optsEl.appendChild(b);
+    });
+    optsEl.firstChild && optsEl.firstChild.focus();
+  }
+  function finish() {
+    var score = ans.reduce(function (s, i) { return s + (2 - i); }, 0);
+    var key = score >= 8 ? "adv" : score >= 4 ? "mid" : "early";
+    root.querySelector("#rd-level").textContent = R[key].t;
+    root.querySelector("#rd-rtext").textContent = R[key].d;
+    show("result");
+  }
+  root.querySelector(".rd-start").addEventListener("click", function () { cur = 0; ans = []; show("quiz"); renderQ(); });
+  backBtn.addEventListener("click", function () { if (cur > 0) { cur--; renderQ(); } });
+  root.querySelector(".rd-restart").addEventListener("click", function () { show("intro"); });
+})();
