@@ -1339,3 +1339,15 @@ html[dir="rtl"] .ta-creds-label{margin-right:0;margin-left:8px}
 html[dir="rtl"] .faqx-a,html[dir="rtl"] .faqx-more-txt p,html[dir="rtl"] .proofx-quote,html[dir="rtl"] .cert-name{text-align:right}
 html[dir="rtl"] .faqx-item[open] .faqx-chev{transform:rotate(-90deg)}
 html[dir="rtl"] .certs-in .sub,html[dir="rtl"] .faqx-head .sub,html[dir="rtl"] .proofx-head .sub{text-align:center}
+
+/* ===== FAQ compact: fit one screen, no scroll ===== */
+#faq.section{padding-top:34px;padding-bottom:38px}
+#faq .faqx-head{margin-bottom:16px}
+#faq .faqx-head .h2{margin-bottom:4px}
+#faq .faqx-head .sub{margin-bottom:0}
+#faq .faqx-card{padding:2px 26px}
+#faq .faqx-q{padding:13px 2px;font-size:15px}
+#faq .faqx-chev{width:30px;height:30px}
+#faq .faqx-a{padding-bottom:14px;font-size:14px}
+#faq .faqx-more{margin-top:12px;padding:16px 24px}
+#faq .faqx-more-txt h3{font-size:16px}
