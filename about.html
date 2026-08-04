@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>About: NHJ Group</title>
+  <meta name="description" content="NHJ Group is a full-journey marketing group for businesses in Saudi Arabia and Syria: three units and one accountable team, twelve months at a time.">
+  <meta name="theme-color" content="#14141C">
+
+  <link rel="icon" href="uploads/logo-1785827669226-cuuj.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#FFFAF3;color:#14141C;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:#1E2BFF;text-decoration:none}
+    a:hover{color:#141FCC}
+    img{display:block}
+
+    @keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Marquee: two identical logo sets scrolled to -50% for a seamless loop */
+    .marquee-track{display:flex;gap:20px;width:max-content;animation:logoScroll 90s linear infinite}
+    .logo-cell{border-radius:10px;height:48px;width:120px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:10px}
+    .logo-cell img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85}
+
+    /* Hero image placeholder (reads as a placeholder until a photo is supplied) */
+    .img-placeholder{width:100%;height:100%;border-radius:28px;background:repeating-linear-gradient(45deg,#EFEEE9,#EFEEE9 14px,#E7E5DE 14px,#E7E5DE 28px);border:1px solid rgba(20,20,28,0.10);display:flex;align-items:center;justify-content:center;color:#8a8992;font-size:14px;font-weight:600;letter-spacing:0.02em}
+
+    @media (prefers-reduced-motion:reduce){
+      .marquee-track{animation:none}
+    }
+
+    @media (max-width:880px){
+      .nhj-nav{padding:16px 20px !important;flex-wrap:wrap;gap:12px}
+      .nhj-navlinks{gap:14px !important;flex-wrap:wrap}
+      .nhj-section{padding-left:20px !important;padding-right:20px !important}
+      .nhj-hero{padding:130px 20px 56px !important}
+      .nhj-hero h1{font-size:34px !important}
+      .nhj-hero p{font-size:17px !important}
+      .nhj-grid-3,.nhj-grid-2{grid-template-columns:1fr !important}
+      .nhj-panel{padding:40px 26px !important}
+      .nhj-cta{padding:48px 26px !important}
+      .nhj-cta h2{font-size:28px !important}
+      .nhj-foot-grid{grid-template-columns:1fr 1fr !important;gap:28px !important}
+      .nhj-hero-media{height:260px !important}
+    }
+    @media (max-width:520px){
+      .nhj-foot-grid{grid-template-columns:1fr !important}
+    }
+  </style>
+</head>
+<body>
+
+<div style="min-height:100vh;background:#FFFAF3">
+
+  <nav class="nhj-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(255,250,243,0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,28,0.08)">
+    <a href="index.html" style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:40px" aria-label="NHJ Group, home">
+      <img src="uploads/logo-1785827669226-cuuj.png" alt="NHJ Group" style="height:34px;width:auto">
+      <span style="font-weight:600;font-size:12px;color:#6b6a72;letter-spacing:0.08em;text-transform:uppercase">Group</span>
+    </a>
+    <div class="nhj-navlinks" style="display:flex;align-items:center;gap:22px">
+      <a href="index.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Home</a>
+      <a href="about.html" aria-current="page" style="font-size:14px;font-weight:600;color:#1E2BFF;white-space:nowrap">About</a>
+      <a href="services.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Services</a>
+      <a href="work.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Work</a>
+      <a href="team.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Team</a>
+      <a href="journal.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Journal</a>
+      <a href="contact.html" style="padding:12px 22px;background:#14141C;color:#fff;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0">Get in touch</a>
+    </div>
+  </nav>
+
+  <section class="nhj-hero nhj-section" style="padding:180px 48px 80px;max-width:900px;margin:0 auto;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:#EFEEE9;border-radius:999px;font-size:13px;font-weight:700;color:#1E2BFF;margin-bottom:28px">ABOUT NHJ GROUP</div>
+    <h1 style="font-size:52px;line-height:1.08;font-weight:900;letter-spacing:-0.02em;margin:0 0 24px;text-wrap:pretty">Three units. One accountable team.</h1>
+    <p style="font-size:19px;line-height:1.6;color:#4a4952;margin:0 auto">Every agency says full-service. We built NHJ Group so it's actually true: one team that carries a business through a full year, instead of five vendors that each own a slice of it.</p>
+  </section>
+
+  <section class="nhj-section" style="max-width:1280px;margin:0 auto;padding:0 48px 100px">
+    <div class="nhj-hero-media" style="width:100%;height:420px">
+      <div class="img-placeholder">Team or studio photo</div>
+    </div>
+  </section>
+
+  <section aria-label="Clients we have worked with" style="background:#14141C;width:100%;padding:24px 0;overflow:hidden;margin-bottom:60px">
+    <div style="width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+      <div class="marquee-track">
+        <!-- set 1 -->
+        <div class="logo-cell"><img src="uploads/logos/invest.png" alt="Invest"></div>
+        <div class="logo-cell"><img src="uploads/logos/reachware.png" alt="Reachware"></div>
+        <div class="logo-cell"><img src="uploads/logos/tachyon2.png" alt="Tachyon"></div>
+        <div class="logo-cell"><img src="uploads/Horizontal---RGB-300x-8.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/logos/elevate.png" alt="Elevate"></div>
+        <div class="logo-cell"><img src="uploads/logos/gdg.png" alt="GDG"></div>
+        <div class="logo-cell"><img src="uploads/Asset-39-4x-8.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/nowa.png" alt="Nowa"></div>
+        <div class="logo-cell"><img src="uploads/logos/rmz.png" alt="RMZ"></div>
+        <div class="logo-cell"><img src="uploads/logos/reterra2.png" alt="Reterra"></div>
+        <div class="logo-cell"><img src="uploads/SF-logo-1.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/syber.png" alt="Syber"></div>
+        <div class="logo-cell"><img src="uploads/tcafe.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/logos/techtown.png" alt="Techtown"></div>
+        <div class="logo-cell"><img src="uploads/logos/sukuk.png" alt="Sukuk"></div>
+        <div class="logo-cell"><img src="uploads/Untitled-design-15.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/logos/wateen.png" alt="Wateen"></div>
+        <div class="logo-cell"><img src="uploads/logos/qeema.png" alt="Qeema"></div>
+        <div class="logo-cell"><img src="uploads/logos/eddekhar.jpeg" alt="Eddekhar"></div>
+        <div class="logo-cell"><img src="uploads/logos/taqana.jpeg" alt="Taqana"></div>
+        <div class="logo-cell"><img src="uploads/logos/khayal.jpeg" alt="Khayal"></div>
+        <div class="logo-cell"><img src="uploads/9.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/11.png" alt="Client logo"></div>
+        <div class="logo-cell"><img src="uploads/logos/marafiq.png" alt="Marafiq"></div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/invest.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/reachware.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/tachyon2.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/Horizontal---RGB-300x-8.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/elevate.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/gdg.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/Asset-39-4x-8.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/nowa.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/rmz.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/reterra2.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/SF-logo-1.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/syber.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/tcafe.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/techtown.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/sukuk.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/Untitled-design-15.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/wateen.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/qeema.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/eddekhar.jpeg" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/taqana.jpeg" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/khayal.jpeg" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/9.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/11.png" alt=""></div>
+        <div class="logo-cell" aria-hidden="true"><img src="uploads/logos/marafiq.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nhj-section" style="max-width:1280px;margin:0 auto;padding:0 48px 100px">
+    <h2 style="font-size:36px;font-weight:900;letter-spacing:-0.01em;margin:0 0 48px;text-align:center">The three units</h2>
+    <div class="nhj-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="nhj-panel" style="background:#fff;border-radius:24px;padding:40px;border:1px solid rgba(20,20,28,0.08)">
+        <div style="font-size:15px;font-weight:800;color:#1E2BFF;letter-spacing:0.06em;margin-bottom:16px">NHJ</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:14px">Strategy</div>
+        <div style="font-size:15px;color:#6b6a72;line-height:1.65">Planning and content. The thinking that points every other unit, and every decision, in the right direction from day one.</div>
+      </div>
+      <div class="nhj-panel" style="background:#fff;border-radius:24px;padding:40px;border:1px solid rgba(20,20,28,0.08)">
+        <div style="font-size:15px;font-weight:800;color:#1E2BFF;letter-spacing:0.06em;margin-bottom:16px">WHJ</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:14px">Brand &amp; Creative</div>
+        <div style="font-size:15px;color:#6b6a72;line-height:1.65">Brand, design, video, and photography. The face your business shows the world, built to hold up everywhere it appears.</div>
+      </div>
+      <div class="nhj-panel" style="background:#fff;border-radius:24px;padding:40px;border:1px solid rgba(20,20,28,0.08)">
+        <div style="font-size:15px;font-weight:800;color:#1E2BFF;letter-spacing:0.06em;margin-bottom:16px">RWJ</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:14px">Growth</div>
+        <div style="font-size:15px;color:#6b6a72;line-height:1.65">SEO, ads, CRM, events, and web. The engine that turns everything Foundation and Activation built into revenue.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nhj-section" style="max-width:1280px;margin:0 auto;padding:0 48px 100px">
+    <div class="nhj-panel" style="background:#14141C;border-radius:32px;padding:64px 48px;color:#F7F6F2">
+      <h2 style="font-size:34px;font-weight:900;margin:0 0 40px;letter-spacing:-0.01em;text-align:center">How we work</h2>
+      <div class="nhj-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#7d85ff;margin-bottom:14px">01 · MONTHS 1 TO 3</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:10px">Foundation</div>
+          <div style="font-size:15px;color:#b8b6c0;line-height:1.6">Strategy, positioning, and brand systems, set up before anything goes live.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#7d85ff;margin-bottom:14px">02 · MONTHS 4 TO 8</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:10px">Activation</div>
+          <div style="font-size:15px;color:#b8b6c0;line-height:1.6">Campaigns, content, and channels go live, tested and refined in market.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#7d85ff;margin-bottom:14px">03 · MONTHS 9 TO 12</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:10px">Growth</div>
+          <div style="font-size:15px;color:#b8b6c0;line-height:1.6">We scale what's working and compound it. One accountable lead, start to finish.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nhj-section" style="max-width:1280px;margin:0 auto;padding:0 48px 100px">
+    <div class="nhj-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+      <div class="nhj-panel" style="background:#fff;border-radius:24px;padding:40px;border:1px solid rgba(20,20,28,0.08)">
+        <div style="font-size:14px;font-weight:800;color:#1E2BFF;letter-spacing:0.06em;margin-bottom:16px">WHO WE'RE FOR</div>
+        <div style="font-size:15px;color:#4a4952;line-height:1.7">Owners, founders, and marketing leads of established small and mid-size businesses in KSA and Syria: real revenue, real budget, no internal team able to carry a full year of work. Also larger organizations that need one arm only: a brand build, an event, a performance sprint.</div>
+      </div>
+      <div class="nhj-panel" style="background:#fff;border-radius:24px;padding:40px;border:1px solid rgba(20,20,28,0.08)">
+        <div style="font-size:14px;font-weight:800;color:#1E2BFF;letter-spacing:0.06em;margin-bottom:16px">WHO WE'RE NOT FOR</div>
+        <div style="font-size:15px;color:#4a4952;line-height:1.7">One-off logo shoppers, or anyone who wants a price before a scope. We map the journey to your business first: that's what makes the number honest.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nhj-section" style="max-width:1280px;margin:0 auto;padding:0 48px 100px;text-align:center">
+    <h2 style="font-size:32px;font-weight:900;letter-spacing:-0.01em;margin:0 0 16px">Meet the people behind the work</h2>
+    <p style="font-size:16px;color:#6b6a72;margin:0 0 28px">Specialists across strategy, design, and growth: one team, three units.</p>
+    <a href="team.html" style="padding:14px 26px;background:#1E2BFF;color:#fff;border-radius:999px;font-size:15px;font-weight:700;display:inline-block">Meet the team</a>
+  </section>
+
+  <section class="nhj-section" style="max-width:1280px;margin:24px auto 100px;padding:0 48px">
+    <div class="nhj-cta" style="background:#1E2BFF;border-radius:32px;padding:72px 48px;text-align:center;color:#fff">
+      <h2 style="font-size:38px;font-weight:900;letter-spacing:-0.01em;margin:0 0 16px">Ready to map your 12 months?</h2>
+      <a href="contact.html" style="padding:16px 32px;background:#fff;color:#1E2BFF;border-radius:999px;font-size:16px;font-weight:800;display:inline-block;margin-top:8px">Start the conversation</a>
+    </div>
+  </section>
+
+  <footer class="nhj-section" style="max-width:1280px;margin:0 auto;padding:0 48px 48px">
+    <div class="nhj-foot-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(20,20,28,0.1)">
+      <div>
+        <div style="font-weight:900;font-size:22px;margin-bottom:12px">NHJ Group</div>
+        <div style="font-size:14px;color:#6b6a72;line-height:1.6;max-width:280px">A full-journey marketing group for businesses in Saudi Arabia and Syria: one accountable team, twelve months at a time.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#6b6a72;letter-spacing:0.06em;margin-bottom:16px">SITE</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="about.html" style="font-size:14px;color:#14141C;font-weight:600">About</a>
+          <a href="services.html" style="font-size:14px;color:#14141C;font-weight:600">Services</a>
+          <a href="work.html" style="font-size:14px;color:#14141C;font-weight:600">Work</a>
+          <a href="team.html" style="font-size:14px;color:#14141C;font-weight:600">Team</a>
+          <a href="journal.html" style="font-size:14px;color:#14141C;font-weight:600">Journal</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#6b6a72;letter-spacing:0.06em;margin-bottom:16px">UNITS</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:14px;color:#14141C;font-weight:600">NHJ: Strategy</div>
+          <div style="font-size:14px;color:#14141C;font-weight:600">WHJ: Brand &amp; Creative</div>
+          <div style="font-size:14px;color:#14141C;font-weight:600">RWJ: Growth</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#6b6a72;letter-spacing:0.06em;margin-bottom:16px">CONTACT</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="mailto:hello@nhjgroup.com" style="font-size:14px;color:#14141C;font-weight:600">hello@nhjgroup.com</a>
+          <div style="font-size:14px;color:#6b6a72">Riyadh, Saudi Arabia</div>
+          <div style="font-size:14px;color:#6b6a72">Damascus, Syria</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding-top:24px;font-size:13px;color:#6b6a72;flex-wrap:wrap;gap:12px">
+      <div>&copy; 2026 NHJ Group. All rights reserved.</div>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="font-size:13px;color:#6b6a72">LinkedIn</a>
+        <a href="#" style="font-size:13px;color:#6b6a72">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
