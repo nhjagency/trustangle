@@ -8,7 +8,7 @@
   <meta name="description" content="NHJ Group is a full-journey marketing group for businesses in Saudi Arabia and Syria: three units and one accountable team, twelve months at a time.">
   <meta name="theme-color" content="#14141C">
 
-  <link rel="icon" href="uploads/logo-1785827669226-cuuj.png">
+  <link rel="icon" href="uploads/nhj-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,21 @@
     a{color:#1E2BFF;text-decoration:none}
     a:hover{color:#141FCC}
     img{display:block}
+
+    /* Nav */
+    .nhj-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+      padding:20px 48px;background:rgba(255,250,243,0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(20,20,28,0.08)}
+    .nhj-logo{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:40px}
+    .nhj-navlinks{display:flex;align-items:center;gap:22px}
+    .nhj-navlinks a{font-size:14px;font-weight:600;color:#14141C;white-space:nowrap}
+    .nhj-navlinks a.current{color:#1E2BFF}
+    .nhj-navlinks a.nav-cta{padding:12px 22px;background:#14141C;color:#fff;border-radius:999px;font-weight:700;flex-shrink:0}
+    .nhj-navlinks a.nav-cta:hover{color:#fff;background:#000}
+    .nav-toggle{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .nav-burger{display:none;width:44px;height:44px;border:1px solid rgba(20,20,28,0.14);border-radius:12px;background:transparent;
+      cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:0}
+    .nav-burger span{display:block;width:18px;height:2px;background:#14141C;border-radius:2px}
 
     @keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -36,8 +51,14 @@
     }
 
     @media (max-width:880px){
-      .nhj-nav{padding:16px 20px !important;flex-wrap:wrap;gap:12px}
-      .nhj-navlinks{gap:14px !important;flex-wrap:wrap}
+      .nhj-nav{padding:12px 18px}
+      .nav-burger{display:flex}
+      .nhj-navlinks{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;
+        gap:2px;background:rgba(255,250,243,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        padding:10px 18px 16px;border-bottom:1px solid rgba(20,20,28,0.08)}
+      .nhj-navlinks a{padding:12px 6px}
+      .nhj-navlinks a.nav-cta{margin-top:8px;text-align:center;padding:14px 22px}
+      .nav-toggle:checked ~ .nhj-navlinks{display:flex}
       .nhj-section{padding-left:20px !important;padding-right:20px !important}
       .nhj-hero{padding:130px 20px 56px !important}
       .nhj-hero h1{font-size:34px !important}
@@ -58,19 +79,20 @@
 
 <div style="min-height:100vh;background:#FFFAF3">
 
-  <nav class="nhj-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(255,250,243,0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,28,0.08)">
-    <a href="index.html" style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:40px" aria-label="NHJ Group, home">
-      <img src="uploads/logo-1785827669226-cuuj.png" alt="NHJ Group" style="height:34px;width:auto">
-      <span style="font-weight:600;font-size:12px;color:#6b6a72;letter-spacing:0.08em;text-transform:uppercase">Group</span>
+  <nav class="nhj-nav">
+    <a class="nhj-logo" href="home.html" aria-label="NHJ, home">
+      <img src="uploads/nhj-logo.png" alt="NHJ" style="height:30px;width:auto">
     </a>
-    <div class="nhj-navlinks" style="display:flex;align-items:center;gap:22px">
-      <a href="index.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Home</a>
-      <a href="about.html" aria-current="page" style="font-size:14px;font-weight:600;color:#1E2BFF;white-space:nowrap">About</a>
-      <a href="services.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Services</a>
-      <a href="work.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Work</a>
-      <a href="team.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Team</a>
-      <a href="journal.html" style="font-size:14px;font-weight:600;color:#14141C;white-space:nowrap">Journal</a>
-      <a href="contact.html" style="padding:12px 22px;background:#14141C;color:#fff;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0">Get in touch</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" tabindex="-1">
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <div class="nhj-navlinks">
+      <a href="home.html">Home</a>
+      <a href="about.html" class="current" aria-current="page">About</a>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="team.html">Team</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html" class="nav-cta">Get in touch</a>
     </div>
   </nav>
 
