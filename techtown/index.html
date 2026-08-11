@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TechTown: Where Saudi Builds What Comes Next</title>
+  <meta name="description" content="TechTown is a Saudi home for tech talent and founders. Learn real skills, build real products, and grow inside a community backing the Kingdom's digital future.">
+  <meta name="theme-color" content="#0a1128">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TechTown: Where Saudi Builds What Comes Next">
+  <meta property="og:description" content="A Saudi home for tech talent and founders. Learn real skills, build real products, and grow inside a community backing the Kingdom's digital future.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en">
+  <meta property="og:site_name" content="TechTown">
+  <meta property="og:url" content="https://techtown.sa/">
+  <!-- og:image is a PLACEHOLDER until the share card is produced -->
+  <meta property="og:image" content="PLACEHOLDER-og-share.png">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TechTown: Where Saudi Builds What Comes Next">
+  <meta name="twitter:description" content="A Saudi home for tech talent and founders. Learn, build, and grow with the community shaping the Kingdom's digital future.">
+  <meta name="twitter:image" content="PLACEHOLDER-og-share.png">
+
+  <!-- hreflang: reserve the en/ar relationship. The Arabic (RTL) page is a separate deliverable. -->
+  <link rel="canonical" href="https://techtown.sa/">
+  <link rel="alternate" hreflang="en" href="https://techtown.sa/">
+  <link rel="alternate" hreflang="ar" href="https://techtown.sa/ar">
+  <link rel="alternate" hreflang="x-default" href="https://techtown.sa/">
+
+  <!-- Structured data: an organization. Only verifiable facts belong here;
+       PLACEHOLDER fields must be filled with confirmed details before launch. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TechTown",
+    "url": "https://techtown.sa/",
+    "logo": "PLACEHOLDER-logo.png",
+    "areaServed": ["SA"],
+    "description": "TechTown is a Saudi home for tech talent and founders: training, startup support, and a community aligned with Vision 2030."
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1128'/%3E%3Cpath d='M9 12h14M16 12v11' stroke='%2312d18e' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================== NAV ============================== -->
+<nav class="nav" aria-label="Primary">
+  <div class="wrap nav-in">
+    <a href="#top" class="logo" aria-label="TechTown, home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30"><rect width="32" height="32" rx="9" fill="var(--ink)"/><path d="M9 12h14M16 12v11" stroke="var(--brand)" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="logo-word">Tech<span class="logo-accent">Town</span></span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" href="#why">About</a>
+      <a class="nav-link" href="#programs">Programs</a>
+      <a class="nav-link" href="#community">Community</a>
+      <a class="nav-link" href="#vision">Vision 2030</a>
+      <a class="nav-link" href="#insights">Insights</a>
+      <div class="nav-cta">
+        <a class="lang-toggle" href="/ar" hreflang="ar" aria-label="Switch to Arabic">العربية</a>
+        <a class="btn btn-primary btn-sm" href="#join">Join TechTown</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero" id="top">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <p class="eyebrow reveal">Aligned with Saudi Vision 2030</p>
+      <h1 class="reveal">Where Saudi builds<br>what comes next.</h1>
+      <p class="hero-sub reveal">TechTown is a home for people who want to make things: a place to learn real skills, build real products, and grow beside the founders and builders shaping the Kingdom's digital future.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#join">Join TechTown</a>
+        <a class="btn btn-ghost-light" href="#programs">Explore programs</a>
+      </div>
+      <ul class="hero-chips reveal" aria-label="What we offer">
+        <li>Hands-on training</li>
+        <li>Startup support</li>
+        <li>A national community</li>
+        <li>Mentors and partners</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============================== WHY ============================== -->
+  <section class="section why" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Why TechTown</p>
+        <h2 id="why-h">Ambition needs a place to start.</h2>
+        <p class="lede">The Kingdom's goals ask for more than technology. They ask for people who can build it, and a place where they can begin. TechTown exists to give talent and founders that place: practical, open, and rooted in the community around them.</p>
+      </div>
+
+      <div class="why-grid">
+        <article class="why-card reveal">
+          <span class="why-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M7 10.5V16c0 1 2.2 2.5 5 2.5S17 17 17 16v-5.5"/></svg>
+          </span>
+          <h3>Talent, not just training</h3>
+          <p>Skills that map to real work. We teach the way teams actually build, so what you learn on day one holds up on the job.</p>
+        </article>
+
+        <article class="why-card reveal">
+          <span class="why-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3Z"/></svg>
+          </span>
+          <h3>Founders, not just ideas</h3>
+          <p>Support from first prototype to first customers. Mentorship, workspace, and introductions that move an idea toward a working business.</p>
+        </article>
+
+        <article class="why-card reveal">
+          <span class="why-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M16 6a3 3 0 0 1 0 6"/><path d="M18 15c2.2.6 3.5 2.2 3.5 4.5"/></svg>
+          </span>
+          <h3>Community, not just space</h3>
+          <p>A network that opens doors. You grow next to people building the same future, and the connections you make here stay with you.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROGRAMS ============================== -->
+  <section class="section programs" id="programs" aria-labelledby="prog-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">What you can do here</p>
+        <h2 id="prog-h">Four ways to grow with us.</h2>
+        <p class="lede">Whether you are starting out, changing direction, or building a company, there is a path through TechTown for you.</p>
+      </div>
+
+      <div class="tabs reveal" role="tablist" aria-label="Programs">
+        <button class="tab is-active" role="tab" id="tab-learn" aria-selected="true" aria-controls="panel-learn">Learn</button>
+        <button class="tab" role="tab" id="tab-build" aria-selected="false" aria-controls="panel-build" tabindex="-1">Build</button>
+        <button class="tab" role="tab" id="tab-grow" aria-selected="false" aria-controls="panel-grow" tabindex="-1">Grow</button>
+        <button class="tab" role="tab" id="tab-connect" aria-selected="false" aria-controls="panel-connect" tabindex="-1">Connect</button>
+      </div>
+
+      <div class="panel is-active" id="panel-learn" role="tabpanel" aria-labelledby="tab-learn">
+        <div class="panel-copy">
+          <h3>Learn the skills the market is hiring for</h3>
+          <p>Intensive, project-based programs in the fields shaping the digital economy. You write code, ship work, and leave with a portfolio, not just a certificate.</p>
+          <ul class="tick">
+            <li>Software engineering and web development</li>
+            <li>Data, analytics, and applied AI</li>
+            <li>Cloud and cybersecurity fundamentals</li>
+            <li>Product and UX design</li>
+          </ul>
+          <a class="link-arrow" href="#join">Find a program that fits <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <aside class="panel-side">
+          <p class="panel-side-label">Who it suits</p>
+          <p>Students, recent graduates, and career changers ready to work hard for a real skill.</p>
+        </aside>
+      </div>
+
+      <div class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" hidden>
+        <div class="panel-copy">
+          <h3>Turn an idea into a company</h3>
+          <p>Incubation and acceleration for early founders. Get the space, the guidance, and the introductions to take a prototype to its first paying customers.</p>
+          <ul class="tick">
+            <li>Structured incubation for first-time founders</li>
+            <li>Acceleration for teams ready to scale up</li>
+            <li>Access to mentors, investors, and pilot partners</li>
+            <li>Workspace built for building</li>
+          </ul>
+          <a class="link-arrow" href="#join">Bring your startup <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <aside class="panel-side">
+          <p class="panel-side-label">Who it suits</p>
+          <p>Founders and small teams with a product idea or an early version already in hand.</p>
+        </aside>
+      </div>
+
+      <div class="panel" id="panel-grow" role="tabpanel" aria-labelledby="tab-grow" hidden>
+        <div class="panel-copy">
+          <h3>Keep getting better after you start</h3>
+          <p>Workshops, talks, and mentorship that continue past any single program. Learning here is a habit, not a one-time event.</p>
+          <ul class="tick">
+            <li>Evening workshops and hands-on labs</li>
+            <li>One-to-one mentorship with practitioners</li>
+            <li>Talks and meetups across the community</li>
+            <li>Hackathons and build weekends</li>
+          </ul>
+          <a class="link-arrow" href="#community">See what's on <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <aside class="panel-side">
+          <p class="panel-side-label">Who it suits</p>
+          <p>Anyone in the community who wants to keep sharpening their craft.</p>
+        </aside>
+      </div>
+
+      <div class="panel" id="panel-connect" role="tabpanel" aria-labelledby="tab-connect" hidden>
+        <div class="panel-copy">
+          <h3>Meet the people who can help you move</h3>
+          <p>A bridge between talent, founders, and the companies hiring and partnering across the Kingdom. The right introduction can change what happens next.</p>
+          <ul class="tick">
+            <li>Hiring days with partner employers</li>
+            <li>Founder and investor introductions</li>
+            <li>Corporate and government collaboration</li>
+            <li>A community you can call on</li>
+          </ul>
+          <a class="link-arrow" href="#partners">Partner with us <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <aside class="panel-side">
+          <p class="panel-side-label">Who it suits</p>
+          <p>Graduates looking for their next role, and organizations looking for talent and startups.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== WHO ============================== -->
+  <section class="section who" id="who" aria-labelledby="who-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Who it's for</p>
+        <h2 id="who-h">Built for the people building.</h2>
+      </div>
+      <div class="who-grid">
+        <article class="who-card reveal"><h3>Students &amp; graduates</h3><p>Get job-ready skills and a portfolio that shows what you can do.</p></article>
+        <article class="who-card reveal"><h3>Developers &amp; creatives</h3><p>Go deeper, meet your peers, and find your next opportunity.</p></article>
+        <article class="who-card reveal"><h3>Founders &amp; teams</h3><p>Get the support to take an idea from prototype to paying customers.</p></article>
+        <article class="who-card reveal"><h3>Partners &amp; employers</h3><p>Reach the talent and startups shaping the Kingdom's digital economy.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== JOURNEY / JOIN ============================== -->
+  <section class="section journey" id="join" aria-labelledby="join-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">How to join</p>
+        <h2 id="join-h">Four steps from interested to building.</h2>
+        <p class="lede">Applying is straightforward. Tell us where you are, and we help you find the right way in.</p>
+      </div>
+      <ol class="steps reveal">
+        <li class="step">
+          <span class="step-n">01</span>
+          <h3>Apply</h3>
+          <p>Share who you are and what you want to work toward. It takes a few minutes.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">02</span>
+          <h3>Get matched</h3>
+          <p>We point you to the program, track, or support that fits your goal and stage.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">03</span>
+          <h3>Start building</h3>
+          <p>Join a cohort or the workspace and get to work with people around you.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">04</span>
+          <h3>Go further</h3>
+          <p>Ship a project, land a role, or grow your startup, and stay part of the community.</p>
+        </li>
+      </ol>
+      <div class="journey-cta reveal">
+        <!-- Apply form is a PLACEHOLDER route until the intake flow is built -->
+        <a class="btn btn-primary" href="#" aria-label="Start your application (placeholder)">Start your application</a>
+        <p class="journey-note">Applications open by cohort. Add your details and we will let you know when the next intake opens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== IMPACT ============================== -->
+  <section class="section impact" id="impact" aria-labelledby="impact-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Our aim</p>
+        <h2 id="impact-h">Measured by what people go on to do.</h2>
+        <p class="lede">We track outcomes, not vanity. The numbers below are placeholders until verified reporting is in place; the aim they describe is real.</p>
+      </div>
+      <div class="stat-grid reveal">
+        <div class="stat"><span class="stat-num" data-placeholder>[[ trainees ]]</span><span class="stat-label">people trained in in-demand tech skills</span></div>
+        <div class="stat"><span class="stat-num" data-placeholder>[[ startups ]]</span><span class="stat-label">startups supported from idea to launch</span></div>
+        <div class="stat"><span class="stat-num" data-placeholder>[[ hires ]]</span><span class="stat-label">graduates placed with hiring partners</span></div>
+        <div class="stat"><span class="stat-num" data-placeholder>[[ events ]]</span><span class="stat-label">workshops, talks, and build weekends held</span></div>
+      </div>
+      <p class="impact-note reveal">Placeholder figures. Replace with confirmed, sourced numbers before publishing.</p>
+    </div>
+  </section>
+
+  <!-- ============================== VOICES ============================== -->
+  <section class="section voices" id="voices" aria-labelledby="voices-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Community voices</p>
+        <h2 id="voices-h">In their words.</h2>
+        <p class="lede">Approved quotes from members of the community go here. The cards below are placeholders until real, named consent is on file.</p>
+      </div>
+      <div class="voice-grid reveal">
+        <figure class="voice-card">
+          <blockquote>Placeholder quote from a graduate about the skills they gained and where those skills took them next.</blockquote>
+          <figcaption><span class="voice-name">[[ Name ]]</span><span class="voice-role">Program graduate, [[ track ]]</span></figcaption>
+        </figure>
+        <figure class="voice-card">
+          <blockquote>Placeholder quote from a founder about the support that helped move their startup from prototype to first customers.</blockquote>
+          <figcaption><span class="voice-name">[[ Name ]]</span><span class="voice-role">Founder, [[ startup ]]</span></figcaption>
+        </figure>
+        <figure class="voice-card">
+          <blockquote>Placeholder quote from a partner about hiring talent or collaborating on programs with the community.</blockquote>
+          <figcaption><span class="voice-name">[[ Name ]]</span><span class="voice-role">[[ Role ]], [[ partner ]]</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PARTNERS ============================== -->
+  <section class="section partners" id="partners" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Partners</p>
+        <h2 id="partners-h">We build this together.</h2>
+        <p class="lede">TechTown works with employers, universities, and public and private organizations across the Kingdom. Partner names appear as text wordmarks until logo consent is confirmed.</p>
+      </div>
+      <div class="marquee reveal" aria-label="Partner organizations (placeholders)">
+        <div class="marquee-track">
+          <span class="wordmark">[[ Partner One ]]</span>
+          <span class="wordmark">[[ Partner Two ]]</span>
+          <span class="wordmark">[[ Partner Three ]]</span>
+          <span class="wordmark">[[ Partner Four ]]</span>
+          <span class="wordmark">[[ Partner Five ]]</span>
+          <span class="wordmark">[[ Partner Six ]]</span>
+        </div>
+      </div>
+      <div class="partners-cta reveal">
+        <a class="btn btn-outline" href="#join">Become a partner</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== VISION 2030 ============================== -->
+  <section class="section vision" id="vision" aria-labelledby="vision-h">
+    <div class="wrap vision-in">
+      <div class="vision-copy reveal">
+        <p class="kicker light">Vision 2030</p>
+        <h2 id="vision-h">Part of the Kingdom's digital ambition.</h2>
+        <p>Vision 2030 sets a clear goal: a diversified economy built on Saudi skills and Saudi enterprise. TechTown backs that goal where it is most practical, by growing the people who will build the digital economy and the companies that will run in it.</p>
+        <ul class="vision-list">
+          <li>Building national capability in software, data, and AI</li>
+          <li>Helping founders start and grow companies at home</li>
+          <li>Widening the path into tech for young Saudis</li>
+        </ul>
+      </div>
+      <div class="vision-panel reveal" aria-hidden="true">
+        <div class="vision-badge">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <p>Every program, cohort, and partnership is measured against one question: does it help Saudis build?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== COMMUNITY ============================== -->
+  <section class="section community" id="community" aria-labelledby="community-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Community</p>
+        <h2 id="community-h">Something is always happening.</h2>
+        <p class="lede">The calendar below is a placeholder. Real dates and details go here once the schedule is confirmed.</p>
+      </div>
+      <div class="events reveal">
+        <article class="event-card">
+          <span class="event-tag">Workshop</span>
+          <h3>[[ Event title ]]</h3>
+          <p>Short description of a hands-on session for the community.</p>
+          <p class="event-meta">[[ Date ]] · TechTown</p>
+        </article>
+        <article class="event-card">
+          <span class="event-tag">Meetup</span>
+          <h3>[[ Event title ]]</h3>
+          <p>Short description of a talk or gathering for members and guests.</p>
+          <p class="event-meta">[[ Date ]] · TechTown</p>
+        </article>
+        <article class="event-card">
+          <span class="event-tag">Build weekend</span>
+          <h3>[[ Event title ]]</h3>
+          <p>Short description of a hackathon or build sprint.</p>
+          <p class="event-meta">[[ Date ]] · TechTown</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== INSIGHTS ============================== -->
+  <section class="section insights" id="insights" aria-labelledby="insights-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Insights</p>
+        <h2 id="insights-h">Notes from the community.</h2>
+        <p class="lede">Stories, guides, and lessons from people building here. Article cards are placeholders until real posts are published.</p>
+      </div>
+      <div class="post-grid reveal">
+        <article class="post-card">
+          <span class="post-tag">Guide</span>
+          <h3>[[ Article title ]]</h3>
+          <p>One-line summary of a practical guide for learners or founders.</p>
+          <a class="link-arrow" href="#">Read <span aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="post-card">
+          <span class="post-tag">Story</span>
+          <h3>[[ Article title ]]</h3>
+          <p>One-line summary of a member story from the community.</p>
+          <a class="link-arrow" href="#">Read <span aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="post-card">
+          <span class="post-tag">Update</span>
+          <h3>[[ Article title ]]</h3>
+          <p>One-line summary of a program or ecosystem update.</p>
+          <a class="link-arrow" href="#">Read <span aria-hidden="true">&rarr;</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FINAL CTA ============================== -->
+  <section class="final-cta" id="cta" aria-labelledby="cta-h">
+    <div class="wrap final-in reveal">
+      <h2 id="cta-h">Come build with us.</h2>
+      <p>Wherever you are starting from, there is a place for you at TechTown. Take the first step today.</p>
+      <div class="final-actions">
+        <a class="btn btn-primary" href="#join">Join TechTown</a>
+        <a class="btn btn-ghost-light" href="#programs">See the programs</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="footer-brand">
+      <a href="#top" class="logo" aria-label="TechTown, home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="9" fill="#12203f"/><path d="M9 12h14M16 12v11" stroke="var(--brand)" stroke-width="2.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="logo-word">Tech<span class="logo-accent">Town</span></span>
+      </a>
+      <p class="footer-tag">A Saudi home for tech talent and founders.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#why">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#community">Community</a>
+        <a href="#insights">Insights</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="#join">Join TechTown</a>
+        <a href="#partners">Partner with us</a>
+        <a href="#join">Apply</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@techtown.sa">hello@techtown.sa</a>
+        <a href="/ar" hreflang="ar">العربية</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>© <span id="year">2026</span> TechTown. All content marked with brackets is a placeholder pending confirmed details.</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
