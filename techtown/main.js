@@ -1,5 +1,5 @@
 /* ============================================================
-   TechTown: progressive enhancement
+   techtawn: progressive enhancement
    One IIFE. No libraries. No browser storage (state in memory only).
    ============================================================ */
 (function () {
