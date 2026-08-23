@@ -6,5 +6,12 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: './',
   plugins: [react()],
-  build: { outDir: 'dist', sourcemap: true },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    // Client logos live in src/logos/ and are small. Inlining them as data
+    // URIs keeps the single-file preview bundle (qa/bundle-single-file.mjs)
+    // genuinely self-contained. Anything larger is emitted as a normal asset.
+    assetsInlineLimit: 512 * 1024,
+  },
 });

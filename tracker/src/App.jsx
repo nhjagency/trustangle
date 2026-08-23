@@ -10,6 +10,7 @@ import { ClientDetail } from './views/ClientDetail.jsx';
 import { Reports } from './views/Reports.jsx';
 import { Settings } from './views/Settings.jsx';
 import { TEAM_LEADERS } from './data/portfolio.js';
+import { logoSrc } from './logos/index.js';
 
 const { useState: useState_app, useEffect: useEffect_app } = React;
 
@@ -265,6 +266,7 @@ function AppShell(){
                 shape="rounded"
                 radius="5"
                 fit="contain"
+                src={logoSrc('nhj')}
                 placeholder="NHJ"
                 style={{ width: '100%', height: '100%' }}
               />

@@ -35,6 +35,7 @@ src/data/portfolio.js clients, team leaders, SOW categories and every task
 src/components/
   ui.jsx              Portal, Icon set, Pill, date helpers, TeamAvatar
   image-slot.js       <image-slot> custom element (logos, brand mark)
+src/logos/            client logos, one file per client id (see its README)
 src/lib/
   i18n.jsx            EN/AR string table, LangProvider, useLang
   editable.jsx        edit mode: EditableText, overrides store, EditFrame
@@ -64,6 +65,18 @@ stable against a fixed dataset. `data/portfolio.js`, `components/ui.jsx`
 (`todayISO`) and `views/Dashboard.jsx` all pin `2026-05-17`; `views/Reports.jsx`
 pins `2026-05-19` with its week starting `2026-05-18`. Collapse those into one
 clock when the data layer is wired to a backend.
+
+## Client logos
+
+Commit an image to `src/logos/` named after the client id — `byn.png`,
+`lynnc.svg`, `nhj.png` — and it fills that client's slot on the portfolio card
+and in the drawer header; `nhj` also fills the app bar and hero mark. The
+folder is globbed at build time, so no code change is needed.
+`src/logos/README.md` lists every client id.
+
+A logo someone drops onto a slot in the running app is stored in their browser
+and overrides the committed file for them only; removing it restores the
+committed one.
 
 ## Where state lives
 

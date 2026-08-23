@@ -3,6 +3,7 @@ import { Portal, Icon, Pill, shortDate, TeamAvatar } from '../components/ui.jsx'
 import { useLang } from '../lib/i18n.jsx';
 import { useEdit, EditableText } from '../lib/editable.jsx';
 import { TaskTable } from './TaskTable.jsx';
+import { logoSrc } from '../logos/index.js';
 
 const { useState: useState_d, useEffect: useEffect_d, useRef: useRef_d, useMemo: useMemo_d } = React;
 
@@ -537,6 +538,7 @@ function ClientDetail({ client, onClose, onEdit, onFlash }){
               shape="rounded"
               radius="11"
               fit="contain"
+              src={logoSrc(client.id)}
               placeholder={client.short}
               style={{ width: '100%', height: '100%' }}
             />

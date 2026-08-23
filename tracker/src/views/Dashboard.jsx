@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Portal, Icon, Pill, shortDate, TeamAvatar } from '../components/ui.jsx';
 import { useLang } from '../lib/i18n.jsx';
 import { useEdit, EditableText, EditFrame } from '../lib/editable.jsx';
+import { logoSrc } from '../logos/index.js';
 
 const { useState, useMemo, useEffect } = React;
 
@@ -80,6 +81,7 @@ function EngagementCard({ c, onOpen, onEdit, layout, animate }){
             shape="rounded"
             radius="7"
             fit="contain"
+            src={logoSrc(c.id)}
             placeholder={c.short}
             style={{ width: '100%', height: '100%' }}
           />
@@ -137,6 +139,7 @@ function Hero({ variant, stats }){
           shape="rounded"
           radius="14"
           fit="contain"
+          src={logoSrc('nhj')}
           placeholder="NHJ"
           style={{ width: '100%', height: '100%' }}
         />
