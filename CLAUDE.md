@@ -50,6 +50,18 @@ The **Decision Router** is not an inline section: it is a scroll-triggered popup
 ### Data-driven Industries selector
 The Industries section is a single `.ind-card` panel swapped by the tablist in `main.js`. Each `.ind-tab` button carries `data-name`, `data-href` (`/industries/<slug>`), and `data-brief`; clicking/arrowing updates the panel name, brief, "Explore →" link, and case-study sector. **To edit a sector, edit its tab's data attributes**, not just the visible Hospitality panel.
 
+### `tracker/` — a separate app, not part of the site
+
+`tracker/` holds the **NHJ Project Service Tracker**, a React + Vite app built
+from the Claude Design handoff bundle (portfolio dashboard, engagement drawer
+with a task grid, reports, settings). It is self-contained: its own
+`package.json`, its own `npm run build` / `npm run smoke`, its own README. None
+of the rules in this file about the marketing site apply to it — different
+brand (NHJ, not trustangle), different tooling, different deploy. `brand-lint`
+and `qa/*.test.mjs` at the repo root do not read it, and it does not touch
+`index.html`, `styles.css` or `main.js`. It is staged here to be moved into
+`nhjagency/tracker`.
+
 ### Other files
 `BUILD-BRIEF.md` (executable build spec: structure, tokens, copy, acceptance) · `content/home.md` (section copy + SEO + placeholder flags) · `reference/home-mockup-agentflow-light.html` (visual reference) · `assets/` (logos, favicons; partner logos used grayscale, see consent rule) · `sandbox/` and `Design/` are scratch, not shipped.
 
