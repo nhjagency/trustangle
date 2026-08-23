@@ -9,9 +9,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    // Client logos live in src/logos/ and are small. Inlining them as data
-    // URIs keeps the single-file preview bundle (qa/bundle-single-file.mjs)
-    // genuinely self-contained. Anything larger is emitted as a normal asset.
-    assetsInlineLimit: 512 * 1024,
+    // Client logos stay separate assets so the app bundle does not carry
+    // ~2 MB of base64. The single-file preview bundler inlines them itself.
   },
 });

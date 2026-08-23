@@ -18,8 +18,44 @@ const cssName = assets.find(f => f.endsWith('.css'));
 const jsName = assets.find(f => f.endsWith('.js') && !f.endsWith('.map'));
 if (!cssName || !jsName) throw new Error('No built assets — run `npm run build` first.');
 
-const css = await readFile(path.join(DIST, 'assets', cssName), 'utf8');
+let css = await readFile(path.join(DIST, 'assets', cssName), 'utf8');
 let js = await readFile(path.join(DIST, 'assets', jsName), 'utf8');
+
+// Client logos and any other emitted media are separate files in the normal
+// build. Fold them in as data URIs so this page needs nothing alongside it.
+const MIME = {
+  '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png',
+  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif',
+  '.woff2': 'font/woff2', '.woff': 'font/woff',
+};
+const dataUri = async (name) => {
+  const b64 = (await readFile(path.join(DIST, 'assets', name))).toString('base64');
+  return `data:${MIME[path.extname(name)]};base64,${b64}`;
+};
+
+let inlined = 0;
+// Vite emits asset references as `new URL("name-hash.svg", import.meta.url)`,
+// which resolves against the document in an inline module script and would
+// 404. Swap each one for its data URI.
+const urlRefs = [...js.matchAll(/new URL\("([^"]+)",\s*import\.meta\.url\)\.href/g)];
+for (const [match, name] of urlRefs) {
+  if (!MIME[path.extname(name)] || !assets.includes(name)) continue;
+  js = js.split(match).join(JSON.stringify(await dataUri(name)));
+  inlined++;
+}
+// Plain path references (CSS url(), any leftover in the JS).
+for (const name of assets) {
+  if (!MIME[path.extname(name)]) continue;
+  let uri = null;
+  for (const ref of [`./assets/${name}`, `assets/${name}`]) {
+    if (!js.includes(ref) && !css.includes(ref)) continue;
+    uri = uri || await dataUri(name);
+    js = js.split(ref).join(uri);
+    css = css.split(ref).join(uri);
+    inlined++;
+  }
+}
+
 // A literal </script> inside the bundle would close the inline tag early.
 js = js.replace(/<\/script>/gi, '<\\/script>');
 
@@ -54,4 +90,4 @@ ${js}
 
 await writeFile(out, page);
 const kb = (Buffer.byteLength(page) / 1024).toFixed(0);
-console.log(`${path.relative(ROOT, out)} — ${kb} kB`);
+console.log(`${path.relative(ROOT, out)} — ${kb} kB, ${inlined} asset(s) inlined`);

@@ -532,12 +532,13 @@ function ClientDetail({ client, onClose, onEdit, onFlash }){
           </div>
         </div>
         <div className="drawer-h-id">
-          <div className="logo-slot-lg">
+          <div className={logoSrc(client.id) ? 'logo-slot-wide' : 'logo-slot-lg'}>
             <image-slot
               id={`logo-${client.id}`}
-              shape="rounded"
+              shape={logoSrc(client.id) ? 'rect' : 'rounded'}
               radius="11"
               fit="contain"
+              position="0% 50%"
               src={logoSrc(client.id)}
               placeholder={client.short}
               style={{ width: '100%', height: '100%' }}

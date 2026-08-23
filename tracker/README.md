@@ -72,7 +72,12 @@ Commit an image to `src/logos/` named after the client id — `byn.png`,
 `lynnc.svg`, `nhj.png` — and it fills that client's slot on the portfolio card
 and in the drawer header; `nhj` also fills the app bar and hero mark. The
 folder is globbed at build time, so no code change is needed.
-`src/logos/README.md` lists every client id.
+`src/logos/README.md` lists every client id and what is still missing.
+
+Because the logos are wide horizontal lockups, a client that has one shows it
+as a brand bar across the top of its card, at natural aspect, instead of
+squeezing it into the 40px square tile. A client without a logo keeps the
+tile with its initials.
 
 A logo someone drops onto a slot in the running app is stored in their browser
 and overrides the committed file for them only; removing it restores the

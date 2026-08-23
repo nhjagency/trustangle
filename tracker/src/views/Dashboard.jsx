@@ -56,6 +56,7 @@ function EngagementCard({ c, onOpen, onEdit, layout, animate }){
   const { t, lang } = useLang();
   const { editMode } = useEdit();
   const live = useLiveCounts(c.id, { complete: c.complete, inProgress: c.inProgress });
+  const logo = logoSrc(c.id);
   const complete = live.complete;
   const [progress, setProgress] = useState(0);
   useEffect(() => {
@@ -74,18 +75,35 @@ function EngagementCard({ c, onOpen, onEdit, layout, animate }){
 
   return (
     <div className="card" style={{ '--c': phaseColor }} onClick={() => { if (!editMode) onOpen(c); }}>
-      <div className="card-h">
-        <div className="logo-slot" onClick={(e) => e.stopPropagation()}>
+      {/* Client logos are wide horizontal lockups, so a card that has one
+          shows it as a brand bar across the top; the square initials tile is
+          the fallback for a client whose logo has not been added yet. */}
+      {logo && (
+        <div className="card-logo" onClick={(e) => e.stopPropagation()}>
           <image-slot
             id={`logo-${c.id}`}
-            shape="rounded"
-            radius="7"
+            shape="rect"
             fit="contain"
-            src={logoSrc(c.id)}
+            position="0% 50%"
+            src={logo}
             placeholder={c.short}
             style={{ width: '100%', height: '100%' }}
           />
         </div>
+      )}
+      <div className="card-h">
+        {!logo && (
+          <div className="logo-slot" onClick={(e) => e.stopPropagation()}>
+            <image-slot
+              id={`logo-${c.id}`}
+              shape="rounded"
+              radius="7"
+              fit="contain"
+              placeholder={c.short}
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
+        )}
         <div className="card-id">
           <h3 className="card-title">
             <EditableText path={`client.${c.id}.name`} fallback={c.name}/>

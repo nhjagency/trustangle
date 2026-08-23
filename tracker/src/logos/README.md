@@ -11,14 +11,30 @@ committed file shows up on the client's portfolio card and in the engagement
 drawer header with no code change. `nhj.png` also fills the app bar mark and
 the hero mark.
 
-Prefer a square-ish image on a transparent or white background. The slot is
-40px on the card and 60px in the drawer and fits the whole logo inside
-(`object-fit: contain`), so a wide horizontal lockup renders very small — crop
-to the symbol where you have one.
+A client that has a logo shows it as a **brand bar** across the top of its
+card and beside the name in the drawer header, at the logo's natural aspect.
+A client without one keeps the square initials tile. Horizontal lockups are
+what this is built for, so no cropping is needed; transparent or white
+backgrounds work best.
 
 A logo dropped onto a slot in the running app is stored in that person's
 browser and overrides the committed file for them only. Removing the dropped
 image restores the committed one.
+
+## What is here
+
+19 of the 30 clients have a logo, plus `nhj`. Still missing: `byn`,
+`cablink`, `dur`, `eddekhar`, `golfy`, `maqam`, `namir`, `reachvest`,
+`sharaka`, `trustangle`.
+
+Two files do not match any client and sit here unused until one is added with
+a matching id: `elevate.svg` (Elevate Holding Group) and `khayal.svg` (Khayal
+Investment, uploaded as "Khalal"). `wafra.svg` was uploaded as "Wafa"; the
+artwork reads Wafra, so it is filed under the Wafra client.
+
+The SVGs are wrappers around embedded PNGs rather than true vector art, which
+is why some run to a couple of hundred kB. They are emitted as separate assets
+by the build, so they cost nothing until the page loads them.
 
 ## Client ids
 
