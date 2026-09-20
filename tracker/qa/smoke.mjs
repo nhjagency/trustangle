@@ -106,6 +106,21 @@ await step('tweaks-panel', async () => {
   await page.locator('.twk-x').click();
 });
 
+await step('design-review', async () => {
+  await page.getByRole('button', { name: 'Design Review', exact: true }).click();
+  await page.waitForSelector('.dr-grid', { timeout: 5000 });
+  const cards = await page.locator('.dr-card').count();
+  if (cards < 1) throw new Error('review queue rendered no designs');
+  const kpis = await page.locator('.dr-kpis .rp-exec-cell').count();
+  if (kpis !== 4) throw new Error(`expected 4 KPI cells, saw ${kpis}`);
+  // Filtering by project must narrow the queue.
+  await page.locator('.dr-select select').first().selectOption({ index: 1 });
+  await page.waitForTimeout(200);
+  const narrowed = await page.locator('.dr-card').count();
+  if (narrowed > cards) throw new Error('project filter widened the queue');
+  await page.getByRole('button', { name: 'Clear filters' }).click();
+});
+
 await step('edit-mode', async () => {
   await page.getByRole('button', { name: 'Dashboard', exact: true }).click();
   await page.locator('.edit-btn').first().click();

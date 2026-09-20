@@ -6258,3 +6258,161 @@ body.edit-mode .snapshot.snapshot-2x2 > .edit-frame > .snap-card{
 .logo-slot-wide image-slot{display:block;width:100%;height:100%;background:transparent}
 .logo-slot-wide image-slot::part(frame){background:transparent}
 .logo-slot-wide image-slot::part(image){background:transparent}
+
+/* ─── Design Review ──────────────────────────────────────────────────────
+   Creative review for work made in Figma. Everything here leans on the
+   existing system: .hero for the header, .rp-card / .rp-exec for the KPI
+   strip and panel, .tt-status-pill for the filter chips, .card for each
+   design. The only new shape is the artwork frame, which has to be large
+   because the artwork is the thing being reviewed. */
+
+.dr-hero{margin-bottom:var(--d-gap, 16px)}
+.dr-kpis{margin-bottom:var(--d-gap, 16px)}
+.dr-kpi-row{grid-template-columns:repeat(4,1fr)}
+
+.dr-panel{padding:0;overflow:hidden}
+.dr-panel-h{padding:16px 18px 0}
+
+/* ── Filter bar ── */
+.dr-filters{
+  display:flex;flex-direction:column;gap:12px;
+  padding:14px 18px 16px;
+  border-bottom:1px solid var(--border);
+}
+.dr-chips{flex-wrap:wrap}
+.dr-selects{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px}
+.dr-select{display:flex;flex-direction:column;gap:4px}
+.dr-select-l{
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:700;
+}
+.dr-select select{
+  appearance:auto;
+  min-width:140px;
+  padding:7px 10px;
+  font:inherit;font-size:12.5px;color:var(--ink);
+  background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--r-sm, 8px);
+}
+.dr-select select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.dr-clear{align-self:flex-end}
+
+/* ── Grid of designs ── */
+.dr-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  /* Cards size to their own content: a row is not padded out to the height
+     of its tallest card. */
+  align-items:start;
+  gap:var(--d-card-gap, 16px);
+  padding:18px;
+}
+.dr-card{
+  padding:0;overflow:hidden;cursor:default;gap:0;
+}
+.dr-card:hover{transform:none;box-shadow:var(--sh-1);border-color:var(--border)}
+
+/* ── Artwork frame: the loudest element on the card ── */
+.dr-preview{
+  position:relative;width:100%;
+  /* The frame follows the format's aspect ratio, clamped so a 9:16 story
+     does not tower over a 16:9 post in the same grid. Real artwork is
+     letterboxed inside it rather than cropped. */
+  max-height:240px;min-height:150px;
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--c, var(--ink)) 7%, var(--bg)),
+      color-mix(in oklab, var(--c, var(--ink)) 2%, var(--bg)));
+  border-bottom:1px solid var(--border);
+  display:grid;place-items:center;overflow:hidden;
+}
+.dr-preview-img{width:100%;height:100%;object-fit:contain;display:block}
+.dr-preview-empty{
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  padding:16px;text-align:center;
+}
+.dr-preview-logo{max-width:96px;max-height:26px;object-fit:contain;opacity:.5}
+.dr-preview-note{
+  font-size:11px;color:var(--ink-soft);font-weight:600;letter-spacing:.01em;
+}
+.dr-preview-fmt{
+  font-size:10px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;
+}
+.dr-preview-platform,
+.dr-preview-ver{
+  position:absolute;top:8px;
+  padding:3px 7px;border-radius:999px;
+  font-size:10px;font-weight:700;letter-spacing:.02em;
+  background:color-mix(in oklab, var(--ink) 72%, transparent);
+  color:white;backdrop-filter:blur(4px);
+}
+.dr-preview-platform{left:8px}
+.dr-preview-ver{right:8px;font-variant-numeric:tabular-nums}
+
+/* ── Card body ── */
+.dr-card-body{display:flex;flex-direction:column;gap:7px;padding:12px 13px 13px}
+.dr-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dr-postid{
+  font-family:var(--font-mono, ui-monospace, monospace);
+  font-size:11px;font-weight:600;color:var(--ink-soft);
+  letter-spacing:.02em;
+}
+.dr-pill{
+  display:inline-flex;align-items:center;
+  padding:3px 8px;border-radius:999px;
+  border:1px solid transparent;
+  font-size:10.5px;font-weight:700;letter-spacing:.01em;
+  white-space:nowrap;
+}
+.dr-title{
+  margin:0;font-family:var(--font-display);font-weight:700;
+  font-size:14px;line-height:1.25;color:var(--ink);letter-spacing:-.015em;
+  text-wrap:balance;
+}
+.dr-project{
+  display:flex;align-items:center;gap:6px;
+  font-size:11.5px;color:var(--ink-soft);min-width:0;
+}
+.dr-project-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dr-campaign{color:var(--ink-faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.dr-meta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;
+  padding-top:2px;
+  font-size:11px;color:var(--ink-soft);
+}
+.dr-meta-i{display:inline-flex;align-items:center;gap:4px}
+.dr-meta svg{width:12px;height:12px;flex-shrink:0}
+.dr-deadline{display:inline-flex;align-items:center;gap:4px;font-variant-numeric:tabular-nums}
+.dr-deadline.soon{color:oklch(52% .14 60);font-weight:600}
+.dr-deadline.over{color:oklch(50% .18 25);font-weight:700}
+.dr-prio{display:inline-flex;align-items:center;gap:5px}
+.dr-prio-dot{width:6px;height:6px;border-radius:50%}
+
+.dr-card-foot{
+  display:flex;align-items:center;justify-content:flex-start;
+  padding-top:9px;margin-top:2px;
+  border-top:1px solid var(--border);
+}
+.dr-figma{font-size:11.5px}
+.dr-figma svg{width:12px;height:12px}
+.dr-figma-none{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11.5px;color:var(--ink-faint);
+}
+.dr-figma-none svg{width:12px;height:12px}
+
+/* ── Empty state ── */
+.dr-empty{padding:48px 18px;text-align:center}
+.dr-empty-t{
+  font-family:var(--font-display);font-size:19px;font-weight:700;
+  color:var(--ink);margin-bottom:4px;
+}
+.dr-empty-s{font-size:12.5px;color:var(--ink-soft)}
+
+@media (max-width: 880px){
+  .dr-kpi-row{grid-template-columns:repeat(2,1fr)}
+  .dr-grid{grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));padding:14px}
+  .dr-select select{min-width:120px}
+}

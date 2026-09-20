@@ -9,6 +9,7 @@ import { Dashboard } from './views/Dashboard.jsx';
 import { ClientDetail } from './views/ClientDetail.jsx';
 import { Reports } from './views/Reports.jsx';
 import { Settings } from './views/Settings.jsx';
+import { DesignReview } from './views/DesignReview.jsx';
 import { TEAM_LEADERS } from './data/portfolio.js';
 import { logoSrc } from './logos/index.js';
 
@@ -278,6 +279,7 @@ function AppShell(){
             <span className="here">
               {view === 'dashboard' && t('crumb_portfolio')}
               {view === 'reports'   && t('crumb_reports')}
+              {view === 'design'    && t('crumb_design')}
               {view === 'settings'  && t('crumb_settings')}
             </span>
           </div>
@@ -286,6 +288,7 @@ function AppShell(){
         <nav className="appbar-tabs" role="tablist">
           <button className={view === 'dashboard' ? 'on' : ''} onClick={() => setView('dashboard')}>{t('nav_dashboard')}</button>
           <button className={view === 'reports'   ? 'on' : ''} onClick={() => setView('reports')}>{t('nav_reports')}</button>
+          <button className={view === 'design'    ? 'on' : ''} onClick={() => setView('design')}>{t('nav_design')}</button>
           <button className={view === 'settings'  ? 'on' : ''} onClick={() => setView('settings')}>{t('nav_settings')}</button>
         </nav>
 
@@ -338,6 +341,7 @@ function AppShell(){
       <main className="page">
         {view === 'dashboard' && <Dashboard tweaks={tw} onOpenClient={setOpen} onEdit={setEditing}/>}
         {view === 'reports'   && <Reports onOpenClient={setOpen}/>}
+        {view === 'design'    && <DesignReview/>}
         {view === 'settings'  && <Settings/>}
       </main>
 
